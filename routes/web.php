@@ -23,3 +23,25 @@ Route::get('/jobs', function () {
 Route::get('/job-detail', function () {
     return view('guest.jobdetail', ['title' => 'HandyHelp | Job Detail']);
 });
+
+Route::get('/login', function () {
+    return view('guest.login', ['title' => 'HandyHelp | Log In']);
+});
+
+Route::get('/signup', function () {
+    return view('guest.signup', ['title' => 'HandyHelp | Sign up']);
+});
+
+Route::get('/profile-member', function () {
+    return view('member.profile', [
+        'title' => 'HandyHelp | Profile',
+        'user' => 'Member'
+    ]);
+});
+
+Route::get('/profile-member-edit', function () {
+    return view('member.profileedit', [
+        'title' => 'HandyHelp | Edit Profile',
+        'user' => 'Member'
+    ]);
+});
