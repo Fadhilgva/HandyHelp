@@ -5,7 +5,7 @@
             <div class="main-box">
                 <div class="logo-box">
                     <figure class="logo">
-                        <a href=""><img src="{{ asset('images/logo.png') }}" alt="" /></a>
+                        <a href="/"><img src="{{ asset('images/logo.png') }}" alt="" /></a>
                     </figure>
                 </div>
                 <div class="menu-area clearfix">
@@ -18,39 +18,24 @@
                     <nav class="main-menu navbar-expand-md navbar-light">
                         <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                             <ul class="navigation clearfix">
-                                <li class="current">
-                                    <a href=""><span>Home</span></a>
+                                <li class="{{  request ()->segment(1) == '' ? 'current' : '' }}">
+                                    <a href="/"><span>Home</span></a>
                                 </li>
-                                <li>
-                                    <a href=""><span>Categories</span></a>
+                                <li class="{{  Request::is ('categories') ? 'current' : '' }}">
+                                    <a href="/categories"><span>Categories</span></a>
                                 </li>
-                                {{-- <li class="dropdown">
-                                    <a href=""><span>Services</span></a>
-                                    <ul>
-                                        <li><a href="">Main Home</a></li>
-                                        <li><a href="">Home Modern</a></li>
-                                        <li><a href="">Home Map</a></li>
-                                        <li><a href="">Home Half Map</a></li>
-                                        <li><a href="">Home Agent</a></li>
-                                        <li><a href="">OnePage Home</a></li>
-                                        <li><a href="">RTL Home</a></li>
-                                    </ul>
-                                </li> --}}
-                                <li>
-                                    <a href=""><span>Jobs</span></a>
+                                <li class="{{  Request::is ('jobs','job-detail') ? 'current' : '' }}">
+                                    <a href="/jobs"><span>Jobs</span></a>
                                 </li>
-                                <li>
-                                    <a href=""><span>About Us</span></a>
+                                <li class="{{  Request::is ('about') ? 'current' : '' }}">
+                                    <a href="/about"><span>About Us</span></a>
                                 </li>
-                                <li>
-                                    <a href=""><span>Log In</span></a>
+                                <li class="{{  Request::is ('login') ? 'current' : '' }}">
+                                    <a href="/login"><span>Log In</span></a>
                                 </li>
                             </ul>
                         </div>
                     </nav>
-                </div>
-                <div class="btn-box">
-                    <a href="" class="theme-btn btn-one"><span>+</span>Add Listing</a>
                 </div>
             </div>
         </div>
@@ -77,3 +62,27 @@
         </div>
     </div>
 </header>
+
+<!-- Mobile Menu  -->
+<div class="mobile-menu">
+    <div class="menu-backdrop"></div>
+    <div class="close-btn"><i class="fas fa-times"></i></div>
+
+    <nav class="menu-box">
+        <div class="nav-logo">
+            <a href=""><img src="{{ asset('assets/images/logo.png')}}" alt="" title="" /></a>
+        </div>
+        <div class="menu-outer">
+            <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+        </div>
+        <div class="contact-info">
+            <h4>Contact Info</h4>
+            <ul>
+                <li>Sisingamangaraja Road, Kebayoran Baru South Jakarta 12110</li>
+                <li><a href="tel:+8801682648101">(021) 727 92753</a></li>
+                <li><a href="mailto:info@example.com">info@uai.ac.id</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<!-- End Mobile Menu -->

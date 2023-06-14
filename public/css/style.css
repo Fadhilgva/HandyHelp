@@ -48,7 +48,7 @@
 ====================================================================
 
  ***/
-html {
+ html {
     overflow-x: hidden;
     max-width: 100%;
 }
@@ -1909,7 +1909,7 @@ div#mCSB_1_container {
 
 .category-section {
     position: relative;
-    padding: 120px 0px 120px 0px;
+    padding: 50px 0px 50px 0px;
     background-color: #ffffff;
 }
 
@@ -3210,7 +3210,7 @@ div#mCSB_1_container {
 }
 
 .bg-color-2 {
-    background-color: #2c3333;
+    background-color: #1b1d21;
 }
 
 /** cta-section **/
@@ -5516,7 +5516,7 @@ div#mCSB_1_container {
 
 .item-shorting .right-column {
     position: relative;
-    padding-right: 100px;
+    /* padding-right: 100px; */
 }
 
 .item-shorting .right-column .short-menu {
@@ -6776,7 +6776,7 @@ div#mCSB_1_container {
 
 .agent-details {
     position: relative;
-    padding-top: 120px;
+    padding-top: 20px;
 }
 
 .agent-details-page .deals-block-one .inner-box {
@@ -9124,6 +9124,16 @@ div#mCSB_1_container {
     color: #2d2929;
     font-weight: 500;
     margin-bottom: 8px;
+}
+
+.form-group label {
+    position: relative;
+    display: block;
+    font-size: 15px;
+    line-height: 26px;
+    font-weight: 500;
+    color: #0f172b;
+    margin-bottom: 7px;
 }
 
 .ragister-section .inner-box .form-group .theme-btn {

@@ -15,3 +15,11 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/jobs', function () {
+    return view('guest.jobs', ['title' => 'HandyHelp | Jobs']);
+});
+
+Route::get('/job-detail', function () {
+    return view('guest.jobdetail', ['title' => 'HandyHelp | Job Detail']);
+});
