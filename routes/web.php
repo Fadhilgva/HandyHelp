@@ -45,3 +45,10 @@ Route::get('/profile-member-edit', function () {
         'user' => 'Member'
     ]);
 });
+
+Route::get('/posting-job', function () {
+    return view('member.member-posting', [
+        'title' => 'HandyHelp | Posting Job',
+        'user' => 'Member'
+    ]);
+});
