@@ -16,20 +16,28 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/jobs', function () {
-    return view('guest.jobs', ['title' => 'HandyHelp | Jobs']);
-});
-
-Route::get('/job-detail', function () {
-    return view('guest.jobdetail', ['title' => 'HandyHelp | Job Detail']);
-});
-
 Route::get('/login', function () {
     return view('guest.login', ['title' => 'HandyHelp | Log In']);
 });
 
 Route::get('/signup', function () {
     return view('guest.signup', ['title' => 'HandyHelp | Sign up']);
+});
+
+Route::get('/categories', function () {
+    return view('guest.categories', ['title' => 'HandyHelp | Categories']);
+});
+
+Route::get('/about', function () {
+    return view('guest.about', ['title' => 'HandyHelp | About Us']);
+});
+
+Route::get('/jobs', function () {
+    return view('guest.jobs', ['title' => 'HandyHelp | Jobs']);
+});
+
+Route::get('/job-detail', function () {
+    return view('guest.jobdetail', ['title' => 'HandyHelp | Job Detail']);
 });
 
 Route::get('/profile-member', function () {
@@ -43,6 +51,20 @@ Route::get('/profile-member-edit', function () {
     return view('member.profileedit', [
         'title' => 'HandyHelp | Edit Profile',
         'user' => 'Member'
+    ]);
+});
+
+Route::get('/profile-contractor', function () {
+    return view('contractor.profile', [
+        'title' => 'HandyHelp | Profile',
+        'user' => 'Contractor'
+    ]);
+});
+
+Route::get('/profile-contractor-edit', function () {
+    return view('contractor.profileedit', [
+        'title' => 'HandyHelp | Edit Profile',
+        'user' => 'Contractor'
     ]);
 });
 
