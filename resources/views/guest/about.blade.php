@@ -44,8 +44,8 @@
 <section class="feature-style-three centred pb-110">
     <div class="auto-container">
         <div class="sec-title">
-            <h5>Our Services</h5>
-            <h2>Property Services</h2>
+            {{-- <h5>Our Services</h5> --}}
+            <h2>Our Services</h2>
         </div>
         <div class="three-item-carousel owl-carousel owl-theme owl-nav-none dots-style-one">
             <div class="feature-block-two">

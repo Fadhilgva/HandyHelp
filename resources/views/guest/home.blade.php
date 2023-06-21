@@ -843,7 +843,7 @@
 <!-- Looking for a Job end -->
 
 <!-- NEWS & ARTICLE -->
-<section class="news-section sec-pad">
+{{-- <section class="news-section sec-pad">
     <div class="auto-container">
         <div class="sec-title centred">
             <h5>News & Article</h5>
@@ -934,6 +934,6 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 <!-- NEWS & ARTICLE end -->
 @endsection
