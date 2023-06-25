@@ -3,52 +3,52 @@
 @section('container')
 <!-- profile-contractor -->
 <section class="agent-details">
-    <div class="auto-container">
-        <div class="agency-details-content">
-            <div class="agents-block-one">
-                <div class="inner-box mr-0">
-                    <figure class="image-box"><img src="{{ asset('images/resource/agency-details-1.jpg') }}" alt="" /></figure>
-                    <div class="content-box">
-                        <div class="upper clearfix">
-                            <div class="title-inner pull-left">
-                                <h4>John Doe</h4>
-                            </div>
-                        </div>
-                        <div class="text">
-                            <p>
-                                Success isn’t really that difficult. There is a significant portion of the population here in North America, that actually want and need success to be hard! Why? So they then have a built-in excuse.when things don’t go
-                                their way! Pretty sad situation, to say the least. Have some fun and hypnotize yourself to be your very own Ghost of Christmas future”
-                            </p>
-                        </div>
-                        <ul class="info clearfix mr-0">
-                            <li><i class="icon-41"></i><a href="">Gardening | Repairing</a></li>
-                            <li><i class="icon-22"></i><a href="">Indonesia, Jakarta</a></li>
-                            <li><i class="fab fa fa-envelope"></i><a href="">Johndoe@gmail.com</a></li>
-                            <li><i class="fab fa fa-phone"></i><a href="">030 3057 1965</a></li>
-                        </ul>
-                        <div class="clearfix">
-                            <div class="btn-box pull-right">
-                                <a href="/profile-contractor-edit" class="theme-btn btn-one">Edit Profile</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <div class="auto-container">
+    <div class="agency-details-content">
+      <div class="agents-block-one">
+        <div class="inner-box mr-0">
+          <figure class="image-box"><img src="{{ asset('images/resource/agency-details-1.jpg') }}" alt="" /></figure>
+          <div class="content-box">
+            <div class="upper clearfix">
+              <div class="title-inner pull-left">
+                <h4>John Doe</h4>
+              </div>
             </div>
+            <div class="text">
+              <p>
+                Success isn’t really that difficult. There is a significant portion of the population here in North America, that actually want and need success to be hard! Why? So they then have a built-in excuse.when things don’t go
+                their way! Pretty sad situation, to say the least. Have some fun and hypnotize yourself to be your very own Ghost of Christmas future”
+              </p>
+            </div>
+            <ul class="info clearfix mr-0">
+              <li><i class="icon-41"></i><a href="">Gardening | Repairing</a></li>
+              <li><i class="icon-22"></i><a href="">Indonesia, Jakarta</a></li>
+              <li><i class="fab fa fa-envelope"></i><a href="">Johndoe@gmail.com</a></li>
+              <li><i class="fab fa fa-phone"></i><a href="">030 3057 1965</a></li>
+            </ul>
+            <div class="clearfix">
+              <div class="btn-box pull-right">
+                <a href="/profile-edit" class="theme-btn btn-one">Edit Profile</a>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 <!-- profile-contractor end -->
 
 <!-- My-galery-contractor-section -->
 <section class="agents-page-section agent-details-page">
-    <div class="auto-container">
-        <div class="row clearfix">
-            <div class="col-lg-12 col-md-12 col-sm-12 content-side">
-                <div class="agents-content-side tabs-box">
-                    <div class="group-title">
-                        <h3>My Galery</h3>
-                    </div>
-                    <!-- <div class="item-shorting clearfix">
+  <div class="auto-container">
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 content-side">
+        <div class="agents-content-side tabs-box">
+          <div class="group-title">
+            <h3>My Galery</h3>
+          </div>
+          <!-- <div class="item-shorting clearfix">
                   <div class="right-column pull-right clearfix">
                     <div class="short-box clearfix">
                       <div class="select-box">
@@ -927,10 +927,10 @@
                     </div>
                   </div>
                 </div> -->
-                </div>
-            </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 <!-- My-galery-contractor-section end -->
 @endsection

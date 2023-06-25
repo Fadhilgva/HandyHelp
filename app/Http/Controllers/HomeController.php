@@ -12,4 +12,11 @@ class HomeController extends Controller
             'title' => 'HandyHelp | Connecting Hands, Solving demands',
         ]);
     }
+
+    public function categories()
+    {
+        return view('guest.about', [
+            'title' => 'HandyHelp | About Us'
+        ]);
+    }
 }

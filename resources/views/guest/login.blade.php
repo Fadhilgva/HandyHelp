@@ -10,6 +10,16 @@
                     <h5>Glad to see You Back!</h5>
                     <h2>Sign In with HandyHelp</h2>
                 </div>
+
+                @if (session()->has('success'))
+                <div class="alert alert-success alert-dismissible fade show text-center m-4" role="alert">
+                    <small>Your Account has been created successfully! Please Log In</small>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+
                 <div class="tabs-box">
                     <div class="tabs-content">
                         <div class="tab active-tab" id="tab-1">
@@ -28,7 +38,7 @@
                                     </div>
                                 </form>
                                 <div class="othre-text">
-                                    <p>Have not any account? <a href="/signup">Register Now</a></p>
+                                    <p>Have not any account? <a href="/signup_member">Register Now</a></p>
                                 </div>
                             </div>
                         </div>

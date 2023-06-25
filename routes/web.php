@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,61 +19,50 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/login', function () {
-    return view('guest.login', ['title' => 'HandyHelp | Log In']);
-});
+Route::get('/about', [HomeController::class, 'categories']);
 
-Route::get('/signup', function () {
-    return view('guest.signup', ['title' => 'HandyHelp | Sign up']);
-});
+Route::group(
+    ['middleware' => ['guest']],
+    function () {
+        Route::get('/login', [LoginController::class, 'index'])->name('login');
 
-Route::get('/categories', function () {
-    return view('guest.categories', ['title' => 'HandyHelp | Categories']);
-});
+        Route::get('/signup_member', [RegisterController::class, 'signup_member']);
 
-Route::get('/about', function () {
-    return view('guest.about', ['title' => 'HandyHelp | About Us']);
-});
+        Route::get('/signup_contractor', [RegisterController::class, 'signup_contractor']);
 
-Route::get('/jobs', function () {
-    return view('guest.jobs', ['title' => 'HandyHelp | Jobs']);
-});
+        Route::post('/signup_contractor', [RegisterController::class, 'store_member']);
 
-Route::get('/job-detail', function () {
-    return view('guest.jobdetail', ['title' => 'HandyHelp | Job Detail']);
-});
+        Route::post('/signup_contractor', [RegisterController::class, 'store_contractor']);
+    }
+);
 
-Route::get('/profile-member', function () {
-    return view('member.profile', [
-        'title' => 'HandyHelp | Profile',
-        'user' => 'Member'
-    ]);
-});
+Route::group(
+    ['middleware' => ['auth']],
+    function () {
 
-Route::get('/profile-member-edit', function () {
-    return view('member.profileedit', [
-        'title' => 'HandyHelp | Edit Profile',
-        'user' => 'Member'
-    ]);
-});
+        Route::get('/profile', [UserController::class, 'index']);
 
-Route::get('/profile-contractor', function () {
-    return view('contractor.profile', [
-        'title' => 'HandyHelp | Profile',
-        'user' => 'Contractor'
-    ]);
-});
+        Route::get('/profile-edit', [UserController::class, 'edit']);
 
-Route::get('/profile-contractor-edit', function () {
-    return view('contractor.profileedit', [
-        'title' => 'HandyHelp | Edit Profile',
-        'user' => 'Contractor'
-    ]);
-});
+        Route::get('/posting-job', function () {
+            return view('member.member-posting', [
+                'title' => 'HandyHelp | Posting Job',
+                'user' => 'Member'
+            ]);
+        })->middleware('accessUsers:member');
 
-Route::get('/posting-job', function () {
-    return view('member.member-posting', [
-        'title' => 'HandyHelp | Posting Job',
-        'user' => 'Member'
-    ]);
-});
+        Route::get('/categories', function () {
+            return view('guest.categories', ['title' => 'HandyHelp | Categories']);
+        });
+
+        Route::get('/jobs', function () {
+            return view('guest.jobs', ['title' => 'HandyHelp | Jobs']);
+        });
+
+        Route::get('/job-detail', function () {
+            return view('guest.jobdetail', ['title' => 'HandyHelp | Job Detail']);
+        });
+
+        Route::get('/logout', [RegisterController::class, 'destroy']);
+    }
+);

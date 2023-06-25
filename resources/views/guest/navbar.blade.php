@@ -15,7 +15,7 @@
                         <i class="icon-bar"></i>
                         <i class="icon-bar"></i>
                     </div>
-                    <nav class="main-menu navbar-expand-md navbar-light">
+                    <nav class="main-menu navbar-expand-md navbar-light mx-4">
                         <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                             <ul class="navigation clearfix">
                                 <li class="{{  request ()->segment(1) == '' ? 'current' : '' }}">
@@ -30,9 +30,22 @@
                                 <li class="{{  Request::is ('about') ? 'current' : '' }}">
                                     <a href="/about"><span>About Us</span></a>
                                 </li>
+                                @auth
+                                <li class="{{  Request::is ('profile-member', 'profile-member-edit', 'profile-contractor', 'profile-contractor-edit') ? 'current' : '' }}dropdown">
+                                    <a><span>{{ Auth()->user()->name }}</span></a>
+                                    <ul class="me-5">
+                                        <li><a href="/profile">Profile</a></li>
+                                        <li>
+                                            <a href="/logout">Log Out</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                @endauth
+                                @guest
                                 <li class="{{  Request::is ('login') ? 'current' : '' }}">
                                     <a href="/login"><span>Log In</span></a>
                                 </li>
+                                @endguest
                             </ul>
                         </div>
                     </nav>

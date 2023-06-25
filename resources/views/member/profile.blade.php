@@ -27,7 +27,7 @@
                         </ul>
                         <div class="clearfix">
                             <div class="btn-box pull-right">
-                                <a href="/profile-member-edit" class="theme-btn btn-one">Edit Profile</a>
+                                <a href="/profile-edit" class="theme-btn btn-one">Edit Profile</a>
                             </div>
                         </div>
                     </div>

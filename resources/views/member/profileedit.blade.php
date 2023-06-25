@@ -7,7 +7,7 @@
         <div class="agency-details-content">
             <div class="agents-block-one">
                 <div class="inner-box mr-0">
-                    <figure class="image-box"><img src="assets/images/resource/agency-details-1.jpg" alt="" /></figure>
+                    <figure class="image-box"><img src="{{ asset('images/resource/agency-details-1.jpg') }}" alt="" /></figure>
                     <div class="content-box">
                         <form action="" method="post" class="default-form">
                             <div class="form-group">
@@ -53,7 +53,7 @@
                         </form>
                         <div class="clearfix">
                             <div class="btn-box pull-right">
-                                <a href="/profile-member" class="theme-btn btn-one">Save</a>
+                                <a href="/profile   " class="theme-btn btn-one">Save</a>
                             </div>
                         </div>
                     </div>
