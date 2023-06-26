@@ -21,17 +21,17 @@
                                 <li class="{{  request ()->segment(1) == '' ? 'current' : '' }}">
                                     <a href="/"><span>Home</span></a>
                                 </li>
-                                <li class="{{  Request::is ('categories') ? 'current' : '' }}">
-                                    <a href="/categories"><span>Categories</span></a>
-                                </li>
                                 <li class="{{  Request::is ('jobs','job-detail') ? 'current' : '' }}">
                                     <a href="/jobs"><span>Jobs</span></a>
+                                </li>
+                                <li class="{{  Request::is ('categories') ? 'current' : '' }}">
+                                    <a href="/categories"><span>Categories</span></a>
                                 </li>
                                 <li class="{{  Request::is ('about') ? 'current' : '' }}">
                                     <a href="/about"><span>About Us</span></a>
                                 </li>
                                 @auth
-                                <li class="{{  Request::is ('profile-member', 'profile-member-edit', 'profile-contractor', 'profile-contractor-edit') ? 'current' : '' }}dropdown">
+                                <li class="{{  Request::is ('profile', 'profile-edit') ? 'current' : '' }} dropdown">
                                     <a><span>{{ Auth()->user()->name }}</span></a>
                                     <ul class="me-5">
                                         <li><a href="/profile">Profile</a></li>

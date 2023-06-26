@@ -75,7 +75,7 @@
                                         <button type="submit" class="theme-btn btn-one">Sign up</button>
                                     </div>
                                 </form>
-                                <div class="othre-text">
+                                <div class="othre-text centred">
                                     <p>Already have an account? <a href="/login">Log in</a></p>
                                 </div>
                             </div>

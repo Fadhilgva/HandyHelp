@@ -4,26 +4,42 @@
 <!-- profile-member -->
 <section class="agent-details">
     <div class="auto-container">
+        @if (session()->has('updateprofile'))
+        <div class="alert alert-success alert-dismissible fade show text-center m-4" role="alert">
+            <small>{{ session('updateprofile') }}</small>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
         <div class="agency-details-content">
             <div class="agents-block-one">
                 <div class="inner-box mr-0">
                     <figure class="image-box"><img src="{{ asset('images/resource/agency-details-1.jpg') }}" alt="" /></figure>
                     <div class="content-box">
-                        <div class="upper clearfix">
+                        <div class="clearfix">
                             <div class="title-inner pull-left">
-                                <h4>John Doe</h4>
+                                <h4>{{ Auth()->user()->name }}</h4>
                             </div>
                         </div>
+                        @if(Auth()->user()->desc)
                         <div class="text">
-                            <p>
-                                Success isn’t really that difficult. There is a significant portion of the population here in North America, that actually want and need success to be hard! Why? So they then have a built-in excuse.when things don’t go
-                                their way! Pretty sad situation, to say the least. Have some fun and hypnotize yourself to be your very own Ghost of Christmas future”
-                            </p>
+                            <p>{{ Auth()->user()->desc }}</p>
                         </div>
+                        @else
+                        <div class="text">
+                            <p>Add description of Yourself</p>
+                        </div>
+                        @endif
                         <ul class="info clearfix mr-0">
-                            <li><i class="icon-22"></i><a href="">Indonesia, Jakarta</a></li>
-                            <li><i class="fab fa fa-envelope"></i><a href="">Johndoe@gmail.com</a></li>
-                            <li><i class="fab fa fa-phone"></i><a href="">030 3057 1965</a></li>
+                            @if(Auth()->user()->city)
+                            <li><i class="icon-22"></i><a>{{ Auth()->user()->city }}, {{ Auth()->user()->country }}</a></li>
+                            @else
+                            <li><i class="icon-22"></i><a>-</a></li>
+                            @endif
+
+                            <li><i class="fab fa fa-envelope"></i><a>{{ Auth()->user()->email }}</a></li>
+                            <li><i class="fab fa fa-phone"></i><a>{{ Auth()->user()->phone }}</a></li>
                         </ul>
                         <div class="clearfix">
                             <div class="btn-box pull-right">
@@ -52,19 +68,6 @@
                             <div class="clearfix">
                                 <div class="btn-box pull-right">
                                     <a href="/posting-job" class="theme-btn btn-one">Add Job Offer</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="right-column pull-right">
-                            <div class="short-box clearfix">
-                                <div class="select-box">
-                                    <select class="wide">
-                                        <option data-display="Sort by: Newest">Sort by: Newest</option>
-                                        <option value="1">New Arrival</option>
-                                        <option value="2">Top Rated</option>
-                                        <option value="3">Offer Place</option>
-                                        <option value="4">Most Place</option>
-                                    </select>
                                 </div>
                             </div>
                         </div>

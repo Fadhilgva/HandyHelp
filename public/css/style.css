@@ -48,7 +48,7 @@
 ====================================================================
 
  ***/
- html {
+html {
     overflow-x: hidden;
     max-width: 100%;
 }
@@ -1645,7 +1645,6 @@ div#mCSB_1_container {
     background: transparent;
     border-radius: 5px;
     padding: 0px 20px;
-    text-transform: uppercase;
 }
 
 .search-field .top-search .nice-select {
@@ -6520,7 +6519,7 @@ div#mCSB_1_container {
 }
 
 .agents-block-one .inner-box .content-box {
-    padding: 23px 30px 30px 300px;
+    padding: 0px 30px 30px 300px;
 }
 
 .agents-block-one .inner-box .content-box .upper {
@@ -9973,4 +9972,13 @@ div#mCSB_1_container {
 
 .search-field .top-search .search-btn button i {
     margin-right: 8px;
+}
+
+.file {
+    position: relative;
+    top: 350px;
+}
+
+.newone {
+    height: 1000px;
 }

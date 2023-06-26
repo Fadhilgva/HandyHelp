@@ -46,6 +46,8 @@ Route::group(
 
         Route::get('/profile-edit', [UserController::class, 'edit']);
 
+        Route::post('/profile-edit', [UserController::class, 'store']);
+
         Route::get('/posting-job', function () {
             return view('member.member-posting', [
                 'title' => 'HandyHelp | Posting Job',
