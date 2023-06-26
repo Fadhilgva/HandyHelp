@@ -31,7 +31,7 @@ class RegisterController extends Controller
     { 
         $request->validate([
             'name' => 'required| string|min:5| max:255',
-            'phone' => 'required| numeric| min_digits:8| max_digits:15',
+            'phone' => 'required| numeric| min_digits:8| max_digits:15 |unique:users',
             'email' => 'required | string| email:dns| max:255| unique:users',
             'password' => 'required| same:confirm_password',
             'confirm_password' => 'required'
@@ -56,8 +56,8 @@ class RegisterController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'min:5', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'phone' => ['required', 'numeric', 'min_digits:8', 'max_digits:15'],
-            'identity' => ['required', 'numeric', 'min_digits:10', 'max_digits:20'],
+            'phone' => ['required', 'numeric', 'min_digits:8', 'max_digits:15', 'unique:users'],
+            'identity' => ['required', 'numeric', 'min_digits:10', 'max_digits:20', 'unique:users'],
             'password' => ['required', 'same:confirm_password'],
             'confirm_password' => ['required']
         ]);
@@ -67,7 +67,7 @@ class RegisterController extends Controller
             'role' => 'contractor',
             'email' => $request->email,
             'phone' => $request->phone,
-            'identity' => $request->nik,
+            'identity' => $request->identity,
             'password' => Hash::make($request->password),
         ]);
 

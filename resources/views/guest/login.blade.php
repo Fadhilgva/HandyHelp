@@ -13,7 +13,16 @@
 
                 @if (session()->has('success'))
                 <div class="alert alert-success alert-dismissible fade show text-center m-4" role="alert">
-                    <small>Your Account has been created successfully! Please Log In</small>
+                    <small>{{ session('success') }}</small>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+
+                @if (session()->has('loginError'))
+                <div class="alert alert-danger alert-dismissible fade show text-center m-4" role="alert">
+                    <small>{{ session('loginError') }}</small>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -24,17 +33,28 @@
                     <div class="tabs-content">
                         <div class="tab active-tab" id="tab-1">
                             <div class="inner-box">
-                                <form action="" method="post" class="default-form">
+                                <form method="POST" action="/login" class="default-form">
+                                    @csrf
                                     <div class="form-group">
-                                        <label>Email address</label>
-                                        <input type="email" name="email" required="" />
+                                        <label>Email Address</label>
+                                        <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" required value="{{ old('email') }}" />
+                                        @error('email')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input type="password" name="name" required="" />
+                                        <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" required />
+                                        @error('password')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
                                     </div>
                                     <div class="form-group message-btn">
-                                        <button type="submit" class="theme-btn btn-one">Log in</button>
+                                        <button type="submit" class="theme-btn btn-one">Log In</button>
                                     </div>
                                 </form>
                                 <div class="othre-text">
