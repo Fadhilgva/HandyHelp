@@ -20,32 +20,53 @@
                     <div class="tabs-content">
                         <div class="tab active-tab" id="tab-1">
                             <div class="inner-box">
-                                <form action="" method="post" class="default-form">
+                                <form method="POST" action="/signup_member" class="default-form">
+                                    @csrf
                                     <div class="form-group">
                                         <label>Full name</label>
-                                        <input type="text" name="name" required="" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Phone Number</label>
-                                        <input type="number" name="phone" required="" />
+                                        <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" required value="{{ old('name') }}" />
+                                        @error('name')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Email Address</label>
-                                        <input type="email" name="email" required="" />
+                                        <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" required value="{{ old('email') }}" />
+                                        @error('email')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Phone Number</label>
+                                        <input type="text" id="phone" name="phone" class="form-control @error('phone') is-invalid @enderror" required value="{{ old('phone') }}" />
+                                        @error('phone')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input type="password" name="name" required="" />
+                                        <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" required />
+                                        @error('password')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Confirm Password</label>
-                                        <input type="password" name="name" required="" />
+                                        <input type="password" id="confirm_password" name="confirm_password" required />
                                     </div>
                                     <div class="form-group message-btn">
-                                        <button class="theme-btn btn-one"><a href="/profile-member" class="text-white">Sign up</a></button>
+                                        <button type="submit" class="theme-btn btn-one">Sign up</button>
                                     </div>
                                 </form>
-                                <div class="othre-text">
+                                <div class="othre-text centred">
                                     <p>Already have an account? <a href="/login">Log in</a></p>
                                 </div>
                             </div>

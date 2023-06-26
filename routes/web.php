@@ -28,6 +28,8 @@ Route::group(
 
         Route::get('/signup_member', [RegisterController::class, 'signup_member']);
 
+        Route::post('/signup_member', [RegisterController::class, 'store_member']);
+
         Route::get('/signup_contractor', [RegisterController::class, 'signup_contractor']);
 
         Route::post('/signup_contractor', [RegisterController::class, 'store_member']);
