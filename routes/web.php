@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\JobsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,19 +49,19 @@ Route::group(
 
         Route::post('/profile-edit', [UserController::class, 'store']);
 
-        Route::get('/posting-job', function () {
-            return view('member.member-posting', [
-                'title' => 'HandyHelp | Posting Job',
-                'user' => 'Member'
-            ]);
-        })->middleware('accessUsers:member');
+        Route::get('/posting-job', [JobsController::class, 'index'])->middleware('accessUsers:member');
+
+        Route::get('/posting-job/checkSlug', [JobsController::class, 'checkSlug'])->middleware('accessUsers:member');
+
+        Route::post('/posting-job', [JobsController::class, 'store'])->middleware('accessUsers:member');
+
+        Route::get('/jobs', [JobsController::class, 'jobs']);
+
+        Route::get('/jobs/{job:slug}', [JobsController::class, 'show']);
+
 
         Route::get('/categories', function () {
             return view('guest.categories', ['title' => 'HandyHelp | Categories']);
-        });
-
-        Route::get('/jobs', function () {
-            return view('guest.jobs', ['title' => 'HandyHelp | Jobs']);
         });
 
         Route::get('/job-detail', function () {

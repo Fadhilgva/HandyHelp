@@ -1,4 +1,4 @@
-@extends('auth.main')
+@extends('guest.main')
 
 @section('container')
 <!-- edit-member-details -->
@@ -73,7 +73,7 @@
                                         @if(Auth()->user()->city)
                                         <option data-display="{{ old('city', Auth()->user()->city) }}">{{ old('city', Auth()->user()->city) }}</option>
                                         @else
-                                        <option data-display="Enter your City">Enter your City</option>
+                                        <option data-display=""></option>
                                         @endif
                                         @foreach ($cities as $city)
                                         <option value="{{ $city->name }}">{{ $city->name }}</option>
@@ -88,7 +88,7 @@
                                         @if(Auth()->user()->country)
                                         <option data-display="{{ old('country', Auth()->user()->country) }}">{{ old('country', Auth()->user()->country) }}</option>
                                         @else
-                                        <option data-display="Enter your Country">Enter your Country</option>
+                                        <option data-display=""></option>
                                         @endif
                                         @foreach ($countries as $country)
                                         <option value="{{ $country->name }}">{{ $country->name }}</option>

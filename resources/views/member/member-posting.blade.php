@@ -1,105 +1,151 @@
-@extends('auth.main')
+@extends('guest.main')
 
 @section('container')
 <!-- posting-page-section -->
 <section class="posting-page-section sec-pad">
     <div class="auto-container">
-        <div class="row clearfix">
-            <div class="sec-title">
-                <h5>Posting</h5>
-                <h2>Build Career<br />With HandyHelp</h2>
-                <br />
-                <p>Find a Trusted Contractor Here!</p>
-                <p>HandyHelp is designed to assist you in solving infrastructure, building and construction problems.</p>
-            </div>
-            <div class="col-lg-6 col-md-12 col-sm-12 left-side">
-                <li class="accordion block active-block">
-                    <div class="inner-box">
-                        <div class="tab" id="tab-1">
-                            <form action="" method="post" class="default-form">
+        <form method="POST" action="/posting-job" class="default-form">
+            @csrf
+            <div class="row clearfix">
+                <div class="sec-title">
+                    <h5>Posting</h5>
+                    <h2>Build Career<br />With HandyHelp</h2>
+                    <br />
+                    <p>Find a Trusted Contractor Here!</p>
+                    <p>HandyHelp is designed to assist you in solving infrastructure, building and construction problems.</p>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 left-side">
+                    <li class="accordion block active-block">
+                        <div class="inner-box">
+                            <div class="tab" id="tab-1">
                                 <div class="form-group">
                                     <label>Job Title</label>
-                                    <input type="text" name="title" required="" placeholder="Title of your Job" />
+                                    <input type="text" id="title" name="title" required placeholder="Title of your Job" value="{{ old('title') }}" class="form-control @error('title')
+                                    is-invalid
+                                    @enderror" />
+                                    @error('title')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
-                                <div class="form-group" style="margin-bottom: 70px">
+                                <div class="form-group">
+                                    <label>Slug</label>
+                                    <input type="text" id="slug" name="slug" required placeholder="Slug of your Job" value="{{ old('slug') }}" class="form-control @error('slug')
+                                    is-invalid
+                                    @enderror" />
+                                    @error('slug')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone Number</label>
+                                    <input type="text" id="phone" name="phone" required placeholder="Enter your phone number" value="{{ old('phone', Auth()->user()->phone) }}" class="form-control 
+                                    @error('phone')
+                                    is-invalid
+                                    @enderror" />
+                                    @error('phone')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label>Rates Range ($)</label>
+                                    <input type="text" id="rate" name="rate" required placeholder="Enter rates range for your job" value="{{ old('rate') }}" class="form-control 
+                                    @error('rate')
+                                    is-invalid
+                                    @enderror" />
+                                    @error('rate')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class=" form-group" style="margin-bottom: 70px">
                                     <label>Job Category</label>
-                                    <div class="select-box">
-                                        <select class="wide">
-                                            <option data-display="Select Category of Your Job">Select Category of Your Job</option>
-                                            <option value="1">Cleaning</option>
-                                            <option value="2">Repair</option>
-                                            <option value="3">Garden</option>
+                                    <div class="select-box is-invalid">
+                                        <select class="wide is-invalid" name="category_id" id="category_id" required>
+                                            <option data-display=""></option>
+                                            @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
                                         </select>
+                                        @error('category_id')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group" style="margin-bottom: 70px">
                                     <label>Location</label>
                                     <div class="select-box">
-                                        <select class="wide">
-                                            <option data-display="Location of Your Job">Location of Your Job</option>
-                                            <option value="1">Jakarta</option>
-                                            <option value="2">Bandung</option>
-                                            <option value="3">Depok</option>
-                                            <option value="4">Tangerang</option>
+                                        <select class="wide" name="location_id" id="location_id" required>
+                                            <option data-display=""></option>
+                                            @foreach ($cities as $city)
+                                            <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Rate Range</label>
-                                    <div class="range-input">
-                                        <div class="input"><input type="text" class="property-amount" name="field-name" readonly="" /></div>
-                                    </div>
-                                    <div class="price-range-slider"></div>
-                                </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
-                    <div class="othre-text">
-                        <p>
-                            <a href="/jobs" class="theme-btn btn-one mt-3">Posting</a>
-                        </p>
-                    </div>
-                </li>
-            </div>
-            <div class="col-lg-6 col-md-12 col-sm-12 right-side">
-                <li class="accordion block active-block">
-                    <div class="inner-box">
-                        <div class="tab" id="tab-2">
-                            <form action="" method="post" class="default-form">
-                                <div class="form-group" style="margin-bottom: 35px">
+                        <div class="othre-text">
+                            <div class="btn-box">
+                                <button type="submit" class="theme-btn btn-one mt-3">Postings</button>
+                            </div>
+                        </div>
+                    </li>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 right-side">
+                    <li class="accordion block active-block">
+                        <div class="inner-box">
+                            <div class="tab" id="tab-2">
+                                <div class="form-group" style="margin-bottom: 20px">
                                     <label>Job Details</label>
-                                    <textarea placeholder="Tell us the details of your task"></textarea>
+                                    <textarea type="text" placeholder="Tell us the details of your task" id="detail" name="detail" required class="form-control 
+                                        @error('detail')
+                                        is-invalid
+                                        @enderror">{{ old('detail') }}</textarea>
+                                    @error('detail')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group" style="margin-bottom: 70px">
                                     <label>Task Options 1</label>
                                     <div class="select-box">
-                                        <select class="wide">
-                                            <option data-display="How big is your task?">How big is your task?</option>
-                                            <option value="1">Small, Est. 1 hr</option>
-                                            <option value="2">Medium, Est. 2-3 hrs</option>
-                                            <option value="3">Large, Est. 4+ hrs</option>
-                                            <option value="4">i'm not sure i know</option>
+                                        <select class="wide" name="option_one" id="option_one">
+                                            <option data-display=""></option>
+                                            <option value="Small, Est. 1 hr">Small, Est. 1 hr</option>
+                                            <option value="Medium, Est. 2-3 hrs">Medium, Est. 2-3 hrs</option>
+                                            <option value="Large, Est. 4+ hrs">Large, Est. 4+ hrs</option>
+                                            <option value="I'm not sure i know">I'm not sure i know</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group" style="margin-bottom: 70px">
                                     <label>Task Options 2</label>
                                     <div class="select-box">
-                                        <select class="wide">
-                                            <option data-display="How many people are needed?">How many people are needed?</option>
+                                        <select class="wide" name="option_two" id="option_two">
+                                            <option data-display=""></option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
-                                            <option value="4">i'm not sure i know</option>
+                                            <option value="I'm not sure i know">I'm not sure i know</option>
                                         </select>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
-                </li>
+                    </li>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 </section>
 <!-- career-page-section end -->

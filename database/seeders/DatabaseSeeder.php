@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Category;
 use App\Models\User;
 use App\Models\Skill;
 use App\Models\City;
@@ -27,40 +28,41 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password')
         ]);
 
-        Skill::create([
-            'name' => 'Gardening'
+        User::create([
+            'name' => 'Muhammad Fadhil',
+            'role' => 'member',
+            'phone' => '081357638722',
+            'identity' => '3175022809021000',
+            'email' => 'mfadhilgva@gmail.com',
+            'password' => Hash::make('password')
         ]);
 
-        Skill::create([
-            'name' => 'Electricity'
-        ]);
+        $skills = array("Jakarta", "Bandung", "Bali");
+        foreach ($skills as $skill) {
+            Skill::create([
+                'name' => $skill
+            ]);
+        }
 
-        Skill::create([
-            'name' => 'Builder'
-        ]);
+        $cities = array("Jakarta", "Bandung", "Bali");
+        foreach ($cities as $city) {
+            City::create([
+                'name' => $city
+            ]);
+        }
 
-        City::create([
-            'name' => 'Jakarta'
-        ]);
+        $countries = array("Indonesia", "Malaysia", "Singapura");
+        foreach ($countries as $country) {
+            Country::create([
+                'name' => $country
+            ]);
+        }
 
-        City::create([
-            'name' => 'Bandung'
-        ]);
-
-        City::create([
-            'name' => 'Bali'
-        ]);
-
-        Country::create([
-            'name' => 'Indonesia'
-        ]);
-
-        Country::create([
-            'name' => 'Malaysia'
-        ]);
-
-        Country::create([
-            'name' => 'Singapura'
-        ]);
+        $categories = array("Electrical Help", "Minor Repairs", "Gardening", "Painting", "Cleaning Services");
+        foreach ($categories as $category) {
+            Category::create([
+                'name' => $category
+            ]);
+        }
     }
 }

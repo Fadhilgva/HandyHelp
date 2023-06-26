@@ -1,4 +1,4 @@
-@extends('auth.main')
+@extends('guest.main')
 
 @section('container')
 <!-- profile-member -->
@@ -76,6 +76,7 @@
                         <div class="tab active-tab" id="tab-1">
                             <div class="wrapper list">
                                 <div class="deals-list-content list-item">
+                                    @foreach ($jobs as $job)
                                     <div class="deals-block-one">
                                         <div class="inner-box">
                                             <div class="image-box">
@@ -83,129 +84,26 @@
                                             </div>
                                             <div class="lower-content">
                                                 <div class="title-text">
-                                                    <h4><a href="/job-detail">Reairing Electrical</a></h4>
+                                                    <h4><a href="/job-detail">{{ $job->title }}</a></h4>
                                                 </div>
                                                 <div class="price-box clearfix">
                                                     <div class="price-info pull-left">
                                                         <h6>Start From</h6>
-                                                        <h4>$120.00</h4>
+                                                        <h4>${{ $job->rate }}.00</h4>
                                                     </div>
                                                 </div>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing sed eiusm do tempor incididunt labore.</p>
+                                                <p>{{ Str::limit($job->detail, 50) }}</p>
                                                 <ul class="more-details clearfix">
-                                                    <li><i class="icon-22"></i>Malang</li>
-                                                    <li><i class="icon-16"></i>Medium Task</li>
+                                                    <li><i class="icon-22"></i>{{ $job->location->name }}</li>
+                                                    <li><i class="icon-16"></i>{{ $job->category->name }}</li>
                                                 </ul>
                                                 <div class="other-info-box clearfix">
-                                                    <div class="btn-box pull-left"><a href="/job-detail" class="theme-btn btn-two">See Details</a></div>
+                                                    <div class="btn-box pull-left"><a href="/jobs/{{ $job->slug }}" class="theme-btn btn-two">See Details</a></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="deals-block-one">
-                                        <div class="inner-box">
-                                            <div class="image-box">
-                                                <figure class="image"><img src="{{ asset('images/resource/deals-4.jpg') }}" alt="" /></figure>
-                                            </div>
-                                            <div class="lower-content">
-                                                <div class="title-text">
-                                                    <h4><a href="/job-detail">Repairing Broken Fences</a></h4>
-                                                </div>
-                                                <div class="price-box clearfix">
-                                                    <div class="price-info pull-left">
-                                                        <h6>Start From</h6>
-                                                        <h4>$20,000.00</h4>
-                                                    </div>
-                                                </div>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing sed eiusm do tempor incididunt labore.</p>
-                                                <ul class="more-details clearfix">
-                                                    <li><i class="icon-22"></i>Malang</li>
-                                                    <li><i class="icon-16"></i>Medium Task</li>
-                                                </ul>
-                                                <div class="other-info-box clearfix">
-                                                    <div class="btn-box pull-left"><a href="/job-detail" class="theme-btn btn-two">See Details</a></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="deals-block-one">
-                                        <div class="inner-box">
-                                            <div class="image-box">
-                                                <figure class="image"><img src="{{ asset('images/resource/deals-5.jpg') }}" alt="" /></figure>
-                                            </div>
-                                            <div class="lower-content">
-                                                <div class="title-text">
-                                                    <h4><a href="/job-detail">Cleaning the Garden</a></h4>
-                                                </div>
-                                                <div class="price-box clearfix">
-                                                    <div class="price-info pull-left">
-                                                        <h6>Start From</h6>
-                                                        <h4>$35,000.00</h4>
-                                                    </div>
-                                                </div>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing sed eiusm do tempor incididunt labore.</p>
-                                                <ul class="more-details clearfix">
-                                                    <li><i class="icon-22"></i>Malang</li>
-                                                    <li><i class="icon-16"></i>Medium Task</li>
-                                                </ul>
-                                                <div class="other-info-box clearfix">
-                                                    <div class="btn-box pull-left"><a href="/job-detail" class="theme-btn btn-two">See Details</a></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="deals-block-one">
-                                        <div class="inner-box">
-                                            <div class="image-box">
-                                                <figure class="image"><img src="{{ asset('images/resource/deals-6.jpg') }}" alt="" /></figure>
-                                            </div>
-                                            <div class="lower-content">
-                                                <div class="title-text">
-                                                    <h4><a href="/job-detail">Home in Merrick Way</a></h4>
-                                                </div>
-                                                <div class="price-box clearfix">
-                                                    <div class="price-info pull-left">
-                                                        <h6>Start From</h6>
-                                                        <h4>$45,000.00</h4>
-                                                    </div>
-                                                </div>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing sed eiusm do tempor incididunt labore.</p>
-                                                <ul class="more-details clearfix">
-                                                    <li><i class="icon-22"></i>Malang</li>
-                                                    <li><i class="icon-16"></i>Medium Task</li>
-                                                </ul>
-                                                <div class="other-info-box clearfix">
-                                                    <div class="btn-box pull-left"><a href="/job-detail" class="theme-btn btn-two">See Details</a></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="deals-block-one">
-                                        <div class="inner-box">
-                                            <div class="image-box">
-                                                <figure class="image"><img src="{{ asset('images/resource/deals-7.jpg') }}" alt="" /></figure>
-                                            </div>
-                                            <div class="lower-content">
-                                                <div class="title-text">
-                                                    <h4><a href="/job-detail">Apartment in Glasgow</a></h4>
-                                                </div>
-                                                <div class="price-box clearfix">
-                                                    <div class="price-info pull-left">
-                                                        <h6>Start From</h6>
-                                                        <h4>$40,000.00</h4>
-                                                    </div>
-                                                </div>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing sed eiusm do tempor incididunt labore.</p>
-                                                <ul class="more-details clearfix">
-                                                    <li><i class="icon-22"></i>Malang</li>
-                                                    <li><i class="icon-16"></i>Medium Task</li>
-                                                </ul>
-                                                <div class="other-info-box clearfix">
-                                                    <div class="btn-box pull-left"><a href="/job-detail" class="theme-btn btn-two">See Details</a></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

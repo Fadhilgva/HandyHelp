@@ -13,21 +13,16 @@
                                 <figure class="image"><img src="{{ asset('images/news/news-21.jpg') }}" alt="" /></figure>
                             </div>
                             <div class="lower-content">
-                                <h3>Repairing Electrical Installations</h3>
+                                <h3>{{ $job->title }}</h3>
                                 <ul class="post-info clearfix">
                                     <li class="author-box">
                                         <figure class="author-thumb"><img src="{{ asset('images/news/author-1.jpg') }}" alt="" /></figure>
-                                        <h5><a href="blog-details.html">Member</a></h5>
+                                        <h5><a href="">{{ $job->user->name }}</a></h5>
                                     </li>
                                 </ul>
                                 <div class="text">
                                     <p>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing sed do eiusmod tempor incididunt labore dolore magna aliqua enim minim veniam quis nostrud exercitation ullamco laboris nisi aliquip ex ea commodo consequat. Duis
-                                        aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                    </p>
-                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed perspiciatis unde omnis iste natus error sit voluptem accusantium doloremque laudantium.</p>
-                                    <p>
-                                        Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed perspiciatis unde omnis iste natus error sit voluptem accusantium doloremque laudantium totam rem aperiam.
+                                        {{ $job->detail }}
                                     </p>
                                 </div>
                                 <div class="post-tags">
@@ -35,9 +30,7 @@
                                         <li>
                                             <h5>Category :</h5>
                                         </li>
-                                        <li><a href="blog-details.html">Electrical</a></li>
-                                        <li><a href="blog-details.html">Gardening</a></li>
-                                        <li><a href="blog-details.html">Repairing</a></li>
+                                        <li><a href="">{{ $job->category->name }}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -53,11 +46,15 @@
                         </div>
                         <div class="widget-content">
                             <ul class="category-list clearfix">
-                                <li><i class="icon-22 pr-2"></i>Jakarta</li>
-                                <li><i class="icon-33 pr-2"></i>081357638723</li>
-                                <li><i class="icon-16 pr-2"></i>Small Task, Est 1 Hour</li>
-                                <li><i class="icon-41 pr-2"></i>$100 - $150</li>
-                                <li><i class="icon-30 pr-2"></i>2 Person is needed</li>
+                                <li><i class="icon-22 pr-2"></i>{{ $job->location->name }}</li>
+                                <li><i class="icon-33 pr-2"></i>{{ $job->phone }}</li>
+                                <li><i class="icon-41 pr-2"></i>${{ $job->rate }}.00</li>
+                                @if ($job->option_one)
+                                <li><i class="icon-16 pr-2"></i>{{ $job->option_one }}</li>
+                                @endif
+                                @if ($job->option_two)
+                                <li><i class="icon-30 pr-2"></i>{{ $job->option_two }} Person is needed</li>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -96,4 +93,3 @@
 </section>
 <!-- job-detail-container -->
 @endsection
-	

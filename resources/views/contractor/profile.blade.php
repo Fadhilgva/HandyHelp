@@ -1,4 +1,4 @@
-@extends('auth.main')
+@extends('guest.main')
 
 @section('container')
 <!-- profile-contractor -->

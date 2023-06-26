@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\City;
+use App\Models\Jobs;
 use App\Models\User;
 use App\Models\Skill;
 use App\Models\Country;
@@ -14,8 +15,14 @@ class UserController extends Controller
     public function index()
     {
         if (Auth::user()->role == 'member') {
+
+            $jobs = Jobs::join('users', 'jobs.user_id', '=', 'users.id')
+                ->where('jobs.user_id', '=', Auth::user()->id)->latest('jobs.created_at')
+                ->select('jobs.*')->get();
+            // dd($jobs);
             return view('member.profile', [
                 'title' => 'HandyHelp | Profile',
+                'jobs' => $jobs
             ]);
         } elseif (Auth::user()->role == 'contractor') {
             return view('contractor.profile', [
@@ -75,7 +82,7 @@ class UserController extends Controller
 
             $request->validate([
                 'name' => ['required', 'string', 'min:5', 'max:255'],
-                'desc' => ['min:20', 'max:500'],
+                'desc' => ['max:500'],
             ]);
 
             if ($user) {

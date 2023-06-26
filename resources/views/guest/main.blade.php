@@ -30,6 +30,16 @@
     <script src="{{ asset('js/nav-tool.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script>
+        const title = document.querySelector("#title");
+        const slug = document.querySelector("#slug");
+    
+        title.addEventListener('change', function() {
+            fetch('/posting-job/checkSlug?title=' + title.value)
+            .then(response => response.json())
+            .then(data => slug.value = data.slug);
+        });
+    </script>
 </body>
 
 </html>
