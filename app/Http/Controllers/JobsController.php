@@ -31,7 +31,7 @@ class JobsController extends Controller
         $request->validate([
             'title' => 'required|min:8|max:150',
             'slug' => 'required|unique:jobs,slug',
-            'detail' => 'required|min:100|max:1000',
+            'detail' => 'required|min:100|max:10000',
             'category_id' => 'required|min_digits:1',
             'location_id' => 'required|min_digits:1',
             'rate' => 'required|min_digits:1',

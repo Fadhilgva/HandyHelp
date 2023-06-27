@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Skill;
 use App\Models\City;
 use App\Models\Country;
+use App\Models\Jobs;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -24,7 +25,7 @@ class DatabaseSeeder extends Seeder
             'role' => 'contractor',
             'phone' => '081357638723',
             'identity' => '3175022809021001',
-            'email' => 'mfadhilgva12@gmail.com',
+            'email' => 'contractor@gmail.com',
             'password' => Hash::make('password')
         ]);
 
@@ -33,8 +34,44 @@ class DatabaseSeeder extends Seeder
             'role' => 'member',
             'phone' => '081357638722',
             'identity' => '3175022809021000',
-            'email' => 'mfadhilgva@gmail.com',
+            'email' => 'member@gmail.com',
             'password' => Hash::make('password')
+        ]);
+
+        Jobs::create([
+            'user_id' => 2,
+            'title' => 'Benerin Pager',
+            'slug' => 'Benerin-Pager',
+            'detail' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+            'category_id' => 2,
+            'location_id' => 1,
+            'rate' => 50,
+            'phone' => '081357638722',
+            'option_two' => 2
+        ]);
+
+        Jobs::create([
+            'user_id' => 2,
+            'title' => 'Bangun Candi',
+            'slug' => 'Bangun-Candi',
+            'detail' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+            'category_id' => 1,
+            'location_id' => 1,
+            'rate' => 70,
+            'phone' => '081357638722',
+            'option_two' => 2
+        ]);
+
+        Jobs::create([
+            'user_id' => 2,
+            'title' => 'Buat Kandang Transformer',
+            'slug' => 'Buat-Kandang-Transformer',
+            'detail' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+            'category_id' => 5,
+            'location_id' => 2,
+            'rate' => 100,
+            'phone' => '081357638722',
+            'option_two' => 5
         ]);
 
         $skills = array("Jakarta", "Bandung", "Bali");
