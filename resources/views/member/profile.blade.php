@@ -84,7 +84,7 @@
                                             </div>
                                             <div class="lower-content">
                                                 <div class="title-text">
-                                                    <h4><a href="/job-detail">{{ $job->title }}</a></h4>
+                                                    <h4><a href="/jobs/{{ $job->slug }}">{{ $job->title }}</a></h4>
                                                 </div>
                                                 <div class="price-box clearfix">
                                                     <div class="price-info pull-left">
