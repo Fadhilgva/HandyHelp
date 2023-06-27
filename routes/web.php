@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -59,10 +60,9 @@ Route::group(
 
         Route::get('/jobs/{job:slug}', [JobsController::class, 'show']);
 
+        Route::get('/categories', [CategoryController::class, 'index']);
 
-        Route::get('/categories', function () {
-            return view('guest.categories', ['title' => 'HandyHelp | Categories']);
-        });
+        Route::get('/categories/{category:slug}', [CategoryController::class, 'category']);
 
         Route::get('/job-detail', function () {
             return view('guest.jobdetail', ['title' => 'HandyHelp | Job Detail']);

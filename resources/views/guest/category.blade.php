@@ -1,0 +1,43 @@
+@extends('guest.main')
+
+@section('container')
+@foreach ($jobs as $job)
+    <section class="category-section category-page mr-0 pt-20 pb-20">
+        <div class="auto-container">
+            <div class="sec-title centred">
+                <h2>Jobs in Category : {{ $job->category->name }}</h2>
+                {{-- <h5>Find a job that suits you</h5> --}}
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing sed do eiusmod tempor incididunt <br />labore dolore magna aliqua enim.</p>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-4 col-md-6 col-sm-12 feature-block mt-4">
+                    <div class="feature-block-one wow fadeInUp animated" data-wow-delay="00ms" data-wow-duration="1500ms">
+                        <div class="inner-box">
+                            <div class="image-box">
+                                <figure class="image"><img src="{{ asset('images/feature/feature-1.png') }}" alt="" /></figure>
+                            </div>
+                            <div class="lower-content">
+                                <div class="title-text">
+                                    <h4><a href="/jobs/{{ $job->slug }}">{{ $job->title }}</a></h4>
+                                </div>
+                                <div class="price-box clearfix">
+                                    <div class="price-info pull-left">
+                                        <h6>Start From</h6>
+                                        <h4>${{ $job->rate }}.00</h4>
+                                    </div>
+                                </div>
+                                <p>{{ Str::limit($job->detail, 50) }}</p>
+                                <ul class="more-details clearfix">
+                                    <li><i class="icon-22"></i>{{ $job->location->name }}</li>
+                                    <li><i class="icon-16"></i>{{ $job->category->name }}</li>
+                                </ul>
+                                <div class="btn-box"><a href="/jobs/{{ $job->slug }}" class="theme-btn btn-two">See Details</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+@endforeach
+@endsection
