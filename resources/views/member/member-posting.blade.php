@@ -117,7 +117,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group" style="margin-bottom: 70px">
-                                    <label>Task Options 1</label>
+                                    <label>How big is your task?</label>
                                     <div class="select-box">
                                         <select class="wide" name="option_one" id="option_one">
                                             <option data-display=""></option>
@@ -129,7 +129,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group" style="margin-bottom: 70px">
-                                    <label>Task Options 2</label>
+                                    <label>How many people are needed?</label>
                                     <div class="select-box">
                                         <select class="wide" name="option_two" id="option_two">
                                             <option data-display=""></option>
