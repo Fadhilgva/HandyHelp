@@ -15,9 +15,23 @@
             <div class="col-lg-4 col-md-6 col-sm-12 feature-block mt-4">
                 <div class="feature-block-one wow fadeInUp animated" data-wow-delay="00ms" data-wow-duration="1500ms">
                     <div class="inner-box">
+                        @if ($job->image1)
                         <div class="image-box">
-                            <figure class="image"><img src="{{ asset('images/feature/feature-1.png') }}" alt="" /></figure>
+                            <a href="/jobs/{{ $job->slug }}">
+                                <figure class="image">
+                                    <img src="/img/jobs/{{ $job->image1 }}" alt="{{ $job->title }}" width="370" height="250" />
+                                </figure>
+                            </a>
                         </div>
+                        @else
+                        <div class="image-box">
+                            <a href="/jobs/{{ $job->slug }}">
+                                <figure class="image">
+                                    <img src="{{ asset('images/feature/feature-4.jpg') }}" width="370" height="250" />
+                                </figure>
+                            </a>
+                        </div>
+                        @endif
                         <div class="lower-content">
                             <div class="title-text">
                                 <h4><a href="/jobs/{{ $job->slug }}">{{ $job->title }}</a></h4>
@@ -25,7 +39,7 @@
                             <div class="price-box clearfix">
                                 <div class="price-info pull-left">
                                     <h6>Start From</h6>
-                                    <h4>${{ $job->rate }}.00</h4>
+                                    <h4>Rp{{ number_format($job->rate, 0,",",".") }}</h4>
                                 </div>
                             </div>
                             <p>{{ Str::limit($job->detail, 50) }}</p>

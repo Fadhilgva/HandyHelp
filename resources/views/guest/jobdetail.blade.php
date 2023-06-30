@@ -9,8 +9,31 @@
                 <div class="blog-details-content">
                     <div class="news-block-one">
                         <div class="inner-box">
+                            @if ($job->image1)
                             <div class="image-box">
-                                <figure class="image"><img src="{{ asset('images/news/news-21.jpg') }}" alt="" /></figure>
+                                <figure class="image">
+                                    <img src="/img/jobs/{{ $job->image1 }}" id="main_product_image" class="rounded shadow-sm" alt="{{ $job->title }}" width="770" height="520" />
+                                </figure>
+                            </div>
+                            @else
+                            <div class="image-box">
+                                <figure class="image">
+                                    <img src="{{ asset('images/news/news-21.jpg') }}" class="rounded shadow-sm" width="770" height="520" />
+                                </figure>
+                            </div>
+                            @endif
+                            <div class="thumbnail_images mx-2 my-0">
+                                <ul id="thumbnail">
+                                    @if($job->image1)
+                                    <li><img onclick="changeImage(this)" class="rounded" src="/img/jobs/{{ $job->image1 }}" width="120" /></li>
+                                    @endif
+                                    @if($job->image2)
+                                    <li><img onclick="changeImage(this)" class="rounded" src="/img/jobs/{{ $job->image2 }}" width="120" /></li>
+                                    @endif
+                                    @if($job->image3)
+                                    <li><img onclick="changeImage(this)" class="rounded" src="/img/jobs/{{ $job->image3 }}" width="120" /></li>
+                                    @endif
+                                </ul>
                             </div>
                             <div class="lower-content">
                                 <h3>{{ $job->title }}</h3>
@@ -48,7 +71,7 @@
                             <ul class="category-list clearfix">
                                 <li><i class="icon-22 pr-2"></i>{{ $job->location->name }}</li>
                                 <li><i class="icon-33 pr-2"></i>{{ $job->phone }}</li>
-                                <li><i class="icon-41 pr-2"></i>${{ $job->rate }}.00</li>
+                                <li><i class="icon-41 pr-2"></i>Rp{{ number_format($job->rate, 0,",",".") }}</li>
                                 @if ($job->option_one)
                                 <li><i class="icon-16 pr-2"></i>{{ $job->option_one }}</li>
                                 @endif
@@ -58,7 +81,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="sidebar-widget post-widget">
+                    {{-- <div class="sidebar-widget post-widget">
                         <div class="widget-title">
                             <h4>Other Jobs</h4>
                         </div>
@@ -85,7 +108,7 @@
                                 <span class="post-date">April 08, 2020</span>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

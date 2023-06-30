@@ -4,7 +4,7 @@
 <!-- posting-page-section -->
 <section class="posting-page-section sec-pad">
     <div class="auto-container">
-        <form method="POST" action="/posting-job" class="default-form">
+        <form method="POST" action="/posting-job" class="default-form" enctype="multipart/form-data">
             @csrf
             <div class="row clearfix">
                 <div class="sec-title">
@@ -53,8 +53,8 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Rates Range ($)</label>
-                                    <input type="text" id="rate" name="rate" required placeholder="Enter rates range for your job" value="{{ old('rate') }}" class="form-control 
+                                    <label>Rates Range (IDR)</label>
+                                    <input type="number" id="rate" name="rate" required placeholder="Enter rates range for your job" value="{{ old('rate') }}" class="form-control 
                                     @error('rate')
                                     is-invalid
                                     @enderror" />
@@ -66,9 +66,9 @@
                                 </div>
                                 <div class=" form-group" style="margin-bottom: 70px">
                                     <label>Job Category</label>
-                                    <div class="select-box is-invalid">
-                                        <select class="wide is-invalid" name="category_id" id="category_id" required>
-                                            <option data-display=""></option>
+                                    <div class="select-box">
+                                        <select class="wide" name="category_id" id="category_id" required>
+                                            {{-- <option data-display=""></option> --}}
                                             @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
@@ -84,7 +84,7 @@
                                     <label>Location</label>
                                     <div class="select-box">
                                         <select class="wide" name="location_id" id="location_id" required>
-                                            <option data-display=""></option>
+                                            {{-- <option data-display=""></option> --}}
                                             @foreach ($cities as $city)
                                             <option value="{{ $city->id }}">{{ $city->name }}</option>
                                             @endforeach
@@ -104,6 +104,39 @@
                     <li class="accordion block active-block">
                         <div class="inner-box">
                             <div class="tab" id="tab-2">
+                                <div class="form-group">
+                                    <label>Image 1</label>
+                                    <input type="file" id="image_1" name="image_1" placeholder="Enter image for your job" value="{{ old('image') }}" class="form-control @error('image')
+                                    is-invalid
+                                    @enderror" required>
+                                    @error('image')
+                                    <div class=" invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label>Image 2</label>
+                                    <input type="file" id="image_2" name="image_2" placeholder="Enter image for your job" value="{{ old('image_2') }}" class="form-control @error('image_2')
+                                    is-invalid
+                                    @enderror">
+                                    @error('image_2')
+                                    <div class=" invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label>Image 3</label>
+                                    <input type="file" id="image_3" name="image_3" placeholder="Enter image for your job" value="{{ old('image_3') }}" class="form-control @error('image_3')
+                                    is-invalid
+                                    @enderror">
+                                    @error('image_3')
+                                    <div class=" invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
                                 <div class="form-group" style="margin-bottom: 20px">
                                     <label>Job Details</label>
                                     <textarea type="text" placeholder="Tell us the details of your task" id="detail" name="detail" required class="form-control 
@@ -120,7 +153,7 @@
                                     <label>How big is your task?</label>
                                     <div class="select-box">
                                         <select class="wide" name="option_one" id="option_one">
-                                            <option data-display=""></option>
+                                            {{-- <option data-display=""></option> --}}
                                             <option value="Small, Est. 1 hr">Small, Est. 1 hr</option>
                                             <option value="Medium, Est. 2-3 hrs">Medium, Est. 2-3 hrs</option>
                                             <option value="Large, Est. 4+ hrs">Large, Est. 4+ hrs</option>
@@ -132,7 +165,7 @@
                                     <label>How many people are needed?</label>
                                     <div class="select-box">
                                         <select class="wide" name="option_two" id="option_two">
-                                            <option data-display=""></option>
+                                            {{-- <option data-display=""></option> --}}
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>

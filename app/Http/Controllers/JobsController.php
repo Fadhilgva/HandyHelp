@@ -31,36 +31,61 @@ class JobsController extends Controller
         $request->validate([
             'title' => 'required|min:8|max:150',
             'slug' => 'required|unique:jobs,slug',
+            'image_1' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image_2' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'image_3' => 'image|mimes:jpeg,png,jpg|max:2048',
             'detail' => 'required|min:100|max:10000',
-            'category_id' => 'required|min_digits:1',
-            'location_id' => 'required|min_digits:1',
-            'rate' => 'required|min_digits:1',
-            'phone' => 'required|min_digits:8|max_digits:15'
+            'category_id' => 'required|numeric|min_digits:1',
+            'location_id' => 'required|numeric|min_digits:1',
+            'rate' => 'required|numeric|min_digits:1',
+            'phone' => 'required|numeric|min_digits:8|max_digits:15',
+            'option_one' => 'nullable',
+            'option_two' => 'nullable'
         ]);
-        // dd($request);
+
+        $image_1 = time() . '.' . $request->image_1->getClientOriginalName();
+        $request->image_1->move(public_path('img/jobs'), $image_1);
+
+        if ($request->image_2) {
+            $image_2 = time() . '.' . $request->image_2->getClientOriginalName();
+            $request->image_2->move(public_path('img/jobs'), $image_2);
+        }
+
+        if ($request->image_3) {
+            $image_3 = time() . '.' . $request->image_3->getClientOriginalName();
+            $request->image_3->move(public_path('img/jobs'), $image_3);
+        }
+
         $job = new Jobs;
         $job->user_id = Auth::user()->id;
         $job->title = $request->title;
         $job->slug = $request->slug;
+        $job->image1 = $image_1;
         $job->detail = $request->detail;
         $job->category_id = $request->category_id;
         $job->location_id = $request->location_id;
         $job->rate = $request->rate;
         $job->phone = $request->phone;
 
-        if ($request->opsi_one) {
-            $job->opsi_one = $request->opsi_one;
+        if ($request->image_2) {
+            $job->image2 = $image_2;
         }
 
-        if ($request->opsi_two) {
-            $job->opsi_two = $request->opsi_two;
+        if ($request->image_3) {
+            $job->image3 = $image_3;
+        }
+
+        if ($request->option_one) {
+            $job->option_one = $request->option_one;
+        }
+
+        if ($request->option_two) {
+            $job->option_two = $request->option_two;
         }
 
         $job->save();
 
-        // Alert::success('Success', "Data berhasil ditambahkan");
-
-        return redirect('/profile');
+        return redirect('/profile')->with('success', 'Your job offer has been successfully uploaded!');
     }
 
     public function checkSlug(Request $request)
