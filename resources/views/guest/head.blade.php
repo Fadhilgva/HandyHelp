@@ -23,3 +23,10 @@
 <link href="{{ asset('css/switcher-style.css') }}" rel="stylesheet">
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
+
+<style>
+    trix-toolbar [data-trix-button-group="file-tools"] {
+        display: none;
+    }
+</style>

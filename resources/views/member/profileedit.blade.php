@@ -13,10 +13,12 @@
         <div class="agency-details-content">
             <div class="agents-block-one">
                 <div class="inner-box mr-0 newone">
-                    <figure class="image-box"><img src="{{ asset('images/resource/agency-details-1.jpg') }}" alt="" /></figure>
+                    <figure class="image-box">
+                        <img src="{{ asset('images/resource/agency-details-1.jpg') }}" />
+                    </figure>
                     {{-- <input class="form-control-sm file" id="image" name="image" type="file"> --}}
                     <div class="content-box">
-                        <form method="POST" action="/profile-edit" class="default-form">
+                        <form method="POST" action="/profile-edit" class="default-form" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label>Full Name</label>

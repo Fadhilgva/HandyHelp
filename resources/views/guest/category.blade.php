@@ -2,10 +2,11 @@
 
 @section('container')
 <section class="category-section category-page mr-0 pt-20 pb-20">
+    @if ($jobs->count() > 0)
     <div class="auto-container">
         <div class="sec-title centred">
             @foreach ($jobs->take(1) as $job)
-            <h2>Jobs in Category : {{ $job->category->name }}</h2>
+            <h2>{{ $job->category->name }}</h2>
             @endforeach
             {{-- <h5>Find a job that suits you</h5> --}}
             <p>Lorem ipsum dolor sit amet consectetur adipisicing sed do eiusmod tempor incididunt <br />labore dolore magna aliqua enim.</p>
@@ -55,5 +56,12 @@
             @endforeach
         </div>
     </div>
+    @else
+    <div class="auto-container">
+        <div class="sec-title centred">
+            <h2>No Job found</h2>
+        </div>
+    </div>
+    @endif
 </section>
 @endsection

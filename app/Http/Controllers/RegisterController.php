@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
-Use Validator;
+use Validator;
 use Illuminate\Http\RedirectResponse;
 
 
@@ -27,18 +27,20 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function store_member(Request $request) 
-    { 
+    public function store_member(Request $request)
+    {
         $request->validate([
             'name' => 'required| string|min:5| max:255',
+            'username' => 'required| string|min:5| max:255| unique:users',
             'phone' => 'required| numeric| min_digits:8| max_digits:15 |unique:users',
-            'email' => 'required | string| email:dns| max:255| unique:users',
+            'email' => 'required | string| email | max:255| unique:users',
             'password' => 'required| same:confirm_password',
             'confirm_password' => 'required'
         ]);
 
         $user = User::create([
             'name' => $request->name,
+            'username' => $request->username,
             'role' => 'member',
             'email' => $request->email,
             'phone' => $request->phone,
@@ -48,13 +50,13 @@ class RegisterController extends Controller
         event(new Registered($user));
         Auth::login($user);
         return redirect('/login')->with('success', 'Your Account has been created successfully! Please Login');
-    
     }
 
     public function store_contractor(Request $request)
     {
         $request->validate([
             'name' => ['required', 'string', 'min:5', 'max:255'],
+            'username' => 'required| string|min:5| max:255| unique:users',
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone' => ['required', 'numeric', 'min_digits:8', 'max_digits:15', 'unique:users'],
             'identity' => ['required', 'numeric', 'min_digits:10', 'max_digits:20', 'unique:users'],
@@ -64,6 +66,7 @@ class RegisterController extends Controller
 
         $user = User::create([
             'name' => $request->name,
+            'username' => $request->username,
             'role' => 'contractor',
             'email' => $request->email,
             'phone' => $request->phone,

@@ -39,13 +39,15 @@
                                 <h3>{{ $job->title }}</h3>
                                 <ul class="post-info clearfix">
                                     <li class="author-box">
-                                        <figure class="author-thumb"><img src="{{ asset('images/news/author-1.jpg') }}" alt="" /></figure>
-                                        <h5><a href="">{{ $job->user->name }}</a></h5>
+                                        <figure class="author-thumb">
+                                            <img src="{{ asset('images/news/author-1.jpg') }}" alt="" />
+                                        </figure>
+                                        <h5><a href="/profile/{{ $job->user->username }}">{{ $job->user->name }}</a></h5>
                                     </li>
                                 </ul>
                                 <div class="text">
                                     <p>
-                                        {{ $job->detail }}
+                                        {!! $job->detail !!}
                                     </p>
                                 </div>
                                 <div class="post-tags">
@@ -70,12 +72,12 @@
                         <div class="widget-content">
                             <ul class="category-list clearfix">
                                 <li><i class="icon-22 pr-2"></i>{{ $job->location->name }}</li>
-                                <li><i class="icon-33 pr-2"></i>{{ $job->phone }}</li>
+                                <li><i class="icon-33 pr-2"></i>********</li>
                                 <li><i class="icon-41 pr-2"></i>Rp{{ number_format($job->rate, 0,",",".") }}</li>
-                                @if ($job->option_one)
+                                @if ($job->option_one != "I'm not sure i know")
                                 <li><i class="icon-16 pr-2"></i>{{ $job->option_one }}</li>
                                 @endif
-                                @if ($job->option_two)
+                                @if ($job->option_two != "I'm not sure i know")
                                 <li><i class="icon-30 pr-2"></i>{{ $job->option_two }} Person is needed</li>
                                 @endif
                             </ul>

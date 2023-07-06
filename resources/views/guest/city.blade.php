@@ -1,12 +1,13 @@
 @extends('guest.main')
 
 @section('container')
-<!-- jobs-section -->
 <section class="category-section category-page mr-0 pt-20 pb-20">
     @if ($jobs->count() > 0)
     <div class="auto-container">
         <div class="sec-title centred">
-            <h2>Jobs</h2>
+            @foreach ($jobs->take(1) as $job)
+            <h2>{{ $job->Location->name }}</h2>
+            @endforeach
             {{-- <h5>Find a job that suits you</h5> --}}
             <p>Lorem ipsum dolor sit amet consectetur adipisicing sed do eiusmod tempor incididunt <br />labore dolore magna aliqua enim.</p>
         </div>
@@ -42,6 +43,7 @@
                                     <h4>Rp{{ number_format($job->rate, 0,",",".") }}</h4>
                                 </div>
                             </div>
+                            <p>{{ Str::limit($job->detail, 50) }}</p>
                             <ul class="more-details clearfix">
                                 <li><i class="icon-22"></i>{{ $job->location->name }}</li>
                                 <li><i class="icon-16"></i>{{ $job->category->name }}</li>
@@ -62,5 +64,4 @@
     </div>
     @endif
 </section>
-<!-- jobs-section end -->
 @endsection

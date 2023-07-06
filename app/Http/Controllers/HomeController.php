@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\City;
 use App\Models\Jobs;
+use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -12,19 +15,28 @@ class HomeController extends Controller
     {
         $jobs = Jobs::orderBy('created_at', 'desc')->get();
         $categories = Category::all();
+        $cities = City::all();
 
-        // dd($categories);
+        // dd($user_info);
         return view('guest.home', [
             'title' => 'HandyHelp | Connecting Hands, Solving demands',
             'jobs' => $jobs,
-            'categories' => $categories
+            'categories' => $categories,
+            'cities' => $cities
         ]);
     }
 
-    public function categories()
+    public function about()
     {
+        $contractor = User::where('role', '=', 'contractor')->count();
+        $member = User::where('role', '=', 'member')->count();
+        $jobs = Jobs::all()->count();
+
         return view('guest.about', [
-            'title' => 'HandyHelp | About Us'
+            'title' => 'HandyHelp | About Us',
+            'contractor' => $contractor,
+            'member' => $member,
+            'jobs' => $jobs
         ]);
     }
 }

@@ -19,35 +19,29 @@
                         <img src="{{ asset('images/resource/agency-details-1.jpg') }}" />
                     </figure>
                     <div class="content-box">
-                        <div class="clearfix">
+                        <div class="clearfix mb-3">
                             <div class="title-inner pull-left">
-                                <h4>{{ Auth()->user()->name }}</h4>
+                                <h4>{{ $user->name }}</h4>
                             </div>
                         </div>
-                        @if(Auth()->user()->desc)
+                        @if($user->desc)
                         <div class="text">
-                            <p>{{ Auth()->user()->desc }}</p>
+                            <p>{{ $user->desc }}</p>
                         </div>
                         @else
                         <div class="text">
-                            <p>Add description of Yourself</p>
+                            <p>Description</p>
                         </div>
                         @endif
                         <ul class="info clearfix mr-0">
-                            @if(Auth()->user()->city)
-                            <li><i class="icon-22"></i><a>{{ Auth()->user()->city }}, {{ Auth()->user()->country }}</a></li>
+                            @if($user->city)
+                            <li><i class="icon-22"></i><a>{{ $user->city }}, {{ $user->country }}</a></li>
                             @else
                             <li><i class="icon-22"></i><a>-</a></li>
                             @endif
-
-                            <li><i class="fab fa fa-envelope"></i><a>{{ Auth()->user()->email }}</a></li>
-                            <li><i class="fab fa fa-phone"></i><a>{{ Auth()->user()->phone }}</a></li>
+                            <li><i class="fab fa fa-envelope"></i><a>********</a></li>
+                            <li><i class="fab fa fa-phone"></i><a>********</a></li>
                         </ul>
-                        <div class="clearfix">
-                            <div class="btn-box pull-right">
-                                <a href="/profile-edit" class="theme-btn btn-one">Edit Profile</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -71,12 +65,7 @@
                     </div>
                     @endif
                     <div class="group-title">
-                        <h3>Jobs Posting</h3>
-                    </div>
-                    <div>
-                        <div class="btn-box my-4">
-                            <a href="/posting-job" class="theme-btn btn-one">Add Job Offer</a>
-                        </div>
+                        <h3>Jobs List</h3>
                     </div>
                     <div class="tabs-content">
                         <div class="tab active-tab" id="tab-1">

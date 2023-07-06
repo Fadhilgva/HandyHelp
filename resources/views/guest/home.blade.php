@@ -8,8 +8,8 @@
             <div class="image-layer" style="background-image:url({{ asset('images/banner/banner-2.jpg') }}"></div>
             <div class="auto-container">
                 <div class="content-box">
-                    <h2>Search Properties for Sale and To Rent</h2>
-                    <p>Amet consectetur adipisicing elit sed do eiusmod.</p>
+                    <h2>Your Reliable Task Solution</h2>
+                    <p>Connecting You to Reliable Help</p>
                 </div>
             </div>
         </div>
@@ -17,8 +17,8 @@
             <div class="image-layer" style="background-image:url({{ asset('images/banner/banner-3.jpg') }}"></div>
             <div class="auto-container">
                 <div class="content-box">
-                    <h2>Search Properties for Sale and To Rent</h2>
-                    <p>Amet consectetur adipisicing elit sed do eiusmod.</p>
+                    <h2>Simplify Your Tasks with Ease</h2>
+                    <p>Trusted Professionals at Your Fingertips</p>
                 </div>
             </div>
         </div>
@@ -26,8 +26,8 @@
             <div class="image-layer" style="background-image:url({{ asset('images/banner/banner-4.jpg') }}"></div>
             <div class="auto-container">
                 <div class="content-box">
-                    <h2>Search Properties for Sale and To Rent</h2>
-                    <p>Amet consectetur adipisicing elit sed do eiusmod.</p>
+                    <h2>Say Goodbye to Task Worries</h2>
+                    <p>Efficiency Meets Convenience</p>
                 </div>
             </div>
         </div>
@@ -227,17 +227,19 @@
     <div class="auto-container">
         <div class="inner-container wow slideInLeft animated" data-wow-delay="00ms" data-wow-duration="1500ms">
             <ul class="category-list clearfix">
-                @foreach ($categories as $category)
-                    <li>
-                        <div class="category-block-one">
-                            <a href="/categories/{{ $category->slug }}">
-                                <div class="inner-box">
-                                    <div class="icon-box"><i class="icon-1"></i></div>
-                                    <h5><a href="/categories/{{ $category->slug }}">{{ $category->name }}</a></h5>
+                @foreach ($categories->take(5) as $category)
+                <li>
+                    <div class="category-block-one">
+                        <a href="/categories/{{ $category->slug }}">
+                            <div class="inner-box">
+                                <div class="icon-box">
+                                    <img src="/images/category/{{ $category->image }}" class="d-inline-block align-text" width="60">
                                 </div>
-                            </a>
-                        </div>
-                    </li>
+                                <h5><a href="/categories/{{ $category->slug }}">{{ $category->name }}</a></h5>
+                            </div>
+                        </a>
+                    </div>
+                </li>
                 @endforeach
             </ul>
             <div class="more-btn"><a href="/categories" class="theme-btn btn-one">All Categories</a></div>
@@ -247,6 +249,7 @@
 <!-- category-section end -->
 
 <!-- Newest Jobs -->
+@if ($jobs->count()>0)
 <section class="feature-section sec-pad bg-color-1">
     <div class="auto-container">
         <div class="sec-title centred">
@@ -256,32 +259,36 @@
         </div>
         <div class="row clearfix">
             @foreach ($jobs->take(3) as $job)
-            <div class="col-lg-4 col-md-6 col-sm-12 feature-block">
+            <div class="col-lg-4 col-md-6 col-sm-12 feature-block mt-4">
                 <div class="feature-block-one wow fadeInUp animated" data-wow-delay="00ms" data-wow-duration="1500ms">
                     <div class="inner-box">
+                        @if ($job->image1)
                         <div class="image-box">
-                            <figure class="image"><img src="{{ asset('images/feature/feature-1.png') }}" alt="" /></figure>
-                            <div class="batch"><i class="icon-11"></i></div>
+                            <a href="/jobs/{{ $job->slug }}">
+                                <figure class="image">
+                                    <img src="/img/jobs/{{ $job->image1 }}" alt="{{ $job->title }}" width="370" height="250" />
+                                </figure>
+                            </a>
                         </div>
+                        @else
+                        <div class="image-box">
+                            <a href="/jobs/{{ $job->slug }}">
+                                <figure class="image">
+                                    <img src="{{ asset('images/feature/feature-4.jpg') }}" width="370" height="250" />
+                                </figure>
+                            </a>
+                        </div>
+                        @endif
                         <div class="lower-content">
                             <div class="title-text">
-                                <h4><a href="property-details.html">{{ $job->title }}</a></h4>
+                                <h4><a href="/jobs/{{ $job->slug }}">{{ $job->title }}</a></h4>
                             </div>
                             <div class="price-box clearfix">
                                 <div class="price-info pull-left">
                                     <h6>Start From</h6>
-                                    <h4>${{ $job->rate }}.00</h4>
+                                    <h4>Rp{{ number_format($job->rate, 0,",",".") }}</h4>
                                 </div>
-                                {{-- <ul class="other-option pull-right clearfix">
-                                    <li>
-                                        <a href="property-details.html"><i class="icon-12"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="property-details.html"><i class="icon-13"></i></a>
-                                    </li>
-                                </ul> --}}
                             </div>
-                            <p>{{ Str::limit($job->detail, 50) }}</p>
                             <ul class="more-details clearfix">
                                 <li><i class="icon-22"></i>{{ $job->location->name }}</li>
                                 <li><i class="icon-16"></i>{{ $job->category->name }}</li>
@@ -296,6 +303,7 @@
         <div class="more-btn centred"><a href="/jobs" class="theme-btn btn-one">View All Jobs</a></div>
     </div>
 </section>
+@endif
 <!-- Newest Jobs end -->
 
 <!-- video-section -->
@@ -311,7 +319,7 @@
 <!-- video-section end -->
 
 <!-- Best Contractors -->
-<section class="deals-section sec-pad">
+{{-- <section class="deals-section sec-pad">
     <div class="auto-container">
         <div class="sec-title">
             <h5>Find the best contractor</h5>
@@ -323,7 +331,6 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 deals-block">
                         <div class="deals-block-one">
                             <div class="inner-box">
-                                {{-- <div class="batch"><i class="icon-11"></i></div> --}}
                                 <span class="category">Featured</span>
                                 <div class="lower-content">
                                     <div class="title-text">
@@ -334,14 +341,6 @@
                                             <h6>Start From</h6>
                                             <h4>$300.00</h4>
                                         </div>
-                                        {{-- <ul class="other-option pull-right clearfix">
-                                            <li>
-                                                <a href="property-details.html"><i class="icon-12"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="property-details.html"><i class="icon-13"></i></a>
-                                            </li>
-                                        </ul> --}}
                                     </div>
                                     <p>Success isn’t really that difficult. There is a significant portion of the population here in North America.</p>
                                     <ul class="more-details clearfix">
@@ -364,7 +363,6 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 deals-block">
                         <div class="deals-block-one">
                             <div class="inner-box">
-                                {{-- <div class="batch"><i class="icon-11"></i></div> --}}
                                 <span class="category">Featured</span>
                                 <div class="lower-content">
                                     <div class="title-text">
@@ -375,14 +373,6 @@
                                             <h6>Start From</h6>
                                             <h4>$300.00</h4>
                                         </div>
-                                        {{-- <ul class="other-option pull-right clearfix">
-                                            <li>
-                                                <a href="property-details.html"><i class="icon-12"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="property-details.html"><i class="icon-13"></i></a>
-                                            </li>
-                                        </ul> --}}
                                     </div>
                                     <p>Success isn’t really that difficult. There is a significant portion of the population here in North America.</p>
                                     <ul class="more-details clearfix">
@@ -405,7 +395,6 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 deals-block">
                         <div class="deals-block-one">
                             <div class="inner-box">
-                                {{-- <div class="batch"><i class="icon-11"></i></div> --}}
                                 <span class="category">Featured</span>
                                 <div class="lower-content">
                                     <div class="title-text">
@@ -416,14 +405,6 @@
                                             <h6>Start From</h6>
                                             <h4>$300.00</h4>
                                         </div>
-                                        {{-- <ul class="other-option pull-right clearfix">
-                                            <li>
-                                                <a href="property-details.html"><i class="icon-12"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="property-details.html"><i class="icon-13"></i></a>
-                                            </li>
-                                        </ul> --}}
                                     </div>
                                     <p>Success isn’t really that difficult. There is a significant portion of the population here in North America.</p>
                                     <ul class="more-details clearfix">
@@ -443,7 +424,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 <!-- Best Contractors end -->
 
 <!-- WHY CHOOSE US? -->
@@ -461,8 +442,8 @@
                     <div class="chooseus-block-one">
                         <div class="inner-box">
                             <div class="icon-box"><i class="icon-19"></i></div>
-                            <h4>Excellent Reputation</h4>
-                            <p>Lorem ipsum dolor sit consectetur sed eiusm tempor.</p>
+                            <h4>Best contractors in their fields</h4>
+                            <p>HandyHelp have workers who are competent and experts in their fields, have a lot of experience, are responsible, and are certified.</p>
                         </div>
                     </div>
                 </div>
@@ -470,8 +451,8 @@
                     <div class="chooseus-block-one">
                         <div class="inner-box">
                             <div class="icon-box"><i class="icon-26"></i></div>
-                            <h4>Best Local Agents</h4>
-                            <p>Lorem ipsum dolor sit consectetur sed eiusm tempor.</p>
+                            <h4>Friendly rates</h4>
+                            <p>Handyhelp prepares a feature where rates can adjust from members and contractors with the deal to deal feature. Can help both members and contractors themselves.</p>
                         </div>
                     </div>
                 </div>
@@ -479,8 +460,8 @@
                     <div class="chooseus-block-one">
                         <div class="inner-box">
                             <div class="icon-box"><i class="icon-21"></i></div>
-                            <h4>Personalized Service</h4>
-                            <p>Lorem ipsum dolor sit consectetur sed eiusm tempor.</p>
+                            <h4>Safe and Reliable</h4>
+                            <p>Handyhelp is a trusted website platform that can help solve your daily problems, have attractive features and is easy to understand or use.</p>
                         </div>
                     </div>
                 </div>
@@ -491,6 +472,7 @@
 <!-- WHY CHOOSE US? end -->
 
 <!-- Most Popular Places -->
+@if ($cities->count()>0)
 <section class="place-section sec-pad">
     <div class="auto-container">
         <div class="sec-title centred">
@@ -500,54 +482,83 @@
         </div>
         <div class="sortable-masonry">
             <div class="items-container row clearfix">
+                @foreach ($cities->take(1) as $city)
                 <div class="col-lg-4 col-md-6 col-sm-12 masonry-item small-column all illustration brand marketing software">
                     <div class="place-block-one">
                         <div class="inner-box">
-                            <figure class="image-box"><img src="{{ asset('images/resource/place-1.jpg') }}" alt="" /></figure>
-                            <div class="text">
-                                <h4><a href="categories.html">Los Angeles</a></h4>
-                                <p>10 Properties</p>
-                            </div>
+                            <a href="/cities/{{ $city->slug }}">
+                                <figure class="image-box">
+                                    <img src="/images/city/{{ $city->image }}" height="1000" />
+                                </figure>
+                                <div class="text">
+                                    <h4>
+                                        <a href="/cities/{{ $city->slug }}">{{ $city->name }}</a>
+                                    </h4>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
+                @endforeach
+                @foreach ($cities->skip(1)->take(1) as $city)
                 <div class="col-lg-4 col-md-6 col-sm-12 masonry-item small-column all brand illustration print software logo">
                     <div class="place-block-one">
                         <div class="inner-box">
-                            <figure class="image-box"><img src="{{ asset('images/resource/place-2.jpg') }}" alt="" /></figure>
-                            <div class="text">
-                                <h4><a href="categories.html">San Francisco</a></h4>
-                                <p>08 Properties</p>
-                            </div>
+                            <a href="/cities/{{ $city->slug }}">
+                                <figure class="image-box">
+                                    <img src="/images/city/{{ $city->image }}" />
+                                </figure>
+                                <div class="text">
+                                    <h4>
+                                        <a href="/cities/{{ $city->slug }}">{{ $city->name }}</a>
+                                    </h4>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
+                @endforeach
+                @foreach ($cities->skip(2)->take(1) as $city)
                 <div class="col-lg-4 col-md-6 col-sm-12 masonry-item small-column all illustration marketing logo">
                     <div class="place-block-one">
                         <div class="inner-box">
-                            <figure class="image-box"><img src="{{ asset('images/resource/place-3.jpg') }}" alt="" /></figure>
-                            <div class="text">
-                                <h4><a href="categories.html">Las Vegas</a></h4>
-                                <p>29 Properties</p>
-                            </div>
+                            <a href="/cities/{{ $city->slug }}">
+                                <figure class="image-box">
+                                    <img src="/images/city/{{ $city->image }}" alt="" />
+                                </figure>
+                                <div class="text">
+                                    <h4>
+                                        <a href="/cities/{{ $city->slug }}">{{ $city->name }}</a>
+                                    </h4>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
+                @endforeach
+                @foreach ($cities->skip(3)->take(1) as $city)
                 <div class="col-lg-8 col-md-6 col-sm-12 masonry-item small-column all brand marketing print software">
                     <div class="place-block-one">
                         <div class="inner-box">
-                            <figure class="image-box"><img src="{{ asset('images/resource/place-4.jpg') }}" alt="" /></figure>
-                            <div class="text">
-                                <h4><a href="categories.html">New York City</a></h4>
-                                <p>05 Properties</p>
-                            </div>
+                            <a href="/cities/{{ $city->slug }}">
+                                <figure class="image-box">
+                                    <img src="/images/city/{{ $city->image }}" />
+                                </figure>
+                                <div class="text">
+                                    <h4>
+                                        <a href="/cities/{{ $city->slug }}">{{ $city->name }}</a>
+                                    </h4>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
     </div>
 </section>
+@endif
 <!-- Most Popular Places end -->
 
 <!-- testimonial-section end -->

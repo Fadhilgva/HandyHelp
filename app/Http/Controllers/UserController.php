@@ -58,8 +58,6 @@ class UserController extends Controller
         if (Auth::user()->role == 'member') {
             $user = User::find(Auth::user()->id);
 
-            $user = User::find(Auth::user()->id);
-
             if ($request->email != $user->email) {
                 $request->validate([
                     'email' => ['required', 'string', 'email', 'max:255', 'unique:users']
@@ -141,5 +139,37 @@ class UserController extends Controller
                 return redirect()->back();
             }
         }
+    }
+
+    public function profile(User $user)
+    {
+        if ($user->role == 'member') {
+
+            $jobs = Jobs::join('users', 'jobs.user_id', '=', 'users.id')
+                ->where('jobs.user_id', '=', $user->id)->latest('jobs.created_at')
+                ->select('jobs.*')->get();
+
+            return view('auth.member', [
+                'title' => 'Profile | ' . $user->name,
+                'user' => $user,
+                'jobs' => $jobs
+            ]);
+        }
+
+        // if ($user()->role == 'member') {
+        //     // $jobs = Jobs::join('users', 'jobs.user_id', '=', 'users.id')
+        //     //     ->where('jobs.user_id', '=', Auth::user()->id)->latest('jobs.created_at')
+        //     //     ->select('jobs.*')->get();
+
+        //     return view('member.profile', [
+        //         'title' => 'HandyHelp | Profile'
+        //         // ,'jobs' => $jobs
+        //     ]);
+        // } elseif ($user()->role == 'contractor') {
+
+        //     return view('contractor.profile', [
+        //         'title' => 'HandyHelp | Profile',
+        //     ]);
+        // }
     }
 }

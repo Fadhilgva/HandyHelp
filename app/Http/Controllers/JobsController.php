@@ -110,4 +110,17 @@ class JobsController extends Controller
             'jobs' => $job
         ]);
     }
+
+    public function city(City $city)
+    {
+        $jobs = Jobs::join('cities', 'jobs.location_id', '=', 'cities.id')
+            ->where('jobs.location_id', '=', $city->id)
+            ->select('jobs.*')->get();
+        // dd($jobs);
+
+        return view('guest.city', [
+            'title' => 'Jobs in ' . $city->name,
+            'jobs' => $jobs
+        ]);
+    }
 }

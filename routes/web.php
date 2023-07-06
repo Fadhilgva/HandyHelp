@@ -21,7 +21,7 @@ use App\Http\Controllers\JobsController;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/about', [HomeController::class, 'categories']);
+Route::get('/about', [HomeController::class, 'about']);
 
 Route::group(
     ['middleware' => ['guest']],
@@ -46,6 +46,8 @@ Route::group(
 
         Route::get('/profile', [UserController::class, 'index']);
 
+        Route::get('/profile/{user:username}', [UserController::class, 'profile']);
+
         Route::get('/profile-edit', [UserController::class, 'edit']);
 
         Route::post('/profile-edit', [UserController::class, 'store']);
@@ -59,6 +61,8 @@ Route::group(
         Route::get('/jobs', [JobsController::class, 'jobs']);
 
         Route::get('/jobs/{job:slug}', [JobsController::class, 'show']);
+
+        Route::get('/cities/{city:slug}', [JobsController::class, 'city']);
 
         Route::get('/categories', [CategoryController::class, 'index']);
 

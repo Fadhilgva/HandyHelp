@@ -23,9 +23,18 @@
                                 <form method="POST" action="/signup_member" class="default-form">
                                     @csrf
                                     <div class="form-group">
-                                        <label>Full name</label>
+                                        <label>Full Name</label>
                                         <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" required value="{{ old('name') }}" />
                                         @error('name')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Username</label>
+                                        <input type="text" id="username" name="username" class="form-control @error('username') is-invalid @enderror" required value="{{ old('username') }}" />
+                                        @error('username')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
