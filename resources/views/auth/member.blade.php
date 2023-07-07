@@ -102,7 +102,7 @@
                                                     </div>
                                                 </div>
                                                 <ul class="more-details clearfix">
-                                                    <li><i class="icon-22"></i>{{ $job->location->name }}</li>
+                                                    <li><i class="icon-22"></i>{{ $job->city->name }}</li>
                                                     <li><i class="icon-16"></i>{{ $job->category->name }}</li>
                                                 </ul>
                                             </div>

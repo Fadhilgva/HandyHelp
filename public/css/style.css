@@ -4002,7 +4002,7 @@ div#mCSB_1_container {
 .search-field-section .inner-container {
     position: relative;
     z-index: 2;
-    margin-top: -120px;
+    /* margin-top: -120px; */
 }
 
 .search-field-section .advanced-search {
@@ -4014,7 +4014,7 @@ div#mCSB_1_container {
 }
 
 .search-field-section .search-field .top-search .search-form {
-    padding-right: 320px;
+    padding-right: 180px;
 }
 
 .search-field-section .search-field .top-search .search-btn button {
@@ -4023,7 +4023,7 @@ div#mCSB_1_container {
     line-height: 50px;
     border-radius: 5px;
     top: 58px;
-    right: 170px;
+    right: 30px;
 }
 
 .search-field-section .search-field .top-search .search-btn button i {

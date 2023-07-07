@@ -121,7 +121,7 @@ class UserController extends Controller
 
             $request->validate([
                 'name' => ['required', 'string', 'min:5', 'max:255'],
-                'desc' => ['min:20', 'max:500'],
+                'desc' => ['max:500'],
             ]);
 
             if ($user) {

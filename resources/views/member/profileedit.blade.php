@@ -72,13 +72,21 @@
                                 <label>City</label>
                                 <div class="select-box">
                                     <select class="wide" name="city" id="city">
-                                        @if(Auth()->user()->city)
-                                        <option data-display="{{ old('city', Auth()->user()->city) }}">{{ old('city', Auth()->user()->city) }}</option>
-                                        @else
-                                        <option data-display=""></option>
-                                        @endif
+                                        <option value="">Enter your city</option>
                                         @foreach ($cities as $city)
-                                        <option value="{{ $city->name }}">{{ $city->name }}</option>
+                                        @if (old('city') == $city->name)
+                                        <option value="{{ $city->name }}" selected>
+                                            {{ $city->name }}
+                                        </option>
+                                        @elseif(Auth()->user()->city == $city->name)
+                                        <option value="{{ $city->name }}" selected>
+                                            {{ $city->name }}
+                                        </option>
+                                        @else
+                                        <option value="{{ $city->name }}">
+                                            {{ $city->name }}
+                                        </option>
+                                        @endif
                                         @endforeach
                                     </select>
                                 </div>
@@ -87,13 +95,21 @@
                                 <label>Country</label>
                                 <div class="select-box">
                                     <select class="wide" name="country" id="country">
-                                        @if(Auth()->user()->country)
-                                        <option data-display="{{ old('country', Auth()->user()->country) }}">{{ old('country', Auth()->user()->country) }}</option>
-                                        @else
-                                        <option data-display=""></option>
-                                        @endif
+                                        <option value="">Enter your country</option>
                                         @foreach ($countries as $country)
-                                        <option value="{{ $country->name }}">{{ $country->name }}</option>
+                                        @if (old('country') == $country->name)
+                                        <option value="{{ $country->name }}" selected>
+                                            {{ $country->name }}
+                                        </option>
+                                        @elseif(Auth()->user()->country == $country->name)
+                                        <option value="{{ $country->name }}" selected>
+                                            {{ $country->name }}
+                                        </option>
+                                        @else
+                                        <option value="{{ $country->name }}">
+                                            {{ $country->name }}
+                                        </option>
+                                        @endif
                                         @endforeach
                                     </select>
                                 </div>

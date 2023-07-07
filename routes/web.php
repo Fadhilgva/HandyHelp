@@ -62,11 +62,11 @@ Route::group(
 
         Route::get('/jobs/{job:slug}', [JobsController::class, 'show']);
 
-        Route::get('/cities/{city:slug}', [JobsController::class, 'city']);
+        Route::get('/cities', [JobsController::class, 'city']);
 
-        Route::get('/categories', [CategoryController::class, 'index']);
+        Route::get('/allcategories', [CategoryController::class, 'index']);
 
-        Route::get('/categories/{category:slug}', [CategoryController::class, 'category']);
+        Route::get('/categories', [CategoryController::class, 'category']);
 
         Route::get('/job-detail', function () {
             return view('guest.jobdetail', ['title' => 'HandyHelp | Job Detail']);

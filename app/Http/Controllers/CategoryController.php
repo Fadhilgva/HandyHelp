@@ -2,31 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Category;
+use App\Models\City;
 use App\Models\Jobs;
+use App\Models\Category;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
     public function index()
     {
         return view('guest.categories', [
-            'title' => 'Jobs Categories',
+            'title' => 'HandyHelp | Categories',
             'categories' => Category::all()
         ]);
     }
 
     public function category(Category $category)
     {
-
-        $jobs = Jobs::join('categories', 'jobs.category_id', '=', 'categories.id')
-            ->where('jobs.category_id', '=', $category->id)
-            ->select('jobs.*')->get();
-        // dd($jobs);
+        if (request('category')) {
+            $category = Category::firstWhere('slug', request('category'));
+        }
 
         return view('guest.category', [
             'title' => 'Jobs in ' . $category->name,
-            'jobs' => $jobs
+            'jobs' => Jobs::with(['Category', 'User', 'city'])->latest()->filter(request(['search', 'category']))->paginate(10)->withQueryString(),
+            'cities' => City::all(),
+            'categories' => Category::all()
         ]);
     }
 }

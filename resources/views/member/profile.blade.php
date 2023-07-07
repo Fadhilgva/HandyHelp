@@ -34,8 +34,12 @@
                         </div>
                         @endif
                         <ul class="info clearfix mr-0">
-                            @if(Auth()->user()->city)
+                            @if(Auth()->user()->city && Auth()->user()->country)
                             <li><i class="icon-22"></i><a>{{ Auth()->user()->city }}, {{ Auth()->user()->country }}</a></li>
+                            @elseif(Auth()->user()->city)
+                            <li><i class="icon-22"></i><a>{{ Auth()->user()->city }}</a></li>
+                            @elseif(Auth()->user()->country)
+                            <li><i class="icon-22"></i><a>{{ Auth()->user()->country }}</a></li>
                             @else
                             <li><i class="icon-22"></i><a>-</a></li>
                             @endif
@@ -113,7 +117,7 @@
                                                     </div>
                                                 </div>
                                                 <ul class="more-details clearfix">
-                                                    <li><i class="icon-22"></i>{{ $job->location->name }}</li>
+                                                    <li><i class="icon-22"></i>{{ $job->city->name }}</li>
                                                     <li><i class="icon-16"></i>{{ $job->category->name }}</li>
                                                 </ul>
                                             </div>

@@ -105,22 +105,22 @@ class DatabaseSeeder extends Seeder
 
         City::create([
             'name' => "Jakarta",
-            'slug' => "jakarta",
+            'slug' => "Jakarta",
             'image' => "jakarta.png"
         ]);
         City::create([
             'name' => "Bandung",
-            'slug' => "bandung",
+            'slug' => "Bandung",
             'image' => "bandung.png"
         ]);
         City::create([
             'name' => "Bali",
-            'slug' => "bali",
+            'slug' => "Bali",
             'image' => "bali.png"
         ]);
         City::create([
             'name' => "Malang",
-            'slug' => "malang",
+            'slug' => "Malang",
             'image' => "malang.png"
         ]);
 

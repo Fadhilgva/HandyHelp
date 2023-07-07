@@ -67,8 +67,11 @@
                                 <div class=" form-group" style="margin-bottom: 70px">
                                     <label>Job Category</label>
                                     <div class="select-box">
-                                        <select class="wide" name="category_id" id="category_id" required>
-                                            {{-- <option data-display=""></option> --}}
+                                        @error('category_id')
+                                        <p class="text-danger small">{{ $message }}</p>
+                                        @enderror
+                                        <select class="wide" name="category_id" id="category_id">
+                                            <option value="">Enter your job category</option>
                                             @foreach ($categories as $category)
                                             @if (old('category_id') == $category->id)
                                             <option value="{{ $category->id }}" selected>
@@ -81,20 +84,22 @@
                                             @endif
                                             @endforeach
                                         </select>
-                                        @error('category_id')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group" style="margin-bottom: 70px">
                                     <label>Location</label>
                                     <div class="select-box">
-                                        <select class="wide" name="location_id" id="location_id" required>
-                                            {{-- <option data-display=""></option> --}}
+                                        @error('location_id')
+                                        <p class="text-danger small">{{ $message }}</p>
+                                        @enderror
+                                        <select class="wide" name="location_id" id="location_id">
+                                            <option value="">Enter your location</option>
                                             @foreach ($cities as $city)
                                             @if (old('location_id') == $city->id)
+                                            <option value="{{ $city->id }}" selected>
+                                                {{ $city->name }}
+                                            </option>
+                                            @elseif(Auth()->user()->city == $city->name)
                                             <option value="{{ $city->id }}" selected>
                                                 {{ $city->name }}
                                             </option>

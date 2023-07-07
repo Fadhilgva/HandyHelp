@@ -96,10 +96,21 @@ class JobsController extends Controller
 
     public function jobs()
     {
-        return view('guest.jobs', [
-            'title' => 'HandyHelp | Jobs',
-            'jobs' => Jobs::with(['Category', 'User', 'Location'])->latest()->paginate(10),
-        ]);
+        if (request('search') or request('city') or request('category')) {
+            return view('guest.jobs', [
+                'title' => 'Handy Help | ' . request('search') . request('city') . request('category'),
+                'jobs' => Jobs::with(['Category', 'User', 'city'])->latest()->filter(request(['search', 'city', 'category']))->paginate(10)->withQueryString(),
+                'cities' => City::all(),
+                'categories' => Category::all()
+            ]);
+        } else {
+            return view('guest.jobs', [
+                'title' => 'HandyHelp | Jobs',
+                'jobs' => Jobs::with(['Category', 'User', 'city'])->latest()->paginate(10),
+                'cities' => City::all(),
+                'categories' => Category::all()
+            ]);
+        }
     }
 
     public function show(Jobs $job)
@@ -113,14 +124,15 @@ class JobsController extends Controller
 
     public function city(City $city)
     {
-        $jobs = Jobs::join('cities', 'jobs.location_id', '=', 'cities.id')
-            ->where('jobs.location_id', '=', $city->id)
-            ->select('jobs.*')->get();
-        // dd($jobs);
+        if (request('city')) {
+            $city = City::firstWhere('slug', request('city'));
+        }
 
         return view('guest.city', [
-            'title' => 'Jobs in ' . $city->name,
-            'jobs' => $jobs
+            'title' => 'Jobs Located in ' . $city->name,
+            'jobs' => Jobs::with(['Category', 'User', 'city'])->latest()->filter(request(['search', 'city', 'category']))->paginate(10)->withQueryString(),
+            'cities' => City::all(),
+            'categories' => Category::all()
         ]);
     }
 }

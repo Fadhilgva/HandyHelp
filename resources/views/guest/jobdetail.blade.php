@@ -55,7 +55,7 @@
                                         <li>
                                             <h5>Category :</h5>
                                         </li>
-                                        <li><a href="/categories/{{ $job->category->slug }}">{{ $job->category->name }}</a></li>
+                                        <li><a href="/categories?category={{ $job->category->slug }}">{{ $job->category->name }}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -71,7 +71,7 @@
                         </div>
                         <div class="widget-content">
                             <ul class="category-list clearfix">
-                                <li><i class="icon-22 pr-2"></i>{{ $job->location->name }}</li>
+                                <li><i class="icon-22 pr-2"></i>{{ $job->city->name }}</li>
                                 <li><i class="icon-33 pr-2"></i>********</li>
                                 <li><i class="icon-41 pr-2"></i>Rp{{ number_format($job->rate, 0,",",".") }}</li>
                                 @if ($job->option_one != "I'm not sure i know")
