@@ -114,12 +114,12 @@
                 @foreach ($categories->take(5) as $category)
                 <li>
                     <div class="category-block-one">
-                        <a href="/categories/{{ $category->slug }}">
+                        <a href="/categories?category={{ $category->slug }}">
                             <div class="inner-box">
                                 <div class="icon-box">
                                     <img src="/images/category/{{ $category->image }}" class="d-inline-block align-text" width="60">
                                 </div>
-                                <h5><a href="/categories/{{ $category->slug }}">{{ $category->name }}</a></h5>
+                                <h5><a href="/categories?category={{ $category->slug }}">{{ $category->name }}</a></h5>
                             </div>
                         </a>
                     </div>
