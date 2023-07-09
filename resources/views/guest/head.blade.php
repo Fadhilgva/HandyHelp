@@ -12,6 +12,7 @@
 
 <!-- Stylesheets -->
 <link href="{{ asset('css/font-awesome-all.css') }}" rel="stylesheet">
+<link href="{{ asset('css/star.css') }}" rel="stylesheet">
 <link href="{{ asset('css/flaticon.css') }}" rel="stylesheet">
 <link href="{{ asset('css/owl.css') }}" rel="stylesheet">
 <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">

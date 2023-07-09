@@ -52,6 +52,7 @@
         main_prodcut_image.src = element.src;
         }
     </script>
+    <script src="https://kit.fontawesome.com/2f7d0b4589.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

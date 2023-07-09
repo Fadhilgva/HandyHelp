@@ -44,8 +44,8 @@
                             <li><i class="icon-22"></i><a>-</a></li>
                             @endif
 
-                            <li><i class="fab fa fa-envelope"></i><a>{{ Auth()->user()->email }}</a></li>
-                            <li><i class="fab fa fa-phone"></i><a>{{ Auth()->user()->phone }}</a></li>
+                            <li><i class="fa-solid fa-envelope"></i><a>{{ Auth()->user()->email }}</a></li>
+                            <li><i class="fa-solid fa-phone"></i><a>{{ Auth()->user()->phone }}</a></li>
                         </ul>
                         <div class="clearfix">
                             <div class="btn-box pull-right">
