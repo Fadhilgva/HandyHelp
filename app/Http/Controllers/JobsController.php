@@ -37,7 +37,7 @@ class JobsController extends Controller
             'detail' => 'required|min:100|max:10000',
             'category_id' => 'required|numeric|min_digits:1',
             'location_id' => 'required|numeric|min_digits:1',
-            'rate' => 'required|numeric|min_digits:1',
+            'rate' => 'required|numeric|min:10000|max_digits:1000',
             'phone' => 'required|numeric|min_digits:8|max_digits:15',
             'option_one' => 'nullable',
             'option_two' => 'nullable'

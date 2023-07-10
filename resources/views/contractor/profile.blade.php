@@ -92,9 +92,9 @@
                       </a>
                       <span>April 10, 2020</span>
                     </div>
-                    <div class="rating">
-                      <div class="emoji-wrapper">
-                        <div class="emoji">
+                    <div class="rating1">
+                      <div class="emoji-wrapper1">
+                        <div class="emoji1">
                           <svg class="rating-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                             <circle cx="256" cy="256" r="256" fill="#ffd93b" />
                             <path d="M512 256A256 256 0 0 1 56.7 416.7a256 256 0 0 0 360-360c58.1 47 95.3 118.8 95.3 199.3z" fill="#f4c534" />
@@ -145,9 +145,9 @@
                       </a>
                       <span>April 10, 2020</span>
                     </div>
-                    <div class="rating">
-                      <div class="emoji-wrapper">
-                        <div class="emoji">
+                    <div class="rating1">
+                      <div class="emoji-wrapper1">
+                        <div class="emoji1">
                           <svg class="rating-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                             <circle cx="256" cy="256" r="256" fill="#ffd93b" />
                             <path d="M512 256A256 256 0 0 1 56.7 416.7a256 256 0 0 0 360-360c58.1 47 95.3 118.8 95.3 199.3z" fill="#f4c534" />
@@ -199,9 +199,9 @@
                       </a>
                       <span>April 10, 2020</span>
                     </div>
-                    <div class="rating">
-                      <div class="emoji-wrapper">
-                        <div class="emoji">
+                    <div class="rating1">
+                      <div class="emoji-wrapper1">
+                        <div class="emoji1">
                           <svg class="rating-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                             <g fill="#ffd93b">
                               <circle cx="256" cy="256" r="256" />

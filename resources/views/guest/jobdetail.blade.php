@@ -78,39 +78,32 @@
                                 <li><i class="icon-16 pr-2"></i>{{ $job->option_one }}</li>
                                 @endif
                                 @if ($job->option_two != "I'm not sure i know")
-                                <li><i class="icon-30 pr-2"></i>{{ $job->option_two }} Person is needed</li>
+                                <li><i class="icon-30 pr-2"></i>Approx {{ $job->option_two }} Person is needed</li>
                                 @endif
                             </ul>
                         </div>
                     </div>
-                    {{-- <div class="sidebar-widget post-widget">
+                    @if (Auth()->user()->role == "contractor")
+                    <div class="sidebar-widget post-widget">
                         <div class="widget-title">
-                            <h4>Other Jobs</h4>
+                            <h4>Are you Interested?</h4>
                         </div>
-                        <div class="post-inner">
-                            <div class="post">
-                                <figure class="post-thumb">
-                                    <a href="blog-details.html"><img src="{{ asset('images/news/post-1.jpg') }}" alt="" /></a>
-                                </figure>
-                                <h5><a href="blog-details.html">Repairing Broken Fences</a></h5>
-                                <span class="post-date">April 09, 2020</span>
+                        <section class="subscribe-section">
+                            <div class="auto-container">
+                                <div class="row clearfix">
+                                    <div class="post-inner">
+                                        <form action="contact.html" method="post" class="subscribe-form">
+                                            <div class="form-group">
+                                                <input type="number" name="rate_offer" placeholder="Enter your bid Rate" required max="{{ $job->rate }}" />
+                                                <button type="submit">Make Offer</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="post">
-                                <figure class="post-thumb">
-                                    <a href="blog-details.html"><img src="{{ asset('images/news/post-2.jpg') }}" alt="" /></a>
-                                </figure>
-                                <h5><a href="blog-details.html">Cleaning the Garden</a></h5>
-                                <span class="post-date">April 09, 2020</span>
-                            </div>
-                            <div class="post">
-                                <figure class="post-thumb">
-                                    <a href="blog-details.html"><img src="{{ asset('images/news/post-3.jpg') }}" alt="" /></a>
-                                </figure>
-                                <h5><a href="blog-details.html">Take the dog for a walk</a></h5>
-                                <span class="post-date">April 08, 2020</span>
-                            </div>
-                        </div>
-                    </div> --}}
+                        </section>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

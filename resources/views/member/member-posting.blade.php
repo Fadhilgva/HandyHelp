@@ -53,7 +53,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Rate (IDR)</label>
+                                    <label>Maximum Rate (IDR)</label>
                                     <input type="number" id="rate" name="rate" required placeholder="Enter rates range for your job" value="{{ old('rate') }}" class="form-control 
                                     @error('rate')
                                     is-invalid
@@ -122,7 +122,7 @@
                             <div class="tab" id="tab-2">
                                 <div class="form-group">
                                     <label>Image 1</label>
-                                    <input type="file" id="image_1" name="image_1" placeholder="Enter image for your job" value="{{ old('image') }}" class="form-control @error('image')
+                                    <input type="file" id="image_1" name="image_1" placeholder="Enter image for your job" value="{{ old('image_1') }}" class="form-control @error('image')
                                     is-invalid
                                     @enderror" required>
                                     @error('image')

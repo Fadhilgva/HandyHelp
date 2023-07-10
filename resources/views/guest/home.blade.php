@@ -620,6 +620,7 @@
 <!-- WE ARE TEAM end -->
 
 <!-- Looking for a Job -->
+@guest
 <section class="cta-section bg-color-2">
     <div class="pattern-layer" style="background-image: url({{ asset('images/shape/shape-2.png') }})"></div>
     <div class="auto-container">
@@ -634,6 +635,7 @@
         </div>
     </div>
 </section>
+@endguest
 <!-- Looking for a Job end -->
 
 <!-- NEWS & ARTICLE -->

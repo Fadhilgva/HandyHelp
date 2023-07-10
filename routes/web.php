@@ -73,5 +73,9 @@ Route::group(
         });
 
         Route::get('/logout', [RegisterController::class, 'destroy']);
+
+        Route::get('/review', function () {
+            return view('member.review', ['title' => 'HandyHelp | Review']);
+        });
     }
 );

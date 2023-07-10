@@ -125,7 +125,7 @@
     @else
     <div class="auto-container">
         <div class="sec-title centred">
-            <h2>No Job found</h2>
+            <h2>Job not Found</h2>
         </div>
     </div>
     @endif
