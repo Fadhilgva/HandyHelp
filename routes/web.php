@@ -7,6 +7,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\JobsController;
+use App\Http\Controllers\SubmissionController;
+use App\Models\Submission;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +63,8 @@ Route::group(
         Route::get('/jobs', [JobsController::class, 'jobs']);
 
         Route::get('/jobs/{job:slug}', [JobsController::class, 'show']);
+
+        Route::post('/offer/{job:id}', [SubmissionController::class, 'index'])->middleware('accessUsers:contractor');
 
         Route::get('/cities', [JobsController::class, 'city']);
 

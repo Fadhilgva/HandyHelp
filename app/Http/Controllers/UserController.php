@@ -154,6 +154,12 @@ class UserController extends Controller
                 'user' => $user,
                 'jobs' => $jobs
             ]);
+        } else {
+
+            return view('auth.member', [
+                'title' => 'Profile | ' . $user->name,
+                'user' => $user
+            ]);
         }
 
         // if ($user()->role == 'member') {
