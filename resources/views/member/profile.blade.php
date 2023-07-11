@@ -115,11 +115,22 @@
                                                         <h6>Start From</h6>
                                                         <h4>Rp{{ number_format($job->rate, 0,",",".") }}</h4>
                                                     </div>
+                                                    <div class="btn-box pull-right mx-5">
+                                                        <a href="/submission" class="theme-btn btn-one">View Submission</a>
+                                                    </div>
                                                 </div>
-                                                <ul class="more-details clearfix">
-                                                    <li><i class="icon-22"></i>{{ $job->city->name }}</li>
-                                                    <li><i class="icon-16"></i>{{ $job->category->name }}</li>
-                                                </ul>
+                                                <div class="post-tags">
+                                                    <ul class="more-details clearfix">
+                                                        <li>
+                                                            <i class="icon-22"></i>
+                                                            {{ $job->city->name }}
+                                                        </li>
+                                                        <li>
+                                                            <i class="icon-16"></i>
+                                                            {{ $job->category->name }}
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

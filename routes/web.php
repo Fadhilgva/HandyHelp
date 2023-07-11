@@ -66,6 +66,10 @@ Route::group(
 
         Route::post('/offer/{job:id}', [SubmissionController::class, 'index'])->middleware('accessUsers:contractor');
 
+        Route::get('/submissions', [SubmissionController::class, 'contractor'])->middleware('accessUsers:contractor');
+
+        Route::get('/submission', [SubmissionController::class, 'member'])->middleware('accessUsers:member');
+
         Route::get('/cities', [JobsController::class, 'city']);
 
         Route::get('/allcategories', [CategoryController::class, 'index']);

@@ -26,4 +26,18 @@ class SubmissionController extends Controller
             return redirect('/login');
         }
     }
+
+    public function contractor()
+    {
+        return view('contractor.submission', [
+            'title' => 'HandyHelp | My Submission'
+        ]);
+    }
+
+    public function member()
+    {
+        return view('member.submission', [
+            'title' => 'HandyHelp | My Submission'
+        ]);
+    }
 }

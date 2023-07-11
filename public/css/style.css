@@ -9758,7 +9758,7 @@ div#mCSB_1_container {
 }
 
 .blog-details-content .comments-area .comment .comment-inner {
-    padding-bottom: 23px;
+    /* padding-bottom: 23px; */
     border-bottom: 1px solid #e5e7ec;
 }
 

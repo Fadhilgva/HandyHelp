@@ -35,6 +35,9 @@
                                     <a><span>{{ Auth()->user()->name }}</span></a>
                                     <ul class="me-5">
                                         <li><a href="/profile">Profile</a></li>
+                                        @if (Auth::user()->role=='contractor')
+                                        <li><a href="/submissions">Submission</a></li>
+                                        @endif
                                         <li>
                                             <a href="/logout">Log Out</a>
                                         </li>
