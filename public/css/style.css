@@ -48,7 +48,7 @@
 ====================================================================
 
  ***/
- html {
+html {
     overflow-x: hidden;
     max-width: 100%;
 }
@@ -2607,7 +2607,7 @@ div#mCSB_1_container {
 .deals-block-one .inner-box .lower-content .price-box {
     position: relative;
     display: block;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
 
 .deals-block-one .inner-box .lower-content p {
@@ -10011,4 +10011,34 @@ div#mCSB_1_container {
 
 .thumbnail_images ul li:hover {
     border: solid #001135;
+}
+
+.bdg1 {
+    padding: 15px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    font-family: "Rubik", sans-serif;
+    background-color: #0d6efd;
+}
+
+.bdg2 {
+    padding: 15px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    font-family: "Rubik", sans-serif;
+    background-color: #198754;
+}
+
+.bdg3 {
+    padding: 15px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    font-family: "Rubik", sans-serif;
+    background-color: #dc3545;
 }

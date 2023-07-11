@@ -5,13 +5,23 @@
 <section class="sidebar-page-container blog-details sec-pad-2">
     <div class="auto-container">
         @if (session()->has('success'))
-        <div class="alert alert-success alert-dismissible fade show text-center m-4" role="alert">
+        <div class="alert alert-success alert-dismissible fade show text-center my-3" role="alert">
             <small>{{ session('success') }}</small>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         @endif
+
+        @error('comb')
+        <div class="alert alert-danger alert-dismissible fade show text-center my-3" role="alert">
+            <small>You cannot apply for the same job again</small>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @enderror
+
         <div class="row clearfix">
             <div class="col-lg-8 col-md-12 col-sm-12 content-side">
                 <div class="blog-details-content">
@@ -103,7 +113,7 @@
                                         <form action="/offer/{{ $job->id }}" method="POST" class="subscribe-form">
                                             @csrf
                                             <div class="form-group">
-                                                {{-- <input type="hidden" value="{{ Auth::user()->id }}" name="contractor" id="contractor"> --}}
+                                                <input type="hidden" value="{{ $job->id . Auth::user()->id }}" name="comb" id="comb">
                                                 <input type="number" name="rate_offer" placeholder="Enter your bid Rate" required max="{{ $job->rate }}" />
                                                 <button type="submit">Make Offer</button>
                                             </div>

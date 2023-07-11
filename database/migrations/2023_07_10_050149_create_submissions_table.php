@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('job_id');
             $table->foreignId('contractor_id');
+            $table->string('comb');
             $table->unsignedBigInteger('rate_offer');
+            $table->string('status')->default('review');
             $table->timestamps();
         });
     }

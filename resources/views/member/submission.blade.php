@@ -4,6 +4,7 @@
 
 <!--submission-list-section -->
 <section class="agents-page-section agent-details-page">
+    @if ($subs->count() > 0)
     <div class="auto-container">
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 content-side">
@@ -24,22 +25,29 @@
                             <div class="blog-details-content">
                                 <div class="comments-area">
                                     <div class="comment-box">
+                                        @foreach ($subs as $sub)
                                         <div class="comment">
+                                            @if ($sub->Contractor->profile)
                                             <figure class="thumb-box">
-                                                <img src="{{ ('images/news/comment-1.jpg ') }}" alt="">
+                                                <img src="{{ asset('images/news/comment-1.jpg') }}" alt="">
                                             </figure>
+                                            @else
+                                            <figure class="thumb-box">
+                                                <img src="{{ asset('images/news/comment-1.jpg') }}" alt="">
+                                            </figure>
+                                            @endif
                                             <div class="comment-inner">
                                                 <div class="comment-info clearfix">
-                                                    <h5>Contractor Name</h5>
-                                                    <span>July 10, 2020</span>
+                                                    <h5>{{ $sub->Contractor->name }}</h5>
+                                                    <span>{{ $sub->created_at->diffForHumans() }}</span>
                                                 </div>
                                                 <div class="text-dark">
                                                     <i class="fa-solid fa-money-bill"></i>
-                                                    Rp100.000
+                                                    Rp{{ number_format($sub->rate_offer, 0,",",".") }}
                                                 </div>
                                                 <div class="price-box clearfix">
                                                     <div class="btn-box pull-left my-3">
-                                                        <a href="" class="theme-btn btn-two ">View Profile</a>
+                                                        <a href="/profile/{{ $sub->Contractor->username }}" class="theme-btn btn-two">View Profile</a>
                                                     </div>
                                                     <form action="" method="POST">
                                                         @csrf
@@ -56,6 +64,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -65,6 +74,13 @@
             </div>
         </div>
     </div>
+    @else
+    <div class="auto-container">
+        <div class="sec-title centred">
+            <h2>Submission not Found</h2>
+        </div>
+    </div>
+    @endif
 </section>
 <!--submission-list-section end -->
 @endsection

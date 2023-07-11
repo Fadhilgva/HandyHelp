@@ -23,36 +23,56 @@
                         <div class="tab active-tab" id="tab-1">
                             <div class="wrapper list">
                                 <div class="deals-list-content list-item">
+                                    @foreach ($subs as $sub)
                                     <div class="deals-block-one my-5">
                                         <div class="inner-box">
+                                            @if ($sub->Job->image1)
                                             <div class="image-box">
-                                                <a href="">
+                                                <a href="/jobs/{{ $sub->Job->slug }}">
+                                                    <figure class="image">
+                                                        <img src="/img/jobs/{{ $sub->Job->image1 }}" />
+                                                    </figure>
+                                                </a>
+                                            </div>
+                                            @else
+                                            <div class="image-box">
+                                                <a href="/jobs/{{ $sub->Job->slug }}">
                                                     <figure class="image">
                                                         <img src="{{ asset('images/feature/feature-4.jpg') }}" />
                                                     </figure>
                                                 </a>
                                             </div>
+                                            @endif
                                             <div class="lower-content my-2">
                                                 <div class="title-text">
                                                     <h4 class="mb-n1">
-                                                        <a href="">Job Title</a>
+                                                        <a href="">{{ $sub->Job->title }}</a>
                                                     </h4>
                                                 </div>
-                                                <div class="small mb-2">July 10, 2023</div>
+                                                <div class="small mb-2">{{ $sub->created_at->diffForHumans() }}</div>
                                                 <div class="text-dark">
                                                     <i class="fa-solid fa-money-bill"></i>
-                                                    Rp100.000
+                                                    Rp{{ number_format($sub->rate_offer, 0,",",".") }}
                                                 </div>
                                                 <div class="price-box clearfix">
                                                     <div class="btn-box pull-left my-3">
-                                                        <a href="" class="theme-btn btn-two ">View Profile</a>
+                                                        <a href="/jobs/{{ $sub->Job->slug }}" class="theme-btn btn-two">View Job</a>
                                                     </div>
-                                                    <button type="button" class="btn btn-primary my-3 mx-3" disabled>Notifications
-                                                    </button>
+                                                    @if ($sub->status == 'review')
+                                                    <div class="badge bdg1 my-3 mx-3">On Review
+                                                    </div>
+                                                    @elseif($sub->status == 'accept')
+                                                    <div class="badge bdg2 my-3 mx-3">Accepted
+                                                    </div>
+                                                    @elseif($sub->status == 'reject')
+                                                    <div class="badge bdg3 my-3 mx-3">Rejected
+                                                    </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

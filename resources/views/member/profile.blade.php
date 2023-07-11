@@ -116,7 +116,7 @@
                                                         <h4>Rp{{ number_format($job->rate, 0,",",".") }}</h4>
                                                     </div>
                                                     <div class="btn-box pull-right mx-5">
-                                                        <a href="/submission" class="theme-btn btn-one">View Submission</a>
+                                                        <a href="/submission/{{ $job->slug }}" class="theme-btn btn-one">View Submission</a>
                                                     </div>
                                                 </div>
                                                 <div class="post-tags">
