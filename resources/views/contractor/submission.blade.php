@@ -59,13 +59,14 @@
                                                         <a href="/jobs/{{ $sub->Job->slug }}" class="theme-btn btn-two">View Job</a>
                                                     </div>
                                                     @if ($sub->status == 'review')
-                                                    <div class="badge bdg1 my-3 mx-3">On Review
+                                                    <div class="badge bdg1 my-3 mx-5 pull-right">On Review
                                                     </div>
                                                     @elseif($sub->status == 'accept')
-                                                    <div class="badge bdg2 my-3 mx-3">Accepted
+                                                    <div class="btn-box pull-right mx-5">
+                                                        <a href="/status" class="theme-btn btn-one">View Progress</a>
                                                     </div>
                                                     @elseif($sub->status == 'reject')
-                                                    <div class="badge bdg3 my-3 mx-3">Rejected
+                                                    <div class="badge bdg3 my-3 mx-5 pull-right">Rejected
                                                     </div>
                                                     @endif
                                                 </div>

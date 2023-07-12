@@ -55,4 +55,18 @@ class SubmissionController extends Controller
             'subs' => $subs
         ]);
     }
+
+    public function decline(Submission $sub)
+    {
+        $sub->status = 'reject';
+        $sub->update();
+        return redirect()->back();
+    }
+
+    public function accept(Submission $sub)
+    {
+        $sub->status = 'accept';
+        $sub->update();
+        return redirect()->back();
+    }
 }

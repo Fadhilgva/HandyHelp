@@ -36,16 +36,11 @@
 <!-- banner-style-two end -->
 
 <!-- search-field-section -->
-<section class="search-field-section">
+<section class="search-field-section my-3">
     <div class="auto-container">
         <div class="inner-container">
             <div class="search-field">
                 <div class="tabs-box">
-                    <div class="tab-btn-box">
-                        <ul class="tab-btns tab-buttons centred clearfix">
-                            <li class="tab-btn" data-tab="#tab-1">Find a Job</li>
-                        </ul>
-                    </div>
                     <div class="tabs-content info-group">
                         <div class="tab active-tab" id="tab-1">
                             <div class="inner-box">

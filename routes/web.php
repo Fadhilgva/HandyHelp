@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\JobsController;
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\SubmissionController;
 use App\Models\Submission;
 
@@ -69,6 +70,12 @@ Route::group(
         Route::get('/submissions', [SubmissionController::class, 'contractor'])->middleware('accessUsers:contractor');
 
         Route::get('/submission/{job:slug}', [SubmissionController::class, 'member'])->middleware('accessUsers:member');
+
+        Route::post('/decline/{sub:id}', [SubmissionController::class, 'decline'])->middleware('accessUsers:member');
+
+        Route::post('/accept/{sub:id}', [SubmissionController::class, 'accept'])->middleware('accessUsers:member');
+
+        Route::get('/status', [OrdersController::class, 'index']);
 
         Route::get('/cities', [JobsController::class, 'city']);
 

@@ -111,7 +111,7 @@
                                                     <h4><a href="/jobs/{{ $job->slug }}">{{ $job->title }}</a></h4>
                                                 </div>
                                                 <div class="price-box clearfix">
-                                                    <div class="price-info pull-left">
+                                                    <div class="price-info pull-left my-2">
                                                         <h6>Start From</h6>
                                                         <h4>Rp{{ number_format($job->rate, 0,",",".") }}</h4>
                                                     </div>
