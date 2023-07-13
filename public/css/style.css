@@ -2162,7 +2162,7 @@ div#mCSB_1_container {
     border-radius: 3px;
     padding: 0px 14px;
     text-align: center;
-    background-color: #f2b241;
+    background-color: #fd7e14;
     z-index: 1;
 }
 
@@ -3339,11 +3339,11 @@ div#mCSB_1_container {
     line-height: 26px;
     font-weight: 500;
     color: #ffffff;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     border-radius: 3px;
     padding: 0px 14px;
     text-align: center;
-    background-color: #f2b241;
+    background-color: #e87313;
     z-index: 1;
 }
 
@@ -10041,4 +10041,14 @@ div#mCSB_1_container {
     color: white;
     font-family: "Rubik", sans-serif;
     background-color: #dc3545;
+}
+
+.bdg4 {
+    padding: 15px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    font-family: "Rubik", sans-serif;
+    background-color: #ffc107;
 }

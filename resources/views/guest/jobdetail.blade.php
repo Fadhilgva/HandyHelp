@@ -32,6 +32,9 @@
                                 <figure class="image">
                                     <img src="/img/jobs/{{ $job->image1 }}" id="main_product_image" class="rounded shadow-sm" alt="{{ $job->title }}" width="770" height="520" />
                                 </figure>
+                                @if ($job->ava == 'n')
+                                <span class="category">Already Taken</span>
+                                @endif
                             </div>
                             @else
                             <div class="image-box">
@@ -101,7 +104,7 @@
                             </ul>
                         </div>
                     </div>
-                    @if (Auth()->user()->role == "contractor")
+                    @if (Auth()->user()->role == "contractor" AND $job->ava == 'y')
                     <div class="sidebar-widget post-widget">
                         <div class="widget-title">
                             <h4>Are you Interested?</h4>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jobs;
+use App\Models\Review;
 use App\Models\Submission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -59,14 +60,103 @@ class SubmissionController extends Controller
     public function decline(Submission $sub)
     {
         $sub->status = 'reject';
+        $sub->comb = '';
         $sub->update();
         return redirect()->back();
     }
 
     public function accept(Submission $sub)
     {
+        $job = Jobs::findOrFail($sub->job_id);
+        $job->ava = 'n';
+        $job->save();
+
+        $subs = Submission::where('job_id', '=', $sub->job_id)->get();
+        foreach ($subs as $sub) {
+            $sub->status = 'reject';
+            $sub->update();
+        }
         $sub->status = 'accept';
         $sub->update();
         return redirect()->back();
+    }
+
+    public function status(Jobs $job)
+    {
+        $subs = Submission::join('jobs', 'submissions.job_id', '=', 'jobs.id')
+            ->where('submissions.job_id', '=', $job->id)
+            ->where('submissions.status', '!=', 'reject')
+            ->select('submissions.*')->get();
+
+        return view('member.status', [
+            'title' => 'HandyHelp | My Submission',
+            'subs' => $subs
+        ]);
+    }
+
+    public function progress(Jobs $job)
+    {
+        $subs = Submission::join('jobs', 'submissions.job_id', '=', 'jobs.id')
+            ->where('submissions.job_id', '=', $job->id)
+            ->where('submissions.status', '!=', 'reject')
+            ->select('submissions.*')->get();
+
+        return view('member.status', [
+            'title' => 'HandyHelp | My Submission',
+            'subs' => $subs
+        ]);
+    }
+
+    public function dojob(Submission $sub)
+    {
+        $sub->status = 'doing';
+        $sub->update();
+        return redirect()->back();
+    }
+
+    public function done_(Submission $sub)
+    {
+        $sub->status = 'done_';
+        $sub->update();
+        return redirect()->back();
+    }
+
+    public function done(Submission $sub)
+    {
+        $sub->status = 'done';
+        $sub->update();
+        return redirect()->back();
+    }
+
+    public function review(Submission $sub)
+    {
+        return view('member.review', [
+            'title' => 'HandyHelp | My Submission',
+            'sub' => $sub
+        ]);
+    }
+
+    public function store(Request $request, $id)
+    {
+        $sub = Submission::findOrFail($id);
+        $sub->status = 'reviewed';
+        $sub->save();
+
+        $job = Jobs::findOrFail($sub->job_id);
+
+        $request->validate([
+            'name' => 'required|min:4|max:50',
+            'rating' => 'required|min_digits:1',
+            'review' => 'required|min:10|max:100'
+        ]);
+
+        $review = new Review;
+        $review->member_id = $job->user_id;
+        $review->contractor_id = $sub->contractor_id;
+        $review->name = $request->name;
+        $review->review = $request->review;
+        $review->rating = $request->rating;
+        $review->save();
+        return redirect('/profile')->with('review', 'Your review has been successfully submitted!');
     }
 }

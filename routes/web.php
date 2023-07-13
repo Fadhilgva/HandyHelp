@@ -7,7 +7,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\JobsController;
-use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\SubmissionController;
 use App\Models\Submission;
 
@@ -75,7 +74,17 @@ Route::group(
 
         Route::post('/accept/{sub:id}', [SubmissionController::class, 'accept'])->middleware('accessUsers:member');
 
-        Route::get('/status', [OrdersController::class, 'index']);
+        Route::get('/progress/{job:slug}', [SubmissionController::class, 'progress'])->middleware('accessUsers:member');
+
+        Route::post('/dojob/{sub:id}', [SubmissionController::class, 'dojob'])->middleware('accessUsers:contractor');
+
+        Route::post('/done_/{sub:id}', [SubmissionController::class, 'done_'])->middleware('accessUsers:contractor');
+
+        Route::post('/done/{sub:id}', [SubmissionController::class, 'done'])->middleware('accessUsers:member');
+
+        Route::get('/review/{sub:id}', [SubmissionController::class, 'review'])->middleware('accessUsers:member');
+
+        Route::post('/review/{sub:id}', [SubmissionController::class, 'store'])->middleware('accessUsers:member');
 
         Route::get('/cities', [JobsController::class, 'city']);
 

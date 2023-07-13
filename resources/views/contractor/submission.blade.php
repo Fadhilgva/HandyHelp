@@ -55,18 +55,55 @@
                                                     Rp{{ number_format($sub->rate_offer, 0,",",".") }}
                                                 </div>
                                                 <div class="price-box clearfix">
-                                                    <div class="btn-box pull-left my-3">
-                                                        <a href="/jobs/{{ $sub->Job->slug }}" class="theme-btn btn-two">View Job</a>
-                                                    </div>
                                                     @if ($sub->status == 'review')
+                                                    <div class="btn-box pull-left my-3">
+                                                        <a href="/jobs/{{ $sub->Job->slug }}" class="theme-btn btn-one">View Job</a>
+                                                    </div>
                                                     <div class="badge bdg1 my-3 mx-5 pull-right">On Review
                                                     </div>
                                                     @elseif($sub->status == 'accept')
-                                                    <div class="btn-box pull-right mx-5">
-                                                        <a href="/status" class="theme-btn btn-one">View Progress</a>
+                                                    <div class="btn-box pull-left my-3">
+                                                        <a href="https://wa.me/{{ $sub->Job->User->phone }}" class="theme-btn btn-two">Chat with Contractor</a>
+                                                    </div>
+                                                    <form action="/dojob/{{ $sub->id }}" method="POST">
+                                                        @csrf
+                                                        <div class="btn-box pull-right mt-3 mx-5">
+                                                            <button type="submit" class="theme-btn btn-one">Do this Job</button>
+                                                        </div>
+                                                    </form>
+                                                    @elseif($sub->status == 'doing')
+                                                    <div class="btn-box pull-left my-3">
+                                                        <a href="https://wa.me/{{ $sub->Job->User->phone }}" class="theme-btn btn-two">Chat with Contractor</a>
+                                                    </div>
+                                                    <form action="/done_/{{ $sub->id }}" method="POST">
+                                                        @csrf
+                                                        <div class="btn-box pull-right mt-3 mx-5">
+                                                            <button type="submit" class="theme-btn btn-one">Finish this Job</button>
+                                                        </div>
+                                                    </form>
+                                                    @elseif($sub->status == 'done_')
+                                                    <div class="btn-box pull-left my-3">
+                                                        <a href="https://wa.me/{{ $sub->Job->User->phone }}" class="theme-btn btn-two">Chat with Contractor</a>
+                                                    </div>
+                                                    <div class="badge bdg1 my-3 mx-5 pull-right">Waiting for Confirmation
                                                     </div>
                                                     @elseif($sub->status == 'reject')
+                                                    <div class="btn-box pull-left my-3">
+                                                        <a href="/jobs/{{ $sub->Job->slug }}" class="theme-btn btn-two">View Job</a>
+                                                    </div>
                                                     <div class="badge bdg3 my-3 mx-5 pull-right">Rejected
+                                                    </div>
+                                                    @elseif($sub->status == 'done')
+                                                    <div class="btn-box pull-left my-3">
+                                                        <a href="/jobs/{{ $sub->Job->slug }}" class="theme-btn btn-two">View Job</a>
+                                                    </div>
+                                                    <div class="badge bdg2 mt-4 mx-5 pull-right">Done
+                                                    </div>
+                                                    @elseif($sub->status == 'reviewed')
+                                                    <div class="btn-box pull-left my-3">
+                                                        <a href="/jobs/{{ $sub->Job->slug }}" class="theme-btn btn-two">View Job</a>
+                                                    </div>
+                                                    <div class="badge bdg4 mt-4 mx-5 pull-right">Reviewed
                                                     </div>
                                                     @endif
                                                 </div>

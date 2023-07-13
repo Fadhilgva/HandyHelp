@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('option_one')->nullable();
             $table->string('option_two')->nullable();
+            $table->string('ava')->default('y');
             $table->timestamps();
         });
     }

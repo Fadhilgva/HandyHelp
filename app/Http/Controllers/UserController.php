@@ -7,6 +7,7 @@ use App\Models\Jobs;
 use App\Models\User;
 use App\Models\Skill;
 use App\Models\Country;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,18 +16,24 @@ class UserController extends Controller
     public function index()
     {
         if (Auth::user()->role == 'member') {
-
             $jobs = Jobs::join('users', 'jobs.user_id', '=', 'users.id')
                 ->where('jobs.user_id', '=', Auth::user()->id)->latest('jobs.created_at')
                 ->select('jobs.*')->get();
-            // dd($jobs);
             return view('member.profile', [
                 'title' => 'HandyHelp | Profile',
                 'jobs' => $jobs
             ]);
         } elseif (Auth::user()->role == 'contractor') {
+            $reviews = Review::join('users', 'reviews.contractor_id', '=', 'users.id')
+                ->where('reviews.contractor_id', '=', Auth::user()->id)->latest('reviews.created_at')
+                ->select('reviews.*')->get();
+
+            $count = Review::join('users', 'reviews.contractor_id', '=', 'users.id')
+                ->where('reviews.contractor_id', '=', Auth::user()->id)->count();
             return view('contractor.profile', [
                 'title' => 'HandyHelp | Profile',
+                'count' => $count,
+                'reviews' => $reviews
             ]);
         }
     }
@@ -144,7 +151,6 @@ class UserController extends Controller
     public function profile(User $user)
     {
         if ($user->role == 'member') {
-
             $jobs = Jobs::join('users', 'jobs.user_id', '=', 'users.id')
                 ->where('jobs.user_id', '=', $user->id)->latest('jobs.created_at')
                 ->select('jobs.*')->get();
@@ -154,28 +160,21 @@ class UserController extends Controller
                 'user' => $user,
                 'jobs' => $jobs
             ]);
-        } else {
+        } elseif ($user->role == 'contractor') {
+
+            $reviews = Review::join('users', 'reviews.contractor_id', '=', 'users.id')
+                ->where('reviews.contractor_id', '=', $user->id)->latest('reviews.created_at')
+                ->select('reviews.*')->get();
+
+            $count = Review::join('users', 'reviews.contractor_id', '=', 'users.id')
+                ->where('reviews.contractor_id', '=', $user->id)->count();
 
             return view('auth.member', [
                 'title' => 'Profile | ' . $user->name,
-                'user' => $user
+                'user' => $user,
+                'reviews' => $reviews,
+                'count' => $count
             ]);
         }
-
-        // if ($user()->role == 'member') {
-        //     // $jobs = Jobs::join('users', 'jobs.user_id', '=', 'users.id')
-        //     //     ->where('jobs.user_id', '=', Auth::user()->id)->latest('jobs.created_at')
-        //     //     ->select('jobs.*')->get();
-
-        //     return view('member.profile', [
-        //         'title' => 'HandyHelp | Profile'
-        //         // ,'jobs' => $jobs
-        //     ]);
-        // } elseif ($user()->role == 'contractor') {
-
-        //     return view('contractor.profile', [
-        //         'title' => 'HandyHelp | Profile',
-        //     ]);
-        // }
     }
 }

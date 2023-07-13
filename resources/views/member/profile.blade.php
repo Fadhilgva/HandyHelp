@@ -73,6 +73,13 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    @elseif(session()->has('review'))
+                    <div class="alert alert-success alert-dismissible fade show text-center m-4" role="alert">
+                        <small>{{ session('review') }}</small>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                     @endif
                     <div class="group-title">
                         <h3>Jobs Posting</h3>
@@ -115,8 +122,11 @@
                                                         <h6>Start From</h6>
                                                         <h4>Rp{{ number_format($job->rate, 0,",",".") }}</h4>
                                                     </div>
-                                                    <div class="btn-box pull-right mx-5">
+                                                    <div class="btn-box pull-right mr-5 ml-3">
                                                         <a href="/submission/{{ $job->slug }}" class="theme-btn btn-one">View Submission</a>
+                                                    </div>
+                                                    <div class="btn-box pull-right">
+                                                        <a href="" class="theme-btn btn-two">Edit</a>
                                                     </div>
                                                 </div>
                                                 <div class="post-tags">

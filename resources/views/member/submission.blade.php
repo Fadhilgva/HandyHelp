@@ -18,7 +18,7 @@
                     </div>
                     @endif
                     <div class="group-title">
-                        <h3>Submission</h3>
+                        <h3>Submission List</h3>
                     </div>
                     <div class="row clearfix">
                         <div class="col-lg-12">
@@ -50,10 +50,10 @@
                                                         <a href="/profile/{{ $sub->Contractor->username }}" class="theme-btn btn-two">View Profile</a>
                                                     </div>
                                                     @if ($sub->status == 'accept')
-                                                    <div class="btn-box pull-right mx-5">
-                                                        <a href="/status" class="theme-btn btn-one">View Progress</a>
+                                                    <div class="btn-box pull-right mx-5 my-3">
+                                                        <a href="/progress/{{ $sub->Job->slug }}" class="theme-btn btn-one">View Progress</a>
                                                     </div>
-                                                    @elseif($sub->status != 'reject')
+                                                    @elseif($sub->status == 'review')
                                                     <form action="/decline/{{ $sub->id }}" method="POST">
                                                         @csrf
                                                         <div class="btn-box pull-right my-3 mx-3">
@@ -66,8 +66,21 @@
                                                             <button type="submit" class="theme-btn btn-one btn-outline-dark">Accept</button>
                                                         </div>
                                                     </form>
-                                                    @else
+                                                    @elseif($sub->status == 'reject')
                                                     <div class="badge bdg3 my-3 mx-5 pull-right">Rejected
+                                                    </div>
+                                                    @elseif($sub->status == 'done')
+                                                    <form action="/review/{{ $sub->id }}" method="GET">
+                                                        <div class="btn-box pull-right mt-4 mx-3">
+                                                            <button type="submit" class="theme-btn btn-one">Leave a Review</button>
+                                                        </div>
+                                                    </form>
+                                                    @elseif($sub->status == 'reviewed')
+                                                    <div class="badge bdg2 my-3 mx-5 pull-right">Reviewed
+                                                    </div>
+                                                    @else
+                                                    <div class="btn-box pull-right mx-5 my-3">
+                                                        <a href="/progress/{{ $sub->Job->slug }}" class="theme-btn btn-one">View Progress</a>
                                                     </div>
                                                     @endif
                                                 </div>

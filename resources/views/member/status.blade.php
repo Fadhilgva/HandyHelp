@@ -8,64 +8,71 @@
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 content-side">
                 <div class="agents-content-side tabs-box">
-                    {{-- @if (session()->has('success'))
-                    <div class="alert alert-success alert-dismissible fade show text-center m-4" role="alert">
-                        <small>{{ session('success') }}</small>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    @endif --}}
                     <div class="group-title">
-                        <h3>Submission</h3>
+                        <h3>Job Progress</h3>
                     </div>
                     <div class="row clearfix">
                         <div class="col-lg-12">
                             <div class="blog-details-content">
                                 <div class="comments-area">
                                     <div class="comment-box">
+                                        @foreach ($subs as $sub)
                                         <div class="comment">
                                             <figure class="thumb-box">
                                                 <img src="{{ asset('images/news/comment-1.jpg') }}" alt="">
                                             </figure>
                                             <div class="comment-inner">
                                                 <div class="comment-info clearfix">
-                                                    <h5>hbadhj</h5>
-                                                    <span>ahbdahbd</span>
+                                                    <h5>{{ $sub->Contractor->name }}</h5>
+                                                    <span>{{ $sub->created_at->diffForHumans() }}</span>
                                                 </div>
                                                 <div class="text-dark">
                                                     <i class="fa-solid fa-money-bill"></i>
-                                                    Rp100.000
+                                                    Rp{{ number_format($sub->rate_offer, 0,",",".") }}
                                                 </div>
                                                 <div class="price-box clearfix my-3">
+                                                    @if ($sub->status == 'done_')
                                                     <div class="btn-box pull-left my-3">
-                                                        <a href="" class="theme-btn btn-two">View Profile</a>
+                                                        <a href="https://wa.me/{{ $sub->Contractor->phone }}" class="theme-btn btn-two">Chat with Contractor</a>
                                                     </div>
-                                                    {{-- @if ($sub->status == 'accept')
-                                                    <div class="btn-box pull-right mx-5">
-                                                        <a href="/status{{ $sub }}" class="theme-btn btn-one">View Progress</a>
-                                                    </div>
-                                                    @elseif($sub->status != 'reject')
-                                                    <form action="/decline/{{ $sub->id }}" method="POST">
+                                                    <form action="/done/{{ $sub->id }}" method="POST">
                                                         @csrf
                                                         <div class="btn-box pull-right my-3 mx-3">
-                                                            <button type="submit" class="theme-btn btn-two">Decline</button>
+                                                            <button type="submit" class="theme-btn btn-one">Confirm</button>
                                                         </div>
                                                     </form>
-                                                    <form action="/accept/{{ $sub->id }}" method="POST">
-                                                        @csrf
-                                                        <div class="btn-box pull-right my-3">
-                                                            <button type="submit" class="theme-btn btn-one btn-outline-dark">Accept</button>
+                                                    @elseif($sub->status == 'accept')
+                                                    <div class="btn-box pull-left my-3">
+                                                        <a href="https://wa.me/{{ $sub->Contractor->phone }}" class="theme-btn btn-one">Chat with Contractor</a>
+                                                    </div>
+                                                    <div class="badge bdg1 mt-4 mx-5 pull-right">To Do
+                                                    </div>
+                                                    @elseif($sub->status == 'doing')
+                                                    <div class="btn-box pull-left my-3">
+                                                        <a href="https://wa.me/{{ $sub->Contractor->phone }}" class="theme-btn btn-one">Chat with Contractor</a>
+                                                    </div>
+                                                    <div class="badge bdg2 mt-4 mx-5 pull-right">Doing
+                                                    </div>
+                                                    @elseif($sub->status == 'done')
+                                                    <div class="btn-box pull-left my-3">
+                                                        <a href="https://wa.me/{{ $sub->Contractor->phone }}" class="theme-btn btn-two">Chat with Contractor</a>
+                                                    </div>
+                                                    <form action="/review/{{ $sub->id }}" method="GET">
+                                                        <div class="btn-box pull-right mt-4 mx-3">
+                                                            <button type="submit" class="theme-btn btn-one">Leave a Review</button>
                                                         </div>
                                                     </form>
                                                     @else
-                                                    <div class="badge bdg3 my-3 mx-5 pull-right">Rejected
+                                                    <div class="btn-box pull-left my-3">
+                                                        <a href="https://wa.me/{{ $sub->Contractor->phone }}" class="theme-btn btn-one">Chat with Contractor</a>
                                                     </div>
-                                                    @endif --}}
+                                                    <div class="badge bdg2 mt-4 mx-5 pull-right">Done
+                                                    </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
-                                        {{-- @endforeach --}}
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>

@@ -10,27 +10,45 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 content-side px-0">
                         <div class="deals-block-one">
                             <div class="inner-box">
+                                @if ($sub->job->image1)
                                 <div class="image-box">
-                                    <a href="">
+                                    <a href="/jobs/{{ $sub->job->slug }}">
+                                        <figure class="image">
+                                            <img src="/img/jobs/{{ $sub->job->image1 }}" alt="{{ $sub->job->title }}" />
+                                        </figure>
+                                    </a>
+                                </div>
+                                @else
+                                <div class="image-box">
+                                    <a href="/jobs/{{ $job->slug }}">
                                         <figure class="image">
                                             <img src="{{ asset('images/feature/feature-4.jpg') }}" />
                                         </figure>
                                     </a>
                                 </div>
+                                @endif
                                 <div class="lower-content">
                                     <div class="title-text">
-                                        <h4><a href="">Title</a></h4>
+                                        <h4><a href="/jobs/{{ $sub->job->slug }}">{{ $sub->job->title }}</a></h4>
                                     </div>
                                     <div class="price-box clearfix">
-                                        <div class="price-info pull-left">
+                                        <div class="price-info pull-left my-2">
                                             <h6>Start From</h6>
-                                            <h4>Rp100.000</h4>
+                                            <h4>Rp{{ number_format($sub->job->rate, 0,",",".") }}</h4>
                                         </div>
                                     </div>
-                                    <ul class="more-details clearfix">
-                                        <li><i class="icon-22"></i>Jakarta</li>
-                                        <li><i class="icon-16"></i>Gardening</li>
-                                    </ul>
+                                    <div class="post-tags">
+                                        <ul class="more-details clearfix">
+                                            <li>
+                                                <i class="icon-22"></i>
+                                                {{ $sub->job->city->name }}
+                                            </li>
+                                            <li>
+                                                <i class="icon-16"></i>
+                                                {{ $sub->job->category->name }}
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -41,27 +59,35 @@
                 <div class="blog-details-content">
                     <div class="comments-form-area">
                         <div class="group-title">
-                            <h4>Leave a Review</h4>
+                            <h4>Write a Review</h4>
                         </div>
-                        <form action="" method="POST" class="comment-form default-form">
+                        <form action="/review/{{ $sub->id }}" method="POST" class="comment-form default-form">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12 form-group">
                                     <label>Name</label>
-                                    <input type="text" id="name" name="name" placeholder="Your name" required="">
+                                    <input type="text" id="name" name="name" placeholder="Your name" required value="{{ old('name') }}" class="@error('name')
+                                    is-invalid
+                                    @enderror">
+                                    @error('name')
+                                    <div class=" invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12 form-group">
                                     <label>Rating</label>
                                     <div class="feedback">
                                         <div class="rating">
-                                            <input type="radio" name="rating" id="rating-5">
+                                            <input type="radio" name="rating" id="rating-5" value="5">
                                             <label for="rating-5"></label>
-                                            <input type="radio" name="rating" id="rating-4">
+                                            <input type="radio" name="rating" id="rating-4" value="4">
                                             <label for="rating-4"></label>
-                                            <input type="radio" name="rating" id="rating-3">
+                                            <input type="radio" name="rating" id="rating-3" value="3">
                                             <label for="rating-3"></label>
-                                            <input type="radio" name="rating" id="rating-2">
+                                            <input type="radio" name="rating" id="rating-2" value="2">
                                             <label for="rating-2"></label>
-                                            <input type="radio" name="rating" id="rating-1">
+                                            <input type="radio" name="rating" id="rating-1" value="1">
                                             <label for="rating-1"></label>
                                             <div class="emoji-wrapper">
                                                 <div class="emoji my-1">
@@ -163,7 +189,10 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 form-group">
                                     <label>Review</label>
-                                    <textarea name="message" placeholder="Your message"></textarea>
+                                    <textarea name="review" id="review" placeholder="Your message">{{ old('review') }}</textarea>
+                                    @error('review')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 form-group message-btn">
                                     <button type="submit" class="theme-btn btn-one">Submit</button>

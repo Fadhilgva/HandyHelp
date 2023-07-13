@@ -21,8 +21,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'name' => 'Muhammad Fadhil',
-            'username' => 'fadhilgva',
+            'name' => 'Contractor',
+            'username' => 'contractor',
             'role' => 'contractor',
             'phone' => '081357638723',
             'identity' => '3175022809021001',
@@ -31,8 +31,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'Muhammad Fadhil',
-            'username' => 'fadhilgva2',
+            'name' => 'Member',
+            'username' => 'member',
             'role' => 'member',
             'phone' => '081357638722',
             'identity' => '3175022809021000',
