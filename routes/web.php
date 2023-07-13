@@ -60,6 +60,10 @@ Route::group(
 
         Route::post('/posting-job', [JobsController::class, 'store'])->middleware('accessUsers:member');
 
+        Route::get('/edit-job/{job:slug}', [JobsController::class, 'edit'])->middleware('accessUsers:member');
+
+        Route::post('/edit-job/{job:slug}', [JobsController::class, 'update'])->middleware('accessUsers:member');
+
         Route::get('/jobs', [JobsController::class, 'jobs']);
 
         Route::get('/jobs/{job:slug}', [JobsController::class, 'show']);

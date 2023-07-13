@@ -190,7 +190,7 @@
     <div class="auto-container">
         <div class="video-inner">
             <div class="video-btn">
-                <a href="https://drive.google.com/file/d/1bzsJNNk_2z0-tU0CXV5YovV1Zul43LcX/view?usp=sharing" class="lightbox-image" data-caption=""><i class="icon-17"></i></a>
+                <a href="https://youtu.be/7uA_Sp90ENw" class="lightbox-image" data-caption=""><i class="icon-17"></i></a>
             </div>
         </div>
     </div>

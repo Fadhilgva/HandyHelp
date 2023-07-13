@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\City;
 use App\Models\Jobs;
+use App\Models\User;
 use App\Models\Country;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Console\View\Components\Alert;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
-use Illuminate\Support\Facades\Auth;
 
 class JobsController extends Controller
 {
@@ -134,5 +136,96 @@ class JobsController extends Controller
             'cities' => City::all(),
             'categories' => Category::all()
         ]);
+    }
+
+    public function edit($slug)
+    {
+        $cities = City::all();
+        $categories = Category::all();
+        $job = Jobs::where('slug', $slug)->first();
+
+        return view('member.edit-posting', [
+            'title' => 'HandyHelp | Posting Job',
+            'cities' => $cities,
+            'categories' => $categories,
+            'job' => $job
+        ]);
+    }
+
+    public function update(Request $request, $slug)
+    {
+        $job = Jobs::where('slug', $slug)->first();
+        // dd($job);
+        $rules = [
+            'title' => 'required|min:8|max:150',
+            'image_1' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image_2' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'image_3' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'detail' => 'required|min:100|max:10000',
+            'category_id' => 'required|numeric|min_digits:1',
+            'location_id' => 'required|numeric|min_digits:1',
+            'rate' => 'required|numeric|min:10000|max_digits:1000',
+            'phone' => 'required|numeric|min_digits:8|max_digits:15',
+            'option_one' => 'nullable',
+            'option_two' => 'nullable'
+        ];
+
+        if ($job->slug != $request->slug) {
+            $rules['slug'] = 'required|unique:jobs';
+        } else {
+            $rules['slug'] = 'required';
+        }
+
+        $validatedData = $request->validate($rules);
+
+        $data = [
+            $job->title = $validatedData['title'],
+            $job->detail = $validatedData['detail'],
+            $job->category_id = $validatedData['category_id'],
+            $job->location_id = $validatedData['location_id'],
+            $job->rate = $validatedData['rate'],
+            $job->phone = $validatedData['phone'],
+            $job->option_one = $validatedData['option_one'],
+            $job->option_two = $validatedData['option_two']
+        ];
+
+        if ($validatedData['image_1']) {
+            File::delete('img/jobs/' . $job->image1);
+
+            $image1 =  time() . '-' . $validatedData['image_1']->getClientOriginalName();
+            $validatedData['image_1']->move('img\jobs', $image1);
+
+            $data['image1'] = $image1;
+        }
+
+        if ($request->image_2) {
+            File::delete('img/jobs/' . $job->image2);
+
+            $image2 =  time() . '-' . $validatedData['image_2']->getClientOriginalName();
+            $validatedData['image_2']->move('img\jobs', $image2);
+
+            $data['image2'] = $image2;
+        }
+
+        if ($request->image_3) {
+            File::delete('img/jobs/' . $job->image3);
+
+            $image3 =  time() . '-' . $validatedData['image_3']->getClientOriginalName();
+            $validatedData['image_3']->move('img\jobs', $image3);
+
+            $data['image3'] = $image3;
+        }
+
+        if ($request->image_4) {
+            File::delete('img/jobs/' . $job->image4);
+
+            $image4 =  time() . '-' . $validatedData['image_4']->getClientOriginalName();
+            $validatedData['image_4']->move('img\jobs', $image4);
+
+            $data['image4'] = $image4;
+        }
+
+        $job->update($data);
+        return redirect('/profile')->with('success', 'Your job offer has been successfully updated!');
     }
 }

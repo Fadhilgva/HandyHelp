@@ -126,7 +126,7 @@
                                                         <a href="/submission/{{ $job->slug }}" class="theme-btn btn-one">View Submission</a>
                                                     </div>
                                                     <div class="btn-box pull-right">
-                                                        <a href="" class="theme-btn btn-two">Edit</a>
+                                                        <a href="/edit-job/{{ $job->slug }}" class="theme-btn btn-two">Edit</a>
                                                     </div>
                                                 </div>
                                                 <div class="post-tags">
