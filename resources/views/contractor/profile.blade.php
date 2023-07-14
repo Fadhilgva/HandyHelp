@@ -15,45 +15,55 @@
     <div class="agency-details-content">
       <div class="agents-block-one">
         <div class="inner-box mr-0">
-          <figure class="image-box"><img src="{{ asset('images/resource/agency-details-1.jpg') }}" alt="" /></figure>
-          <div class="content-box">
-            <div class="clearfix">
-              <div class="title-inner pull-left">
-                <h4>{{ Auth()->user()->name }}</h4>
-              </div>
-            </div>
-            @if(Auth()->user()->desc)
-            <div class="text">
-              <p>{{ Auth()->user()->desc }}</p>
-            </div>
-            @else
-            <div class="text">
-              <p>Add description of Yourself</p>
-            </div>
-            @endif
-            <ul class="info clearfix mr-0">
-              @if(Auth()->user()->skill)
-              <li><i class="icon-41"></i><a>{{ Auth()->user()->skill }}</a></li>
+          <div class="row clearfix">
+            <div class=" col-lg-3">
+              @if (Auth()->user()->profile)
+              <img src="/img/profile/{{ Auth()->user()->profile }}" width="300" height="300" class="rounded" />
               @else
-              <li><i class="icon-41"></i><a>-</a></li>
+              <img src="{{ asset('images/resource/agency-details-1.jpg') }}" width="300" height="300" class="rounded" />
               @endif
+            </div>
+            <div class=" col-lg-9">
+              <div class="content-box">
+                <div class="clearfix">
+                  <div class="title-inner pull-left">
+                    <h4>{{ Auth()->user()->name }}</h4>
+                  </div>
+                </div>
+                @if(Auth()->user()->desc)
+                <div class="text">
+                  <p>{{ Auth()->user()->desc }}</p>
+                </div>
+                @else
+                <div class="text">
+                  <p>Add description of Yourself</p>
+                </div>
+                @endif
+                <ul class="info clearfix mr-0">
+                  @if(Auth()->user()->skill)
+                  <li><i class="icon-41"></i><a>{{ Auth()->user()->skill }}</a></li>
+                  @else
+                  <li><i class="icon-41"></i><a>-</a></li>
+                  @endif
 
-              @if(Auth()->user()->city && Auth()->user()->country)
-              <li><i class="icon-22"></i><a>{{ Auth()->user()->city }}, {{ Auth()->user()->country }}</a></li>
-              @elseif(Auth()->user()->city)
-              <li><i class="icon-22"></i><a>{{ Auth()->user()->city }}</a></li>
-              @elseif(Auth()->user()->country)
-              <li><i class="icon-22"></i><a>{{ Auth()->user()->country }}</a></li>
-              @else
-              <li><i class="icon-22"></i><a>-</a></li>
-              @endif
+                  @if(Auth()->user()->city && Auth()->user()->country)
+                  <li><i class="icon-22"></i><a>{{ Auth()->user()->city }}, {{ Auth()->user()->country }}</a></li>
+                  @elseif(Auth()->user()->city)
+                  <li><i class="icon-22"></i><a>{{ Auth()->user()->city }}</a></li>
+                  @elseif(Auth()->user()->country)
+                  <li><i class="icon-22"></i><a>{{ Auth()->user()->country }}</a></li>
+                  @else
+                  <li><i class="icon-22"></i><a>-</a></li>
+                  @endif
 
-              <li><i class="fa-solid fa-envelope"></i><a>{{ Auth()->user()->email }}</a></li>
-              <li><i class="fa-solid fa-phone"></i><a>{{ Auth()->user()->phone }}</a></li>
-            </ul>
-            <div class="clearfix">
-              <div class="btn-box pull-right">
-                <a href="/profile-edit" class="theme-btn btn-one">Edit Profile</a>
+                  <li><i class="fa-solid fa-envelope"></i><a>{{ Auth()->user()->email }}</a></li>
+                  <li><i class="fa-solid fa-phone"></i><a>{{ Auth()->user()->phone }}</a></li>
+                </ul>
+                <div class="clearfix">
+                  <div class="btn-box pull-right">
+                    <a href="/profile-edit" class="theme-btn btn-one">Edit Profile</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

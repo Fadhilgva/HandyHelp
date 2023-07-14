@@ -10,6 +10,7 @@ use App\Models\Country;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -85,15 +86,29 @@ class UserController extends Controller
                 ]);
             }
 
+            if ($request->profile) {
+                $request->validate([
+                    'profile' => ['image', 'mimes:jpeg,png,jpg', 'max:2048']
+                ]);
+
+                File::delete('img/profile/' . $user->profile);
+                $profile = time() . '.' . $request->profile->getClientOriginalName();
+                $request->profile->move(public_path('img/profile'), $profile);
+            }
+
             $request->validate([
                 'name' => ['required', 'string', 'min:5', 'max:255'],
                 'desc' => ['max:500'],
             ]);
 
+
             if ($user) {
                 $user->name = $request->input('name');
                 $user->email = $request->input('email');
                 $user->phone = $request->input('phone');
+                if ($request->profile) {
+                    $user->profile = $profile;
+                }
                 $user->desc = $request->input('desc');
                 $user->city = $request->input('city');
                 $user->country = $request->input('country');
@@ -126,6 +141,16 @@ class UserController extends Controller
                 ]);
             }
 
+            if ($request->profile) {
+                $request->validate([
+                    'profile' => ['image', 'mimes:jpeg,png,jpg', 'max:2048']
+                ]);
+
+                File::delete('img/profile/' . $user->profile);
+                $profile = time() . '.' . $request->profile->getClientOriginalName();
+                $request->profile->move(public_path('img/profile'), $profile);
+            }
+
             $request->validate([
                 'name' => ['required', 'string', 'min:5', 'max:255'],
                 'desc' => ['max:500'],
@@ -135,6 +160,9 @@ class UserController extends Controller
                 $user->name = $request->input('name');
                 $user->email = $request->input('email');
                 $user->phone = $request->input('phone');
+                if ($request->profile) {
+                    $user->profile = $profile;
+                }
                 $user->desc = $request->input('desc');
                 $user->skill = $request->input('skill');
                 $user->city = $request->input('city');

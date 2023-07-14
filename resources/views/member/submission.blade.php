@@ -29,7 +29,7 @@
                                         <div class="comment">
                                             @if ($sub->Contractor->profile)
                                             <figure class="thumb-box">
-                                                <img src="{{ asset('images/news/comment-1.jpg') }}" alt="">
+                                                <img src="/img/profile/{{ $sub->Contractor->profile }}" width="50" height="50" class="rounded" />
                                             </figure>
                                             @else
                                             <figure class="thumb-box">

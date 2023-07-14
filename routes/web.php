@@ -52,7 +52,7 @@ Route::group(
 
         Route::get('/profile-edit', [UserController::class, 'edit']);
 
-        Route::post('/profile-edit', [UserController::class, 'store']);
+        Route::post('/profile-edit/{user:id}', [UserController::class, 'store']);
 
         Route::get('/posting-job', [JobsController::class, 'index'])->middleware('accessUsers:member');
 

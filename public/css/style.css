@@ -6529,9 +6529,9 @@ div#mCSB_1_container {
     transform: scale(1.05);
 }
 
-.agents-block-one .inner-box .content-box {
+/* .agents-block-one .inner-box .content-box {
     padding: 0px 30px 30px 300px;
-}
+} */
 
 .agents-block-one .inner-box .content-box .upper {
     position: relative;

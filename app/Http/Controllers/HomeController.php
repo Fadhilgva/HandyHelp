@@ -30,7 +30,7 @@ class HomeController extends Controller
     {
         $contractor = User::where('role', '=', 'contractor')->count();
         $member = User::where('role', '=', 'member')->count();
-        $jobs = Jobs::all()->count();
+        $jobs = Jobs::where('ava', '=', 'y')->count();
 
         return view('guest.about', [
             'title' => 'HandyHelp | About Us',

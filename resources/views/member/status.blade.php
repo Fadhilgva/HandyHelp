@@ -18,9 +18,15 @@
                                     <div class="comment-box">
                                         @foreach ($subs as $sub)
                                         <div class="comment">
+                                            @if ($sub->Contractor->profile)
+                                            <figure class="thumb-box">
+                                                <img src="/img/profile/{{ $sub->Contractor->profile }}" width="50" height="50" class="rounded" />
+                                            </figure>
+                                            @else
                                             <figure class="thumb-box">
                                                 <img src="{{ asset('images/news/comment-1.jpg') }}" alt="">
                                             </figure>
+                                            @endif
                                             <div class="comment-inner">
                                                 <div class="comment-info clearfix">
                                                     <h5>{{ $sub->Contractor->name }}</h5>

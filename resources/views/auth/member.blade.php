@@ -15,47 +15,55 @@
         <div class="agency-details-content">
             <div class="agents-block-one">
                 <div class="inner-box mr-0">
-                    <figure class="image-box">
-                        <img src="{{ asset('images/resource/agency-details-1.jpg') }}" />
-                    </figure>
-                    <div class="content-box">
-                        <div class="clearfix mb-3">
-                            <div class="title-inner pull-left">
-                                <h4>{{ $user->name }}</h4>
+                    <div class="row clearfix">
+                        <div class="col-lg-3">
+                            @if ($user->profile)
+                            <img src="/img/profile/{{ $user->profile }}" width="300" height="300" class="rounded" />
+                            @else
+                            <img src="{{ asset('images/resource/agency-details-1.jpg') }}" width="300" height="300" class="rounded" />
+                            @endif
+                        </div>
+                        <div class=" col-lg-9">
+                            <div class="content-box">
+                                <div class="clearfix mb-3">
+                                    <div class="title-inner pull-left">
+                                        <h4>{{ $user->name }}</h4>
+                                    </div>
+                                </div>
+                                @if($user->desc)
+                                <div class="text">
+                                    <p>{{ $user->desc }}</p>
+                                </div>
+                                @else
+                                <div class="text">
+                                    <p>Description</p>
+                                </div>
+                                @endif
+                                <ul class="info clearfix mr-0">
+                                    @if($user->skill)
+                                    <li><i class="icon-41"></i><a>{{ $user->skill }}</a></li>
+                                    @else
+                                    <li><i class="icon-41"></i><a>-</a></li>
+                                    @endif
+
+                                    @if($user->city && $user->country)
+                                    <li><i class="icon-22"></i><a>{{ $user->city }}, {{ $user->country }}</a></li>
+
+                                    @elseif($user->city)
+                                    <li><i class="icon-22"></i><a>{{ $user->city }}</a></li>
+
+                                    @elseif($user->country)
+                                    <li><i class="icon-22"></i><a>{{ $user->country }}</a></li>
+
+                                    @else
+                                    <li><i class="icon-22"></i><a>-</a></li>
+
+                                    @endif
+                                    <li><i class="fa-solid fa-envelope"></i><a>********</a></li>
+                                    <li><i class="fa-solid fa-phone"></i><a>********</a></li>
+                                </ul>
                             </div>
                         </div>
-                        @if($user->desc)
-                        <div class="text">
-                            <p>{{ $user->desc }}</p>
-                        </div>
-                        @else
-                        <div class="text">
-                            <p>Description</p>
-                        </div>
-                        @endif
-                        <ul class="info clearfix mr-0">
-                            @if($user->skill)
-                            <li><i class="icon-41"></i><a>{{ $user->skill }}</a></li>
-                            @else
-                            <li><i class="icon-41"></i><a>-</a></li>
-                            @endif
-
-                            @if($user->city && $user->country)
-                            <li><i class="icon-22"></i><a>{{ $user->city }}, {{ $user->country }}</a></li>
-
-                            @elseif($user->city)
-                            <li><i class="icon-22"></i><a>{{ $user->city }}</a></li>
-
-                            @elseif($user->country)
-                            <li><i class="icon-22"></i><a>{{ $user->country }}</a></li>
-
-                            @else
-                            <li><i class="icon-22"></i><a>-</a></li>
-
-                            @endif
-                            <li><i class="fa-solid fa-envelope"></i><a>********</a></li>
-                            <li><i class="fa-solid fa-phone"></i><a>********</a></li>
-                        </ul>
                     </div>
                 </div>
             </div>

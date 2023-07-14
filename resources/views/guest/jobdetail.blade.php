@@ -60,9 +60,15 @@
                                 <h3>{{ $job->title }}</h3>
                                 <ul class="post-info clearfix">
                                     <li class="author-box">
+                                        @if ($job->user->profile)
+                                        <figure class="author-thumb">
+                                            <img src="/img/profile/{{ $job->user->profile }}" width="80" height="80" />
+                                        </figure>
+                                        @else
                                         <figure class="author-thumb">
                                             <img src="{{ asset('images/news/author-1.jpg') }}" alt="" />
                                         </figure>
+                                        @endif
                                         <h5><a href="/profile/{{ $job->user->username }}">{{ $job->user->name }}</a></h5>
                                     </li>
                                 </ul>
