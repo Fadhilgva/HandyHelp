@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             'role' => 'contractor',
             'phone' => '081357638723',
             'identity' => '3175022809021001',
+            'profile' => '1689331660.attachment_63466712.jpg',
             'email' => 'contractor@gmail.com',
             'password' => Hash::make('password')
         ]);
@@ -36,6 +37,7 @@ class DatabaseSeeder extends Seeder
             'role' => 'member',
             'phone' => '081357638722',
             'identity' => '3175022809021000',
+            'profile' => '1689331901.attachment_127807231.jpg',
             'email' => 'member@gmail.com',
             'password' => Hash::make('password')
         ]);
