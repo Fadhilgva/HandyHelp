@@ -101,14 +101,14 @@ class JobsController extends Controller
         if (request('search') or request('city') or request('category')) {
             return view('guest.jobs', [
                 'title' => 'Handy Help | ' . request('search') . request('city') . request('category'),
-                'jobs' => Jobs::with(['Category', 'User', 'city'])->latest()->filter(request(['search', 'city', 'category']))->paginate(10)->withQueryString(),
+                'jobs' => Jobs::with(['category', 'User', 'city'])->latest()->filter(request(['search', 'city', 'category']))->paginate(10)->withQueryString(),
                 'cities' => City::all(),
                 'categories' => Category::all()
             ]);
         } else {
             return view('guest.jobs', [
                 'title' => 'HandyHelp | Jobs',
-                'jobs' => Jobs::with(['Category', 'User', 'city'])->latest()->paginate(10),
+                'jobs' => Jobs::with(['category', 'User', 'city'])->latest()->paginate(10),
                 'cities' => City::all(),
                 'categories' => Category::all()
             ]);
@@ -132,7 +132,7 @@ class JobsController extends Controller
 
         return view('guest.city', [
             'title' => 'Jobs Located in ' . $city->name,
-            'jobs' => Jobs::with(['Category', 'User', 'city'])->latest()->filter(request(['search', 'city', 'category']))->paginate(10)->withQueryString(),
+            'jobs' => Jobs::with(['category', 'User', 'city'])->latest()->filter(request(['search', 'city', 'category']))->paginate(10)->withQueryString(),
             'cities' => City::all(),
             'categories' => Category::all()
         ]);

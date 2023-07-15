@@ -34,7 +34,7 @@ class SubmissionController extends Controller
     {
         $subs = Submission::join('users', 'submissions.contractor_id', '=', 'users.id')
             ->where('submissions.contractor_id', '=', Auth::user()->id)->latest('submissions.created_at')
-            ->select('submissions.*')->get();
+            ->select('submissions.*')->with('Job')->get();
         // dd($subs);
         return view('contractor.submission', [
             'title' => 'HandyHelp | My Submission',
@@ -49,7 +49,7 @@ class SubmissionController extends Controller
             ->where('submissions.job_id', '=', $job->id)
             ->where('jobs.user_id', '=', Auth::user()->id)
             ->latest('submissions.created_at')
-            ->select('submissions.*')->get();
+            ->select('submissions.*')->with('Contractor')->get();
 
         return view('member.submission', [
             'title' => 'HandyHelp | My Submission',
@@ -99,7 +99,7 @@ class SubmissionController extends Controller
         $subs = Submission::join('jobs', 'submissions.job_id', '=', 'jobs.id')
             ->where('submissions.job_id', '=', $job->id)
             ->where('submissions.status', '!=', 'reject')
-            ->select('submissions.*')->get();
+            ->select('submissions.*')->with('Contractor')->get();
 
         return view('member.status', [
             'title' => 'HandyHelp | My Submission',

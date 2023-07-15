@@ -19,15 +19,14 @@ class UserController extends Controller
         if (Auth::user()->role == 'member') {
             $jobs = Jobs::join('users', 'jobs.user_id', '=', 'users.id')
                 ->where('jobs.user_id', '=', Auth::user()->id)->latest('jobs.created_at')
-                ->select('jobs.*')->get();
+                ->select('jobs.*')->with(['category', 'User', 'city'])->get();
             return view('member.profile', [
                 'title' => 'HandyHelp | Profile',
                 'jobs' => $jobs
             ]);
         } elseif (Auth::user()->role == 'contractor') {
             $reviews = Review::join('users', 'reviews.contractor_id', '=', 'users.id')
-                ->where('reviews.contractor_id', '=', Auth::user()->id)->latest('reviews.created_at')
-                ->select('reviews.*')->get();
+                ->where('reviews.contractor_id', '=', Auth::user()->id)->latest('reviews.created_at')->select('reviews.*')->with('User')->get();
 
             $count = Review::join('users', 'reviews.contractor_id', '=', 'users.id')
                 ->where('reviews.contractor_id', '=', Auth::user()->id)->count();
@@ -181,7 +180,7 @@ class UserController extends Controller
         if ($user->role == 'member') {
             $jobs = Jobs::join('users', 'jobs.user_id', '=', 'users.id')
                 ->where('jobs.user_id', '=', $user->id)->latest('jobs.created_at')
-                ->select('jobs.*')->get();
+                ->select('jobs.*')->with(['category', 'User', 'city'])->get();
 
             return view('auth.member', [
                 'title' => 'Profile | ' . $user->name,
@@ -192,7 +191,7 @@ class UserController extends Controller
 
             $reviews = Review::join('users', 'reviews.contractor_id', '=', 'users.id')
                 ->where('reviews.contractor_id', '=', $user->id)->latest('reviews.created_at')
-                ->select('reviews.*')->get();
+                ->select('reviews.*')->with('User')->get();
 
             $count = Review::join('users', 'reviews.contractor_id', '=', 'users.id')
                 ->where('reviews.contractor_id', '=', $user->id)->count();

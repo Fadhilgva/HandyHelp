@@ -305,6 +305,18 @@
                                                 </li>
                                                 @elseif($review->rating == 4)
                                                 <li>
+                                                    <i class="fa-solid fa-star" style="color: #efa134;"></i>
+                                                </li>
+                                                <li>
+                                                    <i class="fa-solid fa-star" style="color: #efa134;"></i>
+                                                </li>
+                                                <li>
+                                                    <i class="fa-solid fa-star" style="color: #efa134;"></i>
+                                                </li>
+                                                <li>
+                                                    <i class="fa-solid fa-star" style="color: #efa134;"></i>
+                                                </li>
+                                                <li>
                                                     <i class="fa-regular fa-star" style="color: #efa134;"></i>
                                                 </li>
                                                 @elseif($review->rating == 5)

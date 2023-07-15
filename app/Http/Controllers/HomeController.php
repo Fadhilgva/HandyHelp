@@ -13,7 +13,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $jobs = Jobs::orderBy('created_at', 'desc')->get();
+        $jobs = Jobs::with(['category', 'User', 'city'])->orderBy('created_at', 'desc')->get();
         $categories = Category::all();
         $cities = City::all();
 

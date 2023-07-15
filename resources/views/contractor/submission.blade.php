@@ -46,7 +46,7 @@
                                             <div class="lower-content my-2">
                                                 <div class="title-text">
                                                     <h4 class="mb-n1">
-                                                        <a href="">{{ $sub->Job->title }}</a>
+                                                        <a href="/jobs/{{ $sub->Job->slug }}">{{ $sub->Job->title }}</a>
                                                     </h4>
                                                 </div>
                                                 <div class="small mb-2">{{ $sub->created_at->diffForHumans() }}</div>

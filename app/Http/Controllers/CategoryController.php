@@ -25,7 +25,7 @@ class CategoryController extends Controller
 
         return view('guest.category', [
             'title' => 'Jobs in ' . $category->name,
-            'jobs' => Jobs::with(['Category', 'User', 'city'])->latest()->filter(request(['search', 'category']))->paginate(10)->withQueryString(),
+            'jobs' => Jobs::with(['category', 'User', 'city'])->latest()->filter(request(['search', 'category']))->paginate(10)->withQueryString(),
             'cities' => City::all(),
             'categories' => Category::all()
         ]);
