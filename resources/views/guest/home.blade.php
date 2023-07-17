@@ -121,7 +121,7 @@
                 </li>
                 @endforeach
             </ul>
-            <div class="more-btn"><a href="/categories" class="theme-btn btn-one">All Categories</a></div>
+            <div class="more-btn"><a href="/allcategories" class="theme-btn btn-one">All Categories</a></div>
         </div>
     </div>
 </section>
@@ -145,8 +145,11 @@
                         <div class="image-box">
                             <a href="/jobs/{{ $job->slug }}">
                                 <figure class="image">
-                                    <img src="/img/jobs/{{ $job->image1 }}" alt="{{ $job->title }}" width="370" height="250" />
+                                    <img src="/img/jobs/{{ $job->image1 }}" alt="{{ $job->title }}" style="height: 250px; object-fit: cover;" class="rounded" />
                                 </figure>
+                                @if ($job->ava == 'n')
+                                <span class="category">Already Taken</span>
+                                @endif
                             </a>
                         </div>
                         @else

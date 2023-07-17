@@ -62,7 +62,7 @@
                                     <li class="author-box">
                                         @if ($job->user->profile)
                                         <figure class="author-thumb">
-                                            <img src="/img/profile/{{ $job->user->profile }}" width="80" height="80" />
+                                            <img src="/img/profile/{{ $job->user->profile }}" style="width: 50px; height: 50px; object-fit: cover;" />
                                         </figure>
                                         @else
                                         <figure class="author-thumb">

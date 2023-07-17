@@ -18,7 +18,7 @@
                     <div class="row clearfix">
                         <div class="col-lg-3">
                             @if ($user->profile)
-                            <img src="/img/profile/{{ $user->profile }}" width="300" height="300" class="rounded" />
+                            <img src="/img/profile/{{ $user->profile }}" style="width: 300px; height: 300px; object-fit: cover;" class="rounded" />
                             @else
                             <img src="{{ asset('images/resource/agency-details-1.jpg') }}" width="300" height="300" class="rounded" />
                             @endif
@@ -111,7 +111,7 @@
                                                     <h4><a href="/jobs/{{ $job->slug }}">{{ $job->title }}</a></h4>
                                                 </div>
                                                 <div class="price-box clearfix">
-                                                    <div class="price-info pull-left">
+                                                    <div class="price-info pull-left my-2">
                                                         <h6>Start From</h6>
                                                         <h4>Rp{{ number_format($job->rate, 0,",",".") }}</h4>
                                                     </div>

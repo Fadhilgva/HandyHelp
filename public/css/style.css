@@ -9991,7 +9991,22 @@ div#mCSB_1_container {
 }
 
 .newone {
-    height: 1000px;
+    height: 1100px;
+}
+
+.pic {
+    max-height: 250px;
+}
+
+.prof_s {
+    max-height: 200px;
+    max-width: 200px;
+}
+
+.prof_l {
+    max-height: 200px;
+    max-width: 200px;
+    padding: 10px;
 }
 
 .thumbnail_images ul {

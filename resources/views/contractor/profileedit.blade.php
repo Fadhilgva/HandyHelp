@@ -41,7 +41,7 @@
                                         <label>Profile Image</label>
                                         <input type="file" id="profile" name="profile" placeholder="Enter image for your profile" value="{{ old('profile') }}" class="form-control @error('profile')
                                         is-invalid
-                                        @enderror" required>
+                                        @enderror">
                                         @error('profile')
                                         <div class=" invalid-feedback">
                                             {{ $message }}

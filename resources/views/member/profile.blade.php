@@ -18,7 +18,7 @@
                     <div class="row clearfix">
                         <div class="col-lg-3">
                             @if (Auth()->user()->profile)
-                            <img src="/img/profile/{{ Auth()->user()->profile }}" width="300" height="300" class="rounded" />
+                            <img src="/img/profile/{{ Auth()->user()->profile }}" style="width: 300px; height: 300px; object-fit: cover;" class="rounded" />
                             @else
                             <img src="{{ asset('images/resource/agency-details-1.jpg') }}" width="300" height="300" class="rounded" />
                             @endif
