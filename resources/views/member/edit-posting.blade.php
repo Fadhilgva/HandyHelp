@@ -130,7 +130,7 @@
                                     <label>Image 1</label>
                                     <input type="file" id="image_1" name="image_1" placeholder="Enter image for your job" value="{{ old('image_1') }}" class="form-control @error('image_1')
                                     is-invalid
-                                    @enderror" required>
+                                    @enderror">
                                     @error('image_1')
                                     <div class=" invalid-feedback">
                                         {{ $message }}

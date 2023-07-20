@@ -158,7 +158,7 @@ class JobsController extends Controller
         // dd($job);
         $rules = [
             'title' => 'required|min:8|max:150',
-            'image_1' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image_1' => 'image|mimes:jpeg,png,jpg|max:2048',
             'image_2' => 'image|mimes:jpeg,png,jpg|max:2048',
             'image_3' => 'image|mimes:jpeg,png,jpg|max:2048',
             'detail' => 'required|min:50|max:10000',
@@ -189,7 +189,7 @@ class JobsController extends Controller
             $job->option_two = $validatedData['option_two']
         ];
 
-        if ($validatedData['image_1']) {
+        if ($request->image_1) {
             File::delete('img/jobs/' . $job->image1);
 
             $image1 =  time() . '-' . $validatedData['image_1']->getClientOriginalName();
