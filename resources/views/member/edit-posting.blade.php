@@ -53,7 +53,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Maximum Rate (IDR)</label>
+                                    <label>Highest funds (IDR)</label>
                                     <input type="number" id="rate" name="rate" required placeholder="Enter rates range for your job" value="{{ old('rate') ? old('rate') : $job->rate}}" class="form-control 
                                     @error('rate')
                                     is-invalid

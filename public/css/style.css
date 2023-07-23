@@ -2532,11 +2532,10 @@ div#mCSB_1_container {
     line-height: 26px;
     font-weight: 500;
     color: #ffffff;
-    text-transform: uppercase;
     border-radius: 3px;
     padding: 0px 14px;
     text-align: center;
-    background-color: #f2b241;
+    background-color: #fd7e14;
     z-index: 1;
 }
 
@@ -6906,7 +6905,7 @@ div#mCSB_1_container {
 }
 
 .agent-details-page .deals-block-one .inner-box .category {
-    left: 70px;
+    left: 15px;
 }
 
 .default-form input[type="text"],

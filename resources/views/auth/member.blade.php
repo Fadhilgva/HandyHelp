@@ -95,6 +95,9 @@
                                                     <figure class="image">
                                                         <img src="/img/jobs/{{ $job->image1 }}" alt="{{ $job->title }}" />
                                                     </figure>
+                                                    @if ($job->ava == 'n')
+                                                    <span class="category">Already Taken</span>
+                                                    @endif
                                                 </a>
                                             </div>
                                             @else
@@ -112,7 +115,7 @@
                                                 </div>
                                                 <div class="price-box clearfix">
                                                     <div class="price-info pull-left my-2">
-                                                        <h6>Start From</h6>
+                                                        <h6>Highest funds</h6>
                                                         <h4>Rp{{ number_format($job->rate, 0,",",".") }}</h4>
                                                     </div>
                                                 </div>
@@ -153,14 +156,14 @@
                             <div class="comment-box">
                                 @foreach ($reviews as $review)
                                 <div class="comment">
-                                    <a href="">
+                                    <a>
                                         <figure class="thumb-box">
                                             <img src="{{ asset('images/news/comment-1.jpg') }}" alt="">
                                         </figure>
                                     </a>
                                     <div class="comment-inner">
                                         <div class="comment-info clearfix">
-                                            <a href="">
+                                            <a>
                                                 <h5>{{ $review->name }}</h5>
                                             </a>
                                             <span>{{ $review->created_at->diffForHumans() }}</span>

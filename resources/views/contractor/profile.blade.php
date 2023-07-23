@@ -91,14 +91,14 @@
               <div class="comment-box">
                 @foreach ($reviews as $review)
                 <div class="comment">
-                  <a href="">
+                  <a>
                     <figure class="thumb-box">
                       <img src="{{ asset('images/news/comment-1.jpg') }}" alt="">
                     </figure>
                   </a>
                   <div class="comment-inner">
                     <div class="comment-info clearfix">
-                      <a href="">
+                      <a>
                         <h5>{{ $review->name }}</h5>
                       </a>
                       <span>{{ $review->created_at->diffForHumans() }}</span>

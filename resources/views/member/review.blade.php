@@ -66,7 +66,7 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12 form-group">
                                     <label>Name</label>
-                                    <input type="text" id="name" name="name" placeholder="Your name" required value="{{ old('name') }}" class="@error('name')
+                                    <input type="text" id="name" name="name" placeholder="Your name" required value="{{ old('name', $user) }}" class="@error('name')
                                     is-invalid
                                     @enderror">
                                     @error('name')

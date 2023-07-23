@@ -110,6 +110,9 @@
                                                     <figure class="image">
                                                         <img src="/img/jobs/{{ $job->image1 }}" alt="{{ $job->title }}" />
                                                     </figure>
+                                                    @if ($job->ava == 'n')
+                                                    <span class="category">Already Taken</span>
+                                                    @endif
                                                 </a>
                                             </div>
                                             @else
@@ -127,7 +130,7 @@
                                                 </div>
                                                 <div class="price-box clearfix">
                                                     <div class="price-info pull-left my-2">
-                                                        <h6>Start From</h6>
+                                                        <h6>Highest funds</h6>
                                                         <h4>Rp{{ number_format($job->rate, 0,",",".") }}</h4>
                                                     </div>
                                                     <div class="btn-box pull-right mr-5 ml-3">

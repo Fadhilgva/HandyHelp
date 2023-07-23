@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Jobs;
 use App\Models\Review;
 use App\Models\Submission;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -130,9 +131,11 @@ class SubmissionController extends Controller
 
     public function review(Submission $sub)
     {
+        $user = User::findOrFail(Auth()->user()->id)->name;
         return view('member.review', [
             'title' => 'HandyHelp | My Submission',
-            'sub' => $sub
+            'sub' => $sub,
+            'user' => $user
         ]);
     }
 

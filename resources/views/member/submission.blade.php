@@ -51,7 +51,7 @@
                                                     </div>
                                                     @if ($sub->status == 'accept')
                                                     <div class="btn-box pull-right mx-5 my-3">
-                                                        <a href="/progress/{{ $sub->Job->slug }}" class="theme-btn btn-one">View Progress</a>
+                                                        <a href="/progress/{{ $sub->Job->slug }}" class="theme-btn btn-one">View Progress Job</a>
                                                     </div>
                                                     @elseif($sub->status == 'review')
                                                     <form action="/decline/{{ $sub->id }}" method="POST">
@@ -80,7 +80,7 @@
                                                     </div>
                                                     @else
                                                     <div class="btn-box pull-right mx-5 my-3">
-                                                        <a href="/progress/{{ $sub->Job->slug }}" class="theme-btn btn-one">View Progress</a>
+                                                        <a href="/progress/{{ $sub->Job->slug }}" class="theme-btn btn-one">View Progress Job</a>
                                                     </div>
                                                     @endif
                                                 </div>
