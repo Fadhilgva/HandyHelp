@@ -4,9 +4,26 @@
 <!-- jobs-section -->
 <section class="category-section category-page mr-0 pt-20 pb-20">
     @if ($jobs->count() > 0)
+    @foreach ($jobs->take(1) as $job)
     <div class="auto-container">
         <div class="sec-title centred mb-lg-5">
+            @if(request('search') and request('category') and request('city'))
+            <h2>Jobs {{ $search }} in {{ $category }} and {{ $city }} </h2>
+            @elseif(request('search') and request('category'))
+            <h2>Jobs {{ $search }} in {{ $category }}</h2>
+            @elseif(request('search') and request('city'))
+            <h2>Jobs {{ $search }} in {{ $city }}</h2>
+            @elseif(request('category') and request('city'))
+            <h2>Jobs in {{ $category }} and {{ $city }} </h2>
+            @elseif (request('search'))
+            <h2>Jobs in {{ $search }}</h2>
+            @elseif(request('category'))
+            <h2>Jobs in {{ $category }}</h2>
+            @elseif(request('city'))
+            <h2>Jobs in {{ $city }}</h2>
+            @else
             <h2>Jobs</h2>
+            @endif
             {{-- <h5>Find a job that suits you</h5> --}}
             <p>Lorem ipsum dolor sit amet consectetur adipisicing sed do eiusmod tempor incididunt <br />labore dolore magna aliqua enim.</p>
         </div>
@@ -38,7 +55,11 @@
                                                                 <select class="wide" name="city">
                                                                     <option value="">All City</option>
                                                                     @foreach ($cities as $city)
+                                                                    @if (request('city') == $city->name)
+                                                                    <option value="{{ $city->slug }}" selected>{{ $city->name }}</option>
+                                                                    @else
                                                                     <option value="{{ $city->slug }}">{{ $city->name }}</option>
+                                                                    @endif
                                                                     @endforeach
                                                                 </select>
                                                             </div>
@@ -51,7 +72,11 @@
                                                                 <select class="wide" name="category">
                                                                     <option value="">All Category</option>
                                                                     @foreach ($categories as $category)
+                                                                    @if (request('category') == $category->slug)
+                                                                    <option value="{{ $category->slug }}" selected>{{ $category->name }}</option>
+                                                                    @else
                                                                     <option value="{{ $category->slug }}">{{ $category->name }}</option>
+                                                                    @endif
                                                                     @endforeach
                                                                 </select>
                                                             </div>
@@ -120,6 +145,7 @@
             @endforeach
         </div>
     </div>
+    @endforeach
     @else
     <div class="auto-container">
         <div class="sec-title centred">

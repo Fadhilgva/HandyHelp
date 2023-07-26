@@ -136,9 +136,11 @@
                                                     <div class="btn-box pull-right mr-5 ml-3">
                                                         <a href="/submission/{{ $job->slug }}" class="theme-btn btn-one">View Submission</a>
                                                     </div>
+                                                    @if ($job->ava == 'y')
                                                     <div class="btn-box pull-right">
                                                         <a href="/edit-job/{{ $job->slug }}" class="theme-btn btn-two">Edit</a>
                                                     </div>
+                                                    @endif
                                                 </div>
                                                 <div class="post-tags">
                                                     <ul class="more-details clearfix">

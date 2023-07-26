@@ -109,12 +109,12 @@
                 @foreach ($categories->take(5) as $category)
                 <li>
                     <div class="category-block-one">
-                        <a href="/categories?category={{ $category->slug }}">
+                        <a href="/jobs?category={{ $category->slug }}">
                             <div class="inner-box">
                                 <div class="icon-box">
                                     <img src="/images/category/{{ $category->image }}" class="d-inline-block align-text" width="60">
                                 </div>
-                                <h5><a href="/categories?category={{ $category->slug }}">{{ $category->name }}</a></h5>
+                                <h5><a href="/jobs?category={{ $category->slug }}">{{ $category->name }}</a></h5>
                             </div>
                         </a>
                     </div>
@@ -167,7 +167,7 @@
                             </div>
                             <div class="price-box clearfix">
                                 <div class="price-info pull-left">
-                                    <h6>Start From</h6>
+                                    <h6>Highest funds</h6>
                                     <h4>Rp{{ number_format($job->rate, 0,",",".") }}</h4>
                                 </div>
                             </div>
@@ -368,13 +368,13 @@
                 <div class="col-lg-4 col-md-6 col-sm-12 masonry-item small-column all illustration brand marketing software">
                     <div class="place-block-one">
                         <div class="inner-box">
-                            <a href="/cities?city={{ $city->slug }}">
+                            <a href="/jobs?city={{ $city->slug }}">
                                 <figure class="image-box">
                                     <img src="/images/city/{{ $city->image }}" height="1000" />
                                 </figure>
                                 <div class="text">
                                     <h4>
-                                        <a href="/cities?city={{ $city->slug }}">{{ $city->name }}</a>
+                                        <a href="/jobs?city={{ $city->slug }}">{{ $city->name }}</a>
                                     </h4>
                                 </div>
                             </a>
@@ -386,13 +386,13 @@
                 <div class="col-lg-4 col-md-6 col-sm-12 masonry-item small-column all brand illustration print software logo">
                     <div class="place-block-one">
                         <div class="inner-box">
-                            <a href="/cities?city={{ $city->slug }}">
+                            <a href="/jobs?city={{ $city->slug }}">
                                 <figure class="image-box">
                                     <img src="/images/city/{{ $city->image }}" />
                                 </figure>
                                 <div class="text">
                                     <h4>
-                                        <a href="/cities?city={{ $city->slug }}">{{ $city->name }}</a>
+                                        <a href="/jobs?city={{ $city->slug }}">{{ $city->name }}</a>
                                     </h4>
                                 </div>
                             </a>
@@ -404,13 +404,13 @@
                 <div class="col-lg-4 col-md-6 col-sm-12 masonry-item small-column all illustration marketing logo">
                     <div class="place-block-one">
                         <div class="inner-box">
-                            <a href="/cities?city={{ $city->slug }}">
+                            <a href="/jobs?city={{ $city->slug }}">
                                 <figure class="image-box">
                                     <img src="/images/city/{{ $city->image }}" alt="" />
                                 </figure>
                                 <div class="text">
                                     <h4>
-                                        <a href="/cities?city={{ $city->slug }}">{{ $city->name }}</a>
+                                        <a href="/jobs?city={{ $city->slug }}">{{ $city->name }}</a>
                                     </h4>
                                 </div>
                             </a>
@@ -422,13 +422,13 @@
                 <div class="col-lg-8 col-md-6 col-sm-12 masonry-item small-column all brand marketing print software">
                     <div class="place-block-one">
                         <div class="inner-box">
-                            <a href="/cities?city={{ $city->slug }}">
+                            <a href="/jobs?city={{ $city->slug }}">
                                 <figure class="image-box">
                                     <img src="/images/city/{{ $city->image }}" />
                                 </figure>
                                 <div class="text">
                                     <h4>
-                                        <a href="/cities?city={{ $city->slug }}">{{ $city->name }}</a>
+                                        <a href="/jobs?city={{ $city->slug }}">{{ $city->name }}</a>
                                     </h4>
                                 </div>
                             </a>

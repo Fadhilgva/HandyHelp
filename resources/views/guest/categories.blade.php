@@ -14,13 +14,13 @@
                 @foreach ($categories as $category)
                 <li>
                     <div class="category-block-one">
-                        <a href="/categories?category={{ $category->slug }}">
+                        <a href="/jobs?category={{ $category->slug }}">
                             <div class="inner-box">
                                 <div class="icon-box">
                                     <img src="/images/category/{{ $category->image }}" class="d-inline-block align-text" width="60">
                                 </div>
                                 <h5>
-                                    <a href="/categories?category={{ $category->slug }}">{{ $category->name }}</a>
+                                    <a href="/jobs?category={{ $category->slug }}">{{ $category->name }}</a>
                                 </h5>
                             </div>
                         </a>

@@ -100,10 +100,13 @@ class JobsController extends Controller
     {
         if (request('search') or request('city') or request('category')) {
             return view('guest.jobs', [
-                'title' => 'Handy Help | ' . request('search') . request('city') . request('category'),
+                'title' => 'Handy Help | ' . request('search') . request('city') . (str_replace('-', ' ', request('category'))),
                 'jobs' => Jobs::with(['category', 'User', 'city'])->latest()->filter(request(['search', 'city', 'category']))->paginate(10)->withQueryString(),
                 'cities' => City::all(),
-                'categories' => Category::all()
+                'categories' => Category::all(),
+                'search' => request('search'),
+                'city' => request('city'),
+                'category' => str_replace('-', ' ', request('category'))
             ]);
         } else {
             return view('guest.jobs', [
@@ -124,19 +127,20 @@ class JobsController extends Controller
         ]);
     }
 
-    public function city(City $city)
-    {
-        if (request('city')) {
-            $city = City::firstWhere('slug', request('city'));
-        }
+    // public function city(City $city)
+    // {
+    //     if (request('city')) {
+    //         $city = City::firstWhere('slug', request('city'));
+    //     }
 
-        return view('guest.city', [
-            'title' => 'Jobs Located in ' . $city->name,
-            'jobs' => Jobs::with(['category', 'User', 'city'])->latest()->filter(request(['search', 'city', 'category']))->paginate(10)->withQueryString(),
-            'cities' => City::all(),
-            'categories' => Category::all()
-        ]);
-    }
+    //     return view('guest.jobs', [
+    //         'title' => 'Jobs Located in ' . $city->name,
+    //         'jobs' => Jobs::with(['category', 'User', 'city'])->latest()->filter(request(['search', 'city', 'category']))->paginate(10)->withQueryString(),
+    //         'cities' => City::all(),
+    //         'categories' => Category::all(),
+    //         'city' => $city->name
+    //     ]);
+    // }
 
     public function edit($slug)
     {
@@ -193,7 +197,7 @@ class JobsController extends Controller
             File::delete('img/jobs/' . $job->image1);
 
             $image1 =  time() . '-' . $validatedData['image_1']->getClientOriginalName();
-            $validatedData['image_1']->move('img\jobs', $image1);
+            $validatedData['image_1']->move(public_path('img/jobs'), $image1);
 
             $data['image1'] = $image1;
         }
@@ -202,7 +206,7 @@ class JobsController extends Controller
             File::delete('img/jobs/' . $job->image2);
 
             $image2 =  time() . '-' . $validatedData['image_2']->getClientOriginalName();
-            $validatedData['image_2']->move('img\jobs', $image2);
+            $validatedData['image_2']->move(public_path('img/jobs'), $image2);
 
             $data['image2'] = $image2;
         }
@@ -211,7 +215,7 @@ class JobsController extends Controller
             File::delete('img/jobs/' . $job->image3);
 
             $image3 =  time() . '-' . $validatedData['image_3']->getClientOriginalName();
-            $validatedData['image_3']->move('img\jobs', $image3);
+            $validatedData['image_3']->move(public_path('img/jobs'), $image3);
 
             $data['image3'] = $image3;
         }
@@ -220,7 +224,7 @@ class JobsController extends Controller
             File::delete('img/jobs/' . $job->image4);
 
             $image4 =  time() . '-' . $validatedData['image_4']->getClientOriginalName();
-            $validatedData['image_4']->move('img\jobs', $image4);
+            $validatedData['image_4']->move(public_path('img/jobs'), $image4);
 
             $data['image4'] = $image4;
         }
