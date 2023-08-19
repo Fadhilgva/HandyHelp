@@ -8,8 +8,10 @@
                             <h3>About</h3>
                         </div>
                         <div class="text">
-                            <p>Lorem ipsum dolor amet consetetur adi pisicing elit sed eiusm tempor in cididunt ut labore dolore magna aliqua enim ad minim venitam</p>
-                            <p>Quis nostrud exercita laboris nisi ut aliquip commodo.</p>
+                            <p>Welcome to HandyHelp! We're your trusted website for finding reliable professionals to help with a wide range of tasks and projects. Simply post your task, compare professional profiles and reviews, and hire the best fit for your
+                                needs.</p>
+                            <p>Join us today and simplify your life with HandyHelp!</p>
+
                         </div>
                     </div>
                 </div>
@@ -20,9 +22,9 @@
                         </div>
                         <div class="widget-content">
                             <ul class="links-list class">
-                                <li><a href="index.html">About Us</a></li>
-                                <li><a href="index.html">Jobs</a></li>
-                                <li><a href="index.html">Categories</a></li>
+                                <li><a href="/about">About Us</a></li>
+                                <li><a href="/jobs">Jobs</a></li>
+                                <li><a href="/allcategories">Categories</a></li>
                             </ul>
                         </div>
                     </div>
@@ -34,9 +36,9 @@
                         </div>
                         <div class="widget-content">
                             <ul class="info-list clearfix">
-                                <li><i class="fas fa-map-marker-alt"></i>Sisingamangaraja Road, Kebayoran Baru South Jakarta 12110</li>
-                                <li><i class="fas fa-microphone"></i><a href="">(021) 727 92753</a></li>
-                                <li><i class="fas fa-envelope"></i><a href="">info@uai.ac.id</a></li>
+                                <li><i class="fas fa-map-marker-alt"></i><a>Sisingamangaraja Road, Kebayoran Baru South Jakarta 12110</a></li>
+                                <li><i class="fas fa-microphone"></i><a>(021) 727 92753</a></li>
+                                <li><i class="fas fa-envelope"></i><a>info@uai.ac.id</a></li>
                             </ul>
                         </div>
                     </div>

@@ -9,7 +9,7 @@
                 <div class="col-lg-6 col-md-12 col-sm-12 image-column">
                     <div class="image_block_2">
                         <div class="image-box">
-                            <figure class="image"><img src="{{ asset('images/resource/about-1.jpg') }}" alt="" /></figure>
+                            <figure class="image"><img src="{{ asset('images/resource/job.gif') }}" alt="" /></figure>
                         </div>
                     </div>
                 </div>
@@ -21,15 +21,12 @@
                                 <h5>Connecting Hands, Solving demands.</h5>
                             </div>
                             <div class="text">
-                                <p>Dolor sit amet consectetur elit sed do eiusmod tempor incididunt labore et dolore magna aliqua enim ad minim veniam quis nostrud exercitation ullamco laboris aliquip ex ea commodo consequat duis aute irure.</p>
-                                <p>dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat.</p>
-                            </div>
-                            <ul class="list clearfix">
-                                <li>consectetur elit sed do eius</li>
-                                <li>consectetur elit sed</li>
-                            </ul>
-                            <div class="btn-box">
-                                <a href="contact.html" class="theme-btn btn-one">Contact With Me</a>
+                                <p>
+                                    Welcome to HandyHelp! We're your trusted website for finding reliable professionals to help with a wide range of tasks and projects. Simply post your task, compare professional profiles and reviews, and hire the best fit for
+                                    your needs.
+                                </p>
+
+                                <p>Join us today and simplify your life with HandyHelp!</p>
                             </div>
                         </div>
                     </div>
@@ -40,92 +37,16 @@
 </section>
 <!-- about-section end -->
 
-<!-- feature-style-three -->
-<section class="feature-style-three centred pb-110">
-    <div class="auto-container">
-        <div class="sec-title">
-            {{-- <h5>Our Services</h5> --}}
-            <h2>Our Services</h2>
-        </div>
-        <div class="three-item-carousel owl-carousel owl-theme owl-nav-none dots-style-one">
-            <div class="feature-block-two">
-                <div class="inner-box">
-                    <div class="icon-box"><i class="icon-1"></i></div>
-                    <h4>Excellent Reputation</h4>
-                    <p>Lorem ipsum dolor sit consectetur sed eiusm tempor incididunt dolore magna.</p>
-                </div>
-            </div>
-            <div class="feature-block-two">
-                <div class="inner-box">
-                    <div class="icon-box"><i class="icon-26"></i></div>
-                    <h4>Best Local Agents</h4>
-                    <p>Lorem ipsum dolor sit consectetur sed eiusm tempor incididunt dolore magna.</p>
-                </div>
-            </div>
-            <div class="feature-block-two">
-                <div class="inner-box">
-                    <div class="icon-box"><i class="icon-21"></i></div>
-                    <h4>Personalized Service</h4>
-                    <p>Lorem ipsum dolor sit consectetur sed eiusm tempor incididunt dolore magna.</p>
-                </div>
-            </div>
-            <div class="feature-block-two">
-                <div class="inner-box">
-                    <div class="icon-box"><i class="icon-1"></i></div>
-                    <h4>Excellent Reputation</h4>
-                    <p>Lorem ipsum dolor sit consectetur sed eiusm tempor incididunt dolore magna.</p>
-                </div>
-            </div>
-            <div class="feature-block-two">
-                <div class="inner-box">
-                    <div class="icon-box"><i class="icon-26"></i></div>
-                    <h4>Best Local Agents</h4>
-                    <p>Lorem ipsum dolor sit consectetur sed eiusm tempor incididunt dolore magna.</p>
-                </div>
-            </div>
-            <div class="feature-block-two">
-                <div class="inner-box">
-                    <div class="icon-box"><i class="icon-21"></i></div>
-                    <h4>Personalized Service</h4>
-                    <p>Lorem ipsum dolor sit consectetur sed eiusm tempor incididunt dolore magna.</p>
-                </div>
-            </div>
-            <div class="feature-block-two">
-                <div class="inner-box">
-                    <div class="icon-box"><i class="icon-1"></i></div>
-                    <h4>Excellent Reputation</h4>
-                    <p>Lorem ipsum dolor sit consectetur sed eiusm tempor incididunt dolore magna.</p>
-                </div>
-            </div>
-            <div class="feature-block-two">
-                <div class="inner-box">
-                    <div class="icon-box"><i class="icon-26"></i></div>
-                    <h4>Best Local Agents</h4>
-                    <p>Lorem ipsum dolor sit consectetur sed eiusm tempor incididunt dolore magna.</p>
-                </div>
-            </div>
-            <div class="feature-block-two">
-                <div class="inner-box">
-                    <div class="icon-box"><i class="icon-21"></i></div>
-                    <h4>Personalized Service</h4>
-                    <p>Lorem ipsum dolor sit consectetur sed eiusm tempor incididunt dolore magna.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- feature-style-three end -->
-
 <!-- cta-section -->
-<section class="cta-section alternate-2 pb-240 centred" style="background-image: url({{ asset('images/background/cta-1.jpg)') }}">
+<section class="cta-section alternate-2 pb-240 centred" style="background-image: url({{ asset('images/background/New.jpg)') }}">
     <div class="auto-container">
         <div class="inner-box clearfix">
             <div class="text">
                 <h2>Looking for a Job or <br />Want to offer an existing one</h2>
             </div>
             <div class="btn-box">
-                <a href="property-details.html" class="theme-btn btn-three">Offer</a>
-                <a href="index.html" class="theme-btn btn-one">Find</a>
+                <a href="/signup_member" class="theme-btn btn-three">Offer</a>
+                <a href="/signup_contractor" class="theme-btn btn-one">Find</a>
             </div>
         </div>
     </div>
@@ -141,7 +62,7 @@
                     <div class="funfact-block-one">
                         <div class="inner-box">
                             <div class="count-outer count-box">
-                                <span class="count-text" data-speed="1500" data-stop="1270">0</span>
+                                <span class="count-text" data-speed="1500" data-stop="{{ $contractor }}">{{ $contractor }}</span>
                             </div>
                             <p>Total Contractors</p>
                         </div>
@@ -151,7 +72,7 @@
                     <div class="funfact-block-one">
                         <div class="inner-box">
                             <div class="count-outer count-box">
-                                <span class="count-text" data-speed="1500" data-stop="2350">0</span>
+                                <span class="count-text" data-speed="1500" data-stop="{{ $member }}">{{ $member }}</span>
                             </div>
                             <p>Total Member</p>
                         </div>
@@ -161,7 +82,7 @@
                     <div class="funfact-block-one">
                         <div class="inner-box">
                             <div class="count-outer count-box">
-                                <span class="count-text" data-speed="1500" data-stop="2540">0</span>
+                                <span class="count-text" data-speed="1500" data-stop="{{ $jobs }}">{{ $jobs }}</span>
                             </div>
                             <p>Total Jobs</p>
                         </div>
@@ -172,92 +93,6 @@
     </div>
 </section>
 <!-- funfact-section end -->
-
-<!-- testimonial-style-four -->
-<section class="testimonial-style-four sec-pad centred">
-    <div class="auto-container">
-        <div class="sec-title">
-            <h5>Testimonials</h5>
-            <h2>What They Say About Us</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing sed do eiusmod tempor incididunt <br />labore dolore magna aliqua enim.</p>
-        </div>
-        <div class="three-item-carousel owl-carousel owl-theme owl-nav-none dots-style-one">
-            <div class="testimonial-block-three">
-                <div class="inner-box">
-                    <div class="icon-box"><i class="icon-18"></i></div>
-                    <h4>“Our goal each day is to ensure that our residents’ needs are not only met but exceeded.”</h4>
-                    <h5>Rebeka Dawson</h5>
-                    <span class="designation">Instructor</span>
-                </div>
-            </div>
-            <div class="testimonial-block-three">
-                <div class="inner-box">
-                    <div class="icon-box"><i class="icon-18"></i></div>
-                    <h4>“Our goal each day is to ensure that our residents’ needs are not only met but exceeded.”</h4>
-                    <h5>Marc Kenneth</h5>
-                    <span class="designation">Founder CEO</span>
-                </div>
-            </div>
-            <div class="testimonial-block-three">
-                <div class="inner-box">
-                    <div class="icon-box"><i class="icon-18"></i></div>
-                    <h4>“Our goal each day is to ensure that our residents’ needs are not only met but exceeded.”</h4>
-                    <h5>Owen Lester</h5>
-                    <span class="designation">Manager</span>
-                </div>
-            </div>
-            <div class="testimonial-block-three">
-                <div class="inner-box">
-                    <div class="icon-box"><i class="icon-18"></i></div>
-                    <h4>“Our goal each day is to ensure that our residents’ needs are not only met but exceeded.”</h4>
-                    <h5>Rebeka Dawson</h5>
-                    <span class="designation">Instructor</span>
-                </div>
-            </div>
-            <div class="testimonial-block-three">
-                <div class="inner-box">
-                    <div class="icon-box"><i class="icon-18"></i></div>
-                    <h4>“Our goal each day is to ensure that our residents’ needs are not only met but exceeded.”</h4>
-                    <h5>Marc Kenneth</h5>
-                    <span class="designation">Founder CEO</span>
-                </div>
-            </div>
-            <div class="testimonial-block-three">
-                <div class="inner-box">
-                    <div class="icon-box"><i class="icon-18"></i></div>
-                    <h4>“Our goal each day is to ensure that our residents’ needs are not only met but exceeded.”</h4>
-                    <h5>Owen Lester</h5>
-                    <span class="designation">Manager</span>
-                </div>
-            </div>
-            <div class="testimonial-block-three">
-                <div class="inner-box">
-                    <div class="icon-box"><i class="icon-18"></i></div>
-                    <h4>“Our goal each day is to ensure that our residents’ needs are not only met but exceeded.”</h4>
-                    <h5>Rebeka Dawson</h5>
-                    <span class="designation">Instructor</span>
-                </div>
-            </div>
-            <div class="testimonial-block-three">
-                <div class="inner-box">
-                    <div class="icon-box"><i class="icon-18"></i></div>
-                    <h4>“Our goal each day is to ensure that our residents’ needs are not only met but exceeded.”</h4>
-                    <h5>Marc Kenneth</h5>
-                    <span class="designation">Founder CEO</span>
-                </div>
-            </div>
-            <div class="testimonial-block-three">
-                <div class="inner-box">
-                    <div class="icon-box"><i class="icon-18"></i></div>
-                    <h4>“Our goal each day is to ensure that our residents’ needs are not only met but exceeded.”</h4>
-                    <h5>Owen Lester</h5>
-                    <span class="designation">Manager</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- testimonial-style-four end -->
 
 <!-- WE ARE TEAM -->
 <section class="team-section sec-pad centred">

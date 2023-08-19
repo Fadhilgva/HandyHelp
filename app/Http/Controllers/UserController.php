@@ -7,26 +7,33 @@ use App\Models\Jobs;
 use App\Models\User;
 use App\Models\Skill;
 use App\Models\Country;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
     public function index()
     {
         if (Auth::user()->role == 'member') {
-
             $jobs = Jobs::join('users', 'jobs.user_id', '=', 'users.id')
                 ->where('jobs.user_id', '=', Auth::user()->id)->latest('jobs.created_at')
-                ->select('jobs.*')->get();
-            // dd($jobs);
+                ->select('jobs.*')->with(['category', 'User', 'city'])->get();
             return view('member.profile', [
                 'title' => 'HandyHelp | Profile',
                 'jobs' => $jobs
             ]);
         } elseif (Auth::user()->role == 'contractor') {
+            $reviews = Review::join('users', 'reviews.contractor_id', '=', 'users.id')
+                ->where('reviews.contractor_id', '=', Auth::user()->id)->latest('reviews.created_at')->select('reviews.*')->with('User')->get();
+
+            $count = Review::join('users', 'reviews.contractor_id', '=', 'users.id')
+                ->where('reviews.contractor_id', '=', Auth::user()->id)->count();
             return view('contractor.profile', [
                 'title' => 'HandyHelp | Profile',
+                'count' => $count,
+                'reviews' => $reviews
             ]);
         }
     }
@@ -58,8 +65,6 @@ class UserController extends Controller
         if (Auth::user()->role == 'member') {
             $user = User::find(Auth::user()->id);
 
-            $user = User::find(Auth::user()->id);
-
             if ($request->email != $user->email) {
                 $request->validate([
                     'email' => ['required', 'string', 'email', 'max:255', 'unique:users']
@@ -80,15 +85,29 @@ class UserController extends Controller
                 ]);
             }
 
+            if ($request->profile) {
+                $request->validate([
+                    'profile' => ['image', 'mimes:jpeg,png,jpg', 'max:2048']
+                ]);
+
+                File::delete('img/profile/' . $user->profile);
+                $profile = time() . '.' . $request->profile->getClientOriginalName();
+                $request->profile->move(public_path('img/profile'), $profile);
+            }
+
             $request->validate([
                 'name' => ['required', 'string', 'min:5', 'max:255'],
                 'desc' => ['max:500'],
             ]);
 
+
             if ($user) {
                 $user->name = $request->input('name');
                 $user->email = $request->input('email');
                 $user->phone = $request->input('phone');
+                if ($request->profile) {
+                    $user->profile = $profile;
+                }
                 $user->desc = $request->input('desc');
                 $user->city = $request->input('city');
                 $user->country = $request->input('country');
@@ -121,15 +140,28 @@ class UserController extends Controller
                 ]);
             }
 
+            if ($request->profile) {
+                $request->validate([
+                    'profile' => ['image', 'mimes:jpeg,png,jpg', 'max:2048']
+                ]);
+
+                File::delete('img/profile/' . $user->profile);
+                $profile = time() . '.' . $request->profile->getClientOriginalName();
+                $request->profile->move(public_path('img/profile'), $profile);
+            }
+
             $request->validate([
                 'name' => ['required', 'string', 'min:5', 'max:255'],
-                'desc' => ['min:20', 'max:500'],
+                'desc' => ['max:500'],
             ]);
 
             if ($user) {
                 $user->name = $request->input('name');
                 $user->email = $request->input('email');
                 $user->phone = $request->input('phone');
+                if ($request->profile) {
+                    $user->profile = $profile;
+                }
                 $user->desc = $request->input('desc');
                 $user->skill = $request->input('skill');
                 $user->city = $request->input('city');
@@ -140,6 +172,36 @@ class UserController extends Controller
             } else {
                 return redirect()->back();
             }
+        }
+    }
+
+    public function profile(User $user)
+    {
+        if ($user->role == 'member') {
+            $jobs = Jobs::join('users', 'jobs.user_id', '=', 'users.id')
+                ->where('jobs.user_id', '=', $user->id)->latest('jobs.created_at')
+                ->select('jobs.*')->with(['category', 'User', 'city'])->get();
+
+            return view('auth.member', [
+                'title' => 'Profile | ' . $user->name,
+                'user' => $user,
+                'jobs' => $jobs
+            ]);
+        } elseif ($user->role == 'contractor') {
+
+            $reviews = Review::join('users', 'reviews.contractor_id', '=', 'users.id')
+                ->where('reviews.contractor_id', '=', $user->id)->latest('reviews.created_at')
+                ->select('reviews.*')->with('User')->get();
+
+            $count = Review::join('users', 'reviews.contractor_id', '=', 'users.id')
+                ->where('reviews.contractor_id', '=', $user->id)->count();
+
+            return view('auth.member', [
+                'title' => 'Profile | ' . $user->name,
+                'user' => $user,
+                'reviews' => $reviews,
+                'count' => $count
+            ]);
         }
     }
 }

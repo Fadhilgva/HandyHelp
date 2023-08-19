@@ -2162,7 +2162,7 @@ div#mCSB_1_container {
     border-radius: 3px;
     padding: 0px 14px;
     text-align: center;
-    background-color: #f2b241;
+    background-color: #fd7e14;
     z-index: 1;
 }
 
@@ -2532,11 +2532,10 @@ div#mCSB_1_container {
     line-height: 26px;
     font-weight: 500;
     color: #ffffff;
-    text-transform: uppercase;
     border-radius: 3px;
     padding: 0px 14px;
     text-align: center;
-    background-color: #f2b241;
+    background-color: #fd7e14;
     z-index: 1;
 }
 
@@ -2607,7 +2606,7 @@ div#mCSB_1_container {
 .deals-block-one .inner-box .lower-content .price-box {
     position: relative;
     display: block;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
 
 .deals-block-one .inner-box .lower-content p {
@@ -3339,11 +3338,11 @@ div#mCSB_1_container {
     line-height: 26px;
     font-weight: 500;
     color: #ffffff;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     border-radius: 3px;
     padding: 0px 14px;
     text-align: center;
-    background-color: #f2b241;
+    background-color: #e87313;
     z-index: 1;
 }
 
@@ -4002,7 +4001,7 @@ div#mCSB_1_container {
 .search-field-section .inner-container {
     position: relative;
     z-index: 2;
-    margin-top: -120px;
+    /* margin-top: -120px; */
 }
 
 .search-field-section .advanced-search {
@@ -4014,7 +4013,7 @@ div#mCSB_1_container {
 }
 
 .search-field-section .search-field .top-search .search-form {
-    padding-right: 320px;
+    padding-right: 180px;
 }
 
 .search-field-section .search-field .top-search .search-btn button {
@@ -4023,7 +4022,7 @@ div#mCSB_1_container {
     line-height: 50px;
     border-radius: 5px;
     top: 58px;
-    right: 170px;
+    right: 30px;
 }
 
 .search-field-section .search-field .top-search .search-btn button i {
@@ -4613,7 +4612,7 @@ div#mCSB_1_container {
 
 .subscribe-section {
     position: relative;
-    padding: 80px 0px 67px 0px;
+    padding: 10px 0px 10px 0px;
 }
 
 .subscribe-section .pattern-layer {
@@ -4658,7 +4657,7 @@ div#mCSB_1_container {
 .subscribe-section .subscribe-form .form-group {
     position: relative;
     margin: 0px;
-    padding-right: 180px;
+    padding-right: 90px;
     border-radius: 5px;
     overflow: hidden;
     background-color: #ffffff;
@@ -4667,7 +4666,18 @@ div#mCSB_1_container {
 .subscribe-section .subscribe-form .form-group input[type="email"] {
     position: relative;
     display: block;
-    width: 100%;
+    /* width: 100%; */
+    height: 60px;
+    font-size: 16px;
+    color: #93959e;
+    padding: 10px 20px;
+    transition: all 500ms ease;
+}
+
+.subscribe-section .subscribe-form .form-group input[type="number"] {
+    position: relative;
+    display: block;
+    /* width: 100%; */
     height: 60px;
     font-size: 16px;
     color: #93959e;
@@ -4679,9 +4689,9 @@ div#mCSB_1_container {
     position: absolute;
     top: 0px;
     right: 0px;
-    width: 180px;
+    width: 100px;
     height: 60px;
-    font-size: 17px;
+    font-size: 13px;
     color: #ffffff;
     background-color: #2d2929;
     font-weight: 500;
@@ -6518,9 +6528,9 @@ div#mCSB_1_container {
     transform: scale(1.05);
 }
 
-.agents-block-one .inner-box .content-box {
+/* .agents-block-one .inner-box .content-box {
     padding: 0px 30px 30px 300px;
-}
+} */
 
 .agents-block-one .inner-box .content-box .upper {
     position: relative;
@@ -6798,10 +6808,10 @@ div#mCSB_1_container {
     margin-bottom: 30px;
 }
 
-.agent-details-page {
+/* .agent-details-page {
     padding-top: 95px;
     padding-bottom: 90px;
-}
+} */
 
 .group-title {
     position: relative;
@@ -6895,7 +6905,7 @@ div#mCSB_1_container {
 }
 
 .agent-details-page .deals-block-one .inner-box .category {
-    left: 70px;
+    left: 15px;
 }
 
 .default-form input[type="text"],
@@ -9747,7 +9757,7 @@ div#mCSB_1_container {
 }
 
 .blog-details-content .comments-area .comment .comment-inner {
-    padding-bottom: 23px;
+    /* padding-bottom: 23px; */
     border-bottom: 1px solid #e5e7ec;
 }
 
@@ -9980,7 +9990,22 @@ div#mCSB_1_container {
 }
 
 .newone {
-    height: 1000px;
+    height: 1100px;
+}
+
+.pic {
+    max-height: 250px;
+}
+
+.prof_s {
+    max-height: 200px;
+    max-width: 200px;
+}
+
+.prof_l {
+    max-height: 200px;
+    max-width: 200px;
+    padding: 10px;
 }
 
 .thumbnail_images ul {
@@ -10000,4 +10025,44 @@ div#mCSB_1_container {
 
 .thumbnail_images ul li:hover {
     border: solid #001135;
+}
+
+.bdg1 {
+    padding: 15px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    font-family: "Rubik", sans-serif;
+    background-color: #0d6efd;
+}
+
+.bdg2 {
+    padding: 15px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    font-family: "Rubik", sans-serif;
+    background-color: #198754;
+}
+
+.bdg3 {
+    padding: 15px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    font-family: "Rubik", sans-serif;
+    background-color: #dc3545;
+}
+
+.bdg4 {
+    padding: 15px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    font-family: "Rubik", sans-serif;
+    background-color: #ffc107;
 }

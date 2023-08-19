@@ -8,8 +8,8 @@
             <div class="image-layer" style="background-image:url({{ asset('images/banner/banner-2.jpg') }}"></div>
             <div class="auto-container">
                 <div class="content-box">
-                    <h2>Search Properties for Sale and To Rent</h2>
-                    <p>Amet consectetur adipisicing elit sed do eiusmod.</p>
+                    <h2>Your Reliable Task Solution</h2>
+                    <p>Connecting You to Reliable Help</p>
                 </div>
             </div>
         </div>
@@ -17,8 +17,8 @@
             <div class="image-layer" style="background-image:url({{ asset('images/banner/banner-3.jpg') }}"></div>
             <div class="auto-container">
                 <div class="content-box">
-                    <h2>Search Properties for Sale and To Rent</h2>
-                    <p>Amet consectetur adipisicing elit sed do eiusmod.</p>
+                    <h2>Simplify Your Tasks with Ease</h2>
+                    <p>Trusted Professionals at Your Fingertips</p>
                 </div>
             </div>
         </div>
@@ -26,8 +26,8 @@
             <div class="image-layer" style="background-image:url({{ asset('images/banner/banner-4.jpg') }}"></div>
             <div class="auto-container">
                 <div class="content-box">
-                    <h2>Search Properties for Sale and To Rent</h2>
-                    <p>Amet consectetur adipisicing elit sed do eiusmod.</p>
+                    <h2>Say Goodbye to Task Worries</h2>
+                    <p>Efficiency Meets Convenience</p>
                 </div>
             </div>
         </div>
@@ -36,28 +36,23 @@
 <!-- banner-style-two end -->
 
 <!-- search-field-section -->
-<section class="search-field-section">
+<section class="search-field-section my-4">
     <div class="auto-container">
         <div class="inner-container">
             <div class="search-field">
                 <div class="tabs-box">
-                    <div class="tab-btn-box">
-                        <ul class="tab-btns tab-buttons centred clearfix">
-                            <li class="tab-btn" data-tab="#tab-1">Find a Job</li>
-                        </ul>
-                    </div>
                     <div class="tabs-content info-group">
                         <div class="tab active-tab" id="tab-1">
                             <div class="inner-box">
                                 <div class="top-search">
-                                    <form action="index.html" method="post" class="search-form">
+                                    <form action="/jobs" class="search-form">
                                         <div class="row clearfix">
                                             <div class="col-lg-4 col-md-12 col-sm-12 column">
                                                 <div class="form-group">
                                                     <label>Search Job</label>
                                                     <div class="field-input">
                                                         <i class="fas fa-search"></i>
-                                                        <input type="search" name="search-field" placeholder="Search by Property, Location or Landmark..." required="">
+                                                        <input type="search" name="search" value="{{ request('search') }}" placeholder="Search in Handyhelp">
                                                     </div>
                                                 </div>
                                             </div>
@@ -66,151 +61,35 @@
                                                     <label>Location</label>
                                                     <div class="select-box">
                                                         <i class="far fa-compass"></i>
-                                                        <select class="wide">
-                                                            <option data-display="Input location">Input location</option>
-                                                            <option value="1">New York</option>
-                                                            <option value="2">California</option>
-                                                            <option value="3">London</option>
-                                                            <option value="4">Maxico</option>
+                                                        <select class="wide" name="city">
+                                                            <option value="">All City</option>
+                                                            @foreach ($cities as $city)
+                                                            <option value="{{ $city->slug }}">{{ $city->name }}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-6 col-sm-12 column">
                                                 <div class="form-group">
-                                                    <label>Job Type</label>
+                                                    <label>Category</label>
                                                     <div class="select-box">
-                                                        <select class="wide">
-                                                            <option data-display="All Type">All Type</option>
-                                                            <option value="1">Laxury</option>
-                                                            <option value="2">Classic</option>
-                                                            <option value="3">Modern</option>
-                                                            <option value="4">New</option>
+                                                        <select class="wide" name="category">
+                                                            <option value="">All Category</option>
+                                                            @foreach ($categories as $category)
+                                                            <option value="{{ $category->slug }}">{{ $category->name }}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="search-btn">
-                                            <button type="submit"><i class="fas fa-search"></i>Search</button>
+                                            <button type="submit">
+                                                <i class="fas fa-search"></i>Search
+                                            </button>
                                         </div>
                                     </form>
-                                </div>
-                                <div class="switch_btn_one ">
-                                    <button class="nav-btn nav-toggler navSidebar-button clearfix search__toggler">Advanced Search<i class="fas fa-angle-down"></i></button>
-                                    <div class="advanced-search">
-                                        <div class="close-btn">
-                                            <a href="#" class="close-side-widget"><i class="far fa-times"></i></a>
-                                        </div>
-                                        <div class="row clearfix">
-                                            <div class="col-lg-4 col-md-6 col-sm-12 column">
-                                                <div class="form-group">
-                                                    <label>Distance from Location</label>
-                                                    <div class="select-box">
-                                                        <select class="wide">
-                                                            <option data-display="Distance from Location">Distance from Location</option>
-                                                            <option value="1">Max Bath</option>
-                                                            <option value="2">Within 1 Mile</option>
-                                                            <option value="3">Within 2 Mile</option>
-                                                            <option value="4">Within 3 Mile</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-6 col-sm-12 column">
-                                                <div class="form-group">
-                                                    <label>Bedrooms</label>
-                                                    <div class="select-box">
-                                                        <select class="wide">
-                                                            <option data-display="Max Rooms">Max Rooms</option>
-                                                            <option value="1">One Rooms</option>
-                                                            <option value="2">Two Rooms</option>
-                                                            <option value="3">Three Rooms</option>
-                                                            <option value="4">Four Rooms</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-6 col-sm-12 column">
-                                                <div class="form-group">
-                                                    <label>Sort by</label>
-                                                    <div class="select-box">
-                                                        <select class="wide">
-                                                            <option data-display="Most Popular">Most Popular</option>
-                                                            <option value="1">Top Rating</option>
-                                                            <option value="2">New Rooms</option>
-                                                            <option value="3">Classic Rooms</option>
-                                                            <option value="4">Luxry Rooms</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-6 col-sm-12 column">
-                                                <div class="form-group">
-                                                    <label>Floor</label>
-                                                    <div class="select-box">
-                                                        <select class="wide">
-                                                            <option data-display="Select Floor">Select Floor</option>
-                                                            <option value="1">One Floor</option>
-                                                            <option value="2">Two Floor</option>
-                                                            <option value="3">Three Floor</option>
-                                                            <option value="4">Four Floor</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-6 col-sm-12 column">
-                                                <div class="form-group">
-                                                    <label>Bath</label>
-                                                    <div class="select-box">
-                                                        <select class="wide">
-                                                            <option data-display="Max Bath">Max Bath</option>
-                                                            <option value="1">Max Bath</option>
-                                                            <option value="2">Max Bath</option>
-                                                            <option value="3">Max Bath</option>
-                                                            <option value="4">Max Bath</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-6 col-sm-12 column">
-                                                <div class="form-group">
-                                                    <label>Agencies</label>
-                                                    <div class="select-box">
-                                                        <select class="wide">
-                                                            <option data-display="Any Agency">Any Agency</option>
-                                                            <option value="1">Any Agency</option>
-                                                            <option value="2">Agency 01</option>
-                                                            <option value="3">Agency 02</option>
-                                                            <option value="4">Agency 03</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="range-box">
-                                            <div class="row clearfix">
-                                                <div class="col-lg-6 col-md-6 col-sm-12 column">
-                                                    <div class="price-range">
-                                                        <h6>Select Price Range</h6>
-                                                        <div class="range-input">
-                                                            <div class="input"><input type="text" class="property-amount" name="field-name" readonly=""></div>
-                                                        </div>
-                                                        <div class="price-range-slider"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-12 column">
-                                                    <div class="area-range">
-                                                        <h6>Select Area</h6>
-                                                        <div class="range-input">
-                                                            <div class="input"><input type="text" class="area-range" name="field-name" readonly=""></div>
-                                                        </div>
-                                                        <div class="area-range-slider"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -227,26 +106,29 @@
     <div class="auto-container">
         <div class="inner-container wow slideInLeft animated" data-wow-delay="00ms" data-wow-duration="1500ms">
             <ul class="category-list clearfix">
-                @foreach ($categories as $category)
-                    <li>
-                        <div class="category-block-one">
-                            <a href="/categories/{{ $category->slug }}">
-                                <div class="inner-box">
-                                    <div class="icon-box"><i class="icon-1"></i></div>
-                                    <h5><a href="/categories/{{ $category->slug }}">{{ $category->name }}</a></h5>
+                @foreach ($categories->take(5) as $category)
+                <li>
+                    <div class="category-block-one">
+                        <a href="/jobs?category={{ $category->slug }}">
+                            <div class="inner-box">
+                                <div class="icon-box">
+                                    <img src="/images/category/{{ $category->image }}" class="d-inline-block align-text" width="60">
                                 </div>
-                            </a>
-                        </div>
-                    </li>
+                                <h5><a href="/jobs?category={{ $category->slug }}">{{ $category->name }}</a></h5>
+                            </div>
+                        </a>
+                    </div>
+                </li>
                 @endforeach
             </ul>
-            <div class="more-btn"><a href="/categories" class="theme-btn btn-one">All Categories</a></div>
+            <div class="more-btn"><a href="/allcategories" class="theme-btn btn-one">All Categories</a></div>
         </div>
     </div>
 </section>
 <!-- category-section end -->
 
 <!-- Newest Jobs -->
+@if ($jobs->count()>0)
 <section class="feature-section sec-pad bg-color-1">
     <div class="auto-container">
         <div class="sec-title centred">
@@ -256,34 +138,41 @@
         </div>
         <div class="row clearfix">
             @foreach ($jobs->take(3) as $job)
-            <div class="col-lg-4 col-md-6 col-sm-12 feature-block">
+            <div class="col-lg-4 col-md-6 col-sm-12 feature-block mt-4">
                 <div class="feature-block-one wow fadeInUp animated" data-wow-delay="00ms" data-wow-duration="1500ms">
                     <div class="inner-box">
+                        @if ($job->image1)
                         <div class="image-box">
-                            <figure class="image"><img src="{{ asset('images/feature/feature-1.png') }}" alt="" /></figure>
-                            <div class="batch"><i class="icon-11"></i></div>
+                            <a href="/jobs/{{ $job->slug }}">
+                                <figure class="image">
+                                    <img src="/img/jobs/{{ $job->image1 }}" alt="{{ $job->title }}" style="height: 250px; object-fit: cover;" class="rounded" />
+                                </figure>
+                                @if ($job->ava == 'n')
+                                <span class="category">Already Taken</span>
+                                @endif
+                            </a>
                         </div>
+                        @else
+                        <div class="image-box">
+                            <a href="/jobs/{{ $job->slug }}">
+                                <figure class="image">
+                                    <img src="{{ asset('images/feature/feature-4.jpg') }}" width="370" height="250" />
+                                </figure>
+                            </a>
+                        </div>
+                        @endif
                         <div class="lower-content">
                             <div class="title-text">
-                                <h4><a href="property-details.html">{{ $job->title }}</a></h4>
+                                <h4><a href="/jobs/{{ $job->slug }}">{{ $job->title }}</a></h4>
                             </div>
                             <div class="price-box clearfix">
                                 <div class="price-info pull-left">
-                                    <h6>Start From</h6>
-                                    <h4>${{ $job->rate }}.00</h4>
+                                    <h6>Highest funds</h6>
+                                    <h4>Rp{{ number_format($job->rate, 0,",",".") }}</h4>
                                 </div>
-                                {{-- <ul class="other-option pull-right clearfix">
-                                    <li>
-                                        <a href="property-details.html"><i class="icon-12"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="property-details.html"><i class="icon-13"></i></a>
-                                    </li>
-                                </ul> --}}
                             </div>
-                            <p>{{ Str::limit($job->detail, 50) }}</p>
                             <ul class="more-details clearfix">
-                                <li><i class="icon-22"></i>{{ $job->location->name }}</li>
+                                <li><i class="icon-22"></i>{{ $job->city->name }}</li>
                                 <li><i class="icon-16"></i>{{ $job->category->name }}</li>
                             </ul>
                             <div class="btn-box"><a href="/jobs/{{ $job->slug }}" class="theme-btn btn-two">See Details</a></div>
@@ -296,14 +185,15 @@
         <div class="more-btn centred"><a href="/jobs" class="theme-btn btn-one">View All Jobs</a></div>
     </div>
 </section>
+@endif
 <!-- Newest Jobs end -->
 
 <!-- video-section -->
-<section class="video-section centred" style="background-image: url({{ asset('images/background/video-1.jpg)') }}">
+<section class="video-section centred" style="background-image: url({{ asset('images/background/handyhelp.png)') }}">
     <div class="auto-container">
         <div class="video-inner">
             <div class="video-btn">
-                <a href="https://www.youtube.com/watch?v=nfP5N9Yc72A&amp;t=28s" class="lightbox-image" data-caption=""><i class="icon-17"></i></a>
+                <a href="https://youtu.be/7uA_Sp90ENw" class="lightbox-image" data-caption=""><i class="icon-17"></i></a>
             </div>
         </div>
     </div>
@@ -311,7 +201,7 @@
 <!-- video-section end -->
 
 <!-- Best Contractors -->
-<section class="deals-section sec-pad">
+{{-- <section class="deals-section sec-pad">
     <div class="auto-container">
         <div class="sec-title">
             <h5>Find the best contractor</h5>
@@ -323,7 +213,6 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 deals-block">
                         <div class="deals-block-one">
                             <div class="inner-box">
-                                {{-- <div class="batch"><i class="icon-11"></i></div> --}}
                                 <span class="category">Featured</span>
                                 <div class="lower-content">
                                     <div class="title-text">
@@ -334,14 +223,6 @@
                                             <h6>Start From</h6>
                                             <h4>$300.00</h4>
                                         </div>
-                                        {{-- <ul class="other-option pull-right clearfix">
-                                            <li>
-                                                <a href="property-details.html"><i class="icon-12"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="property-details.html"><i class="icon-13"></i></a>
-                                            </li>
-                                        </ul> --}}
                                     </div>
                                     <p>Success isn’t really that difficult. There is a significant portion of the population here in North America.</p>
                                     <ul class="more-details clearfix">
@@ -364,7 +245,6 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 deals-block">
                         <div class="deals-block-one">
                             <div class="inner-box">
-                                {{-- <div class="batch"><i class="icon-11"></i></div> --}}
                                 <span class="category">Featured</span>
                                 <div class="lower-content">
                                     <div class="title-text">
@@ -375,14 +255,6 @@
                                             <h6>Start From</h6>
                                             <h4>$300.00</h4>
                                         </div>
-                                        {{-- <ul class="other-option pull-right clearfix">
-                                            <li>
-                                                <a href="property-details.html"><i class="icon-12"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="property-details.html"><i class="icon-13"></i></a>
-                                            </li>
-                                        </ul> --}}
                                     </div>
                                     <p>Success isn’t really that difficult. There is a significant portion of the population here in North America.</p>
                                     <ul class="more-details clearfix">
@@ -405,7 +277,6 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 deals-block">
                         <div class="deals-block-one">
                             <div class="inner-box">
-                                {{-- <div class="batch"><i class="icon-11"></i></div> --}}
                                 <span class="category">Featured</span>
                                 <div class="lower-content">
                                     <div class="title-text">
@@ -416,14 +287,6 @@
                                             <h6>Start From</h6>
                                             <h4>$300.00</h4>
                                         </div>
-                                        {{-- <ul class="other-option pull-right clearfix">
-                                            <li>
-                                                <a href="property-details.html"><i class="icon-12"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="property-details.html"><i class="icon-13"></i></a>
-                                            </li>
-                                        </ul> --}}
                                     </div>
                                     <p>Success isn’t really that difficult. There is a significant portion of the population here in North America.</p>
                                     <ul class="more-details clearfix">
@@ -443,7 +306,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 <!-- Best Contractors end -->
 
 <!-- WHY CHOOSE US? -->
@@ -461,8 +324,8 @@
                     <div class="chooseus-block-one">
                         <div class="inner-box">
                             <div class="icon-box"><i class="icon-19"></i></div>
-                            <h4>Excellent Reputation</h4>
-                            <p>Lorem ipsum dolor sit consectetur sed eiusm tempor.</p>
+                            <h4>Best contractors in their fields</h4>
+                            <p>HandyHelp have workers who are competent and experts in their fields, have a lot of experience, are responsible, and are certified.</p>
                         </div>
                     </div>
                 </div>
@@ -470,8 +333,8 @@
                     <div class="chooseus-block-one">
                         <div class="inner-box">
                             <div class="icon-box"><i class="icon-26"></i></div>
-                            <h4>Best Local Agents</h4>
-                            <p>Lorem ipsum dolor sit consectetur sed eiusm tempor.</p>
+                            <h4>Friendly rates</h4>
+                            <p>Handyhelp prepares a feature where rates can adjust from members and contractors with the deal to deal feature. Can help both members and contractors themselves.</p>
                         </div>
                     </div>
                 </div>
@@ -479,8 +342,8 @@
                     <div class="chooseus-block-one">
                         <div class="inner-box">
                             <div class="icon-box"><i class="icon-21"></i></div>
-                            <h4>Personalized Service</h4>
-                            <p>Lorem ipsum dolor sit consectetur sed eiusm tempor.</p>
+                            <h4>Safe and Reliable</h4>
+                            <p>Handyhelp is a trusted website platform that can help solve your daily problems, have attractive features and is easy to understand or use.</p>
                         </div>
                     </div>
                 </div>
@@ -491,6 +354,7 @@
 <!-- WHY CHOOSE US? end -->
 
 <!-- Most Popular Places -->
+@if ($cities->count()>0)
 <section class="place-section sec-pad">
     <div class="auto-container">
         <div class="sec-title centred">
@@ -500,54 +364,83 @@
         </div>
         <div class="sortable-masonry">
             <div class="items-container row clearfix">
+                @foreach ($cities->take(1) as $city)
                 <div class="col-lg-4 col-md-6 col-sm-12 masonry-item small-column all illustration brand marketing software">
                     <div class="place-block-one">
                         <div class="inner-box">
-                            <figure class="image-box"><img src="{{ asset('images/resource/place-1.jpg') }}" alt="" /></figure>
-                            <div class="text">
-                                <h4><a href="categories.html">Los Angeles</a></h4>
-                                <p>10 Properties</p>
-                            </div>
+                            <a href="/jobs?city={{ $city->slug }}">
+                                <figure class="image-box">
+                                    <img src="/images/city/{{ $city->image }}" height="1000" />
+                                </figure>
+                                <div class="text">
+                                    <h4>
+                                        <a href="/jobs?city={{ $city->slug }}">{{ $city->name }}</a>
+                                    </h4>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
+                @endforeach
+                @foreach ($cities->skip(1)->take(1) as $city)
                 <div class="col-lg-4 col-md-6 col-sm-12 masonry-item small-column all brand illustration print software logo">
                     <div class="place-block-one">
                         <div class="inner-box">
-                            <figure class="image-box"><img src="{{ asset('images/resource/place-2.jpg') }}" alt="" /></figure>
-                            <div class="text">
-                                <h4><a href="categories.html">San Francisco</a></h4>
-                                <p>08 Properties</p>
-                            </div>
+                            <a href="/jobs?city={{ $city->slug }}">
+                                <figure class="image-box">
+                                    <img src="/images/city/{{ $city->image }}" />
+                                </figure>
+                                <div class="text">
+                                    <h4>
+                                        <a href="/jobs?city={{ $city->slug }}">{{ $city->name }}</a>
+                                    </h4>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
+                @endforeach
+                @foreach ($cities->skip(2)->take(1) as $city)
                 <div class="col-lg-4 col-md-6 col-sm-12 masonry-item small-column all illustration marketing logo">
                     <div class="place-block-one">
                         <div class="inner-box">
-                            <figure class="image-box"><img src="{{ asset('images/resource/place-3.jpg') }}" alt="" /></figure>
-                            <div class="text">
-                                <h4><a href="categories.html">Las Vegas</a></h4>
-                                <p>29 Properties</p>
-                            </div>
+                            <a href="/jobs?city={{ $city->slug }}">
+                                <figure class="image-box">
+                                    <img src="/images/city/{{ $city->image }}" alt="" />
+                                </figure>
+                                <div class="text">
+                                    <h4>
+                                        <a href="/jobs?city={{ $city->slug }}">{{ $city->name }}</a>
+                                    </h4>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
+                @endforeach
+                @foreach ($cities->skip(3)->take(1) as $city)
                 <div class="col-lg-8 col-md-6 col-sm-12 masonry-item small-column all brand marketing print software">
                     <div class="place-block-one">
                         <div class="inner-box">
-                            <figure class="image-box"><img src="{{ asset('images/resource/place-4.jpg') }}" alt="" /></figure>
-                            <div class="text">
-                                <h4><a href="categories.html">New York City</a></h4>
-                                <p>05 Properties</p>
-                            </div>
+                            <a href="/jobs?city={{ $city->slug }}">
+                                <figure class="image-box">
+                                    <img src="/images/city/{{ $city->image }}" />
+                                </figure>
+                                <div class="text">
+                                    <h4>
+                                        <a href="/jobs?city={{ $city->slug }}">{{ $city->name }}</a>
+                                    </h4>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
     </div>
 </section>
+@endif
 <!-- Most Popular Places end -->
 
 <!-- testimonial-section end -->
@@ -725,6 +618,7 @@
 <!-- WE ARE TEAM end -->
 
 <!-- Looking for a Job -->
+@guest
 <section class="cta-section bg-color-2">
     <div class="pattern-layer" style="background-image: url({{ asset('images/shape/shape-2.png') }})"></div>
     <div class="auto-container">
@@ -739,6 +633,7 @@
         </div>
     </div>
 </section>
+@endguest
 <!-- Looking for a Job end -->
 
 <!-- NEWS & ARTICLE -->

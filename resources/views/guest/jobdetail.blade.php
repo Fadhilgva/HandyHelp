@@ -4,6 +4,24 @@
 <!-- job-detail-container -->
 <section class="sidebar-page-container blog-details sec-pad-2">
     <div class="auto-container">
+        @if (session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show text-center my-3" role="alert">
+            <small>{{ session('success') }}</small>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+
+        @error('comb')
+        <div class="alert alert-danger alert-dismissible fade show text-center my-3" role="alert">
+            <small>You cannot apply for the same job again</small>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @enderror
+
         <div class="row clearfix">
             <div class="col-lg-8 col-md-12 col-sm-12 content-side">
                 <div class="blog-details-content">
@@ -14,6 +32,9 @@
                                 <figure class="image">
                                     <img src="/img/jobs/{{ $job->image1 }}" id="main_product_image" class="rounded shadow-sm" alt="{{ $job->title }}" width="770" height="520" />
                                 </figure>
+                                @if ($job->ava == 'n')
+                                <span class="category">Already Taken</span>
+                                @endif
                             </div>
                             @else
                             <div class="image-box">
@@ -39,13 +60,21 @@
                                 <h3>{{ $job->title }}</h3>
                                 <ul class="post-info clearfix">
                                     <li class="author-box">
-                                        <figure class="author-thumb"><img src="{{ asset('images/news/author-1.jpg') }}" alt="" /></figure>
-                                        <h5><a href="">{{ $job->user->name }}</a></h5>
+                                        @if ($job->user->profile)
+                                        <figure class="author-thumb">
+                                            <img src="/img/profile/{{ $job->user->profile }}" style="width: 50px; height: 50px; object-fit: cover;" />
+                                        </figure>
+                                        @else
+                                        <figure class="author-thumb">
+                                            <img src="{{ asset('images/news/author-1.jpg') }}" alt="" />
+                                        </figure>
+                                        @endif
+                                        <h5><a href="/profile/{{ $job->user->username }}">{{ $job->user->name }}</a></h5>
                                     </li>
                                 </ul>
                                 <div class="text">
                                     <p>
-                                        {{ $job->detail }}
+                                        {!! $job->detail !!}
                                     </p>
                                 </div>
                                 <div class="post-tags">
@@ -53,7 +82,7 @@
                                         <li>
                                             <h5>Category :</h5>
                                         </li>
-                                        <li><a href="/categories/{{ $job->category->slug }}">{{ $job->category->name }}</a></li>
+                                        <li><a href="/categories?category={{ $job->category->slug }}">{{ $job->category->name }}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -69,46 +98,41 @@
                         </div>
                         <div class="widget-content">
                             <ul class="category-list clearfix">
-                                <li><i class="icon-22 pr-2"></i>{{ $job->location->name }}</li>
-                                <li><i class="icon-33 pr-2"></i>{{ $job->phone }}</li>
+                                <li><i class="icon-22 pr-2"></i>{{ $job->city->name }}</li>
+                                <li><i class="icon-33 pr-2"></i>********</li>
                                 <li><i class="icon-41 pr-2"></i>Rp{{ number_format($job->rate, 0,",",".") }}</li>
-                                @if ($job->option_one)
+                                @if ($job->option_one != "I'm not sure i know")
                                 <li><i class="icon-16 pr-2"></i>{{ $job->option_one }}</li>
                                 @endif
-                                @if ($job->option_two)
-                                <li><i class="icon-30 pr-2"></i>{{ $job->option_two }} Person is needed</li>
+                                @if ($job->option_two != "I'm not sure i know")
+                                <li><i class="icon-30 pr-2"></i>Approx {{ $job->option_two }} Person is needed</li>
                                 @endif
                             </ul>
                         </div>
                     </div>
-                    {{-- <div class="sidebar-widget post-widget">
+                    @if (Auth()->user()->role == "contractor" AND $job->ava == 'y')
+                    <div class="sidebar-widget post-widget">
                         <div class="widget-title">
-                            <h4>Other Jobs</h4>
+                            <h4>Are you Interested?</h4>
                         </div>
-                        <div class="post-inner">
-                            <div class="post">
-                                <figure class="post-thumb">
-                                    <a href="blog-details.html"><img src="{{ asset('images/news/post-1.jpg') }}" alt="" /></a>
-                                </figure>
-                                <h5><a href="blog-details.html">Repairing Broken Fences</a></h5>
-                                <span class="post-date">April 09, 2020</span>
+                        <section class="subscribe-section">
+                            <div class="auto-container">
+                                <div class="row clearfix">
+                                    <div class="post-inner">
+                                        <form action="/offer/{{ $job->id }}" method="POST" class="subscribe-form">
+                                            @csrf
+                                            <div class="form-group">
+                                                <input type="hidden" value="{{ $job->id . Auth::user()->id }}" name="comb" id="comb">
+                                                <input type="number" name="rate_offer" placeholder="Enter your bid Rate" required max="{{ $job->rate }}" />
+                                                <button type="submit">Make Offer</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="post">
-                                <figure class="post-thumb">
-                                    <a href="blog-details.html"><img src="{{ asset('images/news/post-2.jpg') }}" alt="" /></a>
-                                </figure>
-                                <h5><a href="blog-details.html">Cleaning the Garden</a></h5>
-                                <span class="post-date">April 09, 2020</span>
-                            </div>
-                            <div class="post">
-                                <figure class="post-thumb">
-                                    <a href="blog-details.html"><img src="{{ asset('images/news/post-3.jpg') }}" alt="" /></a>
-                                </figure>
-                                <h5><a href="blog-details.html">Take the dog for a walk</a></h5>
-                                <span class="post-date">April 08, 2020</span>
-                            </div>
-                        </div>
-                    </div> --}}
+                        </section>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

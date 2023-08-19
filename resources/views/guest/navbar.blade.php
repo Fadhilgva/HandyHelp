@@ -25,7 +25,7 @@
                                     <a href="/jobs"><span>Jobs</span></a>
                                 </li>
                                 <li class="{{  Request::is ('categories') ? 'current' : '' }}">
-                                    <a href="/categories"><span>Categories</span></a>
+                                    <a href="/allcategories"><span>Categories</span></a>
                                 </li>
                                 <li class="{{  Request::is ('about') ? 'current' : '' }}">
                                     <a href="/about"><span>About Us</span></a>
@@ -35,6 +35,9 @@
                                     <a><span>{{ Auth()->user()->name }}</span></a>
                                     <ul class="me-5">
                                         <li><a href="/profile">Profile</a></li>
+                                        @if (Auth::user()->role=='contractor')
+                                        <li><a href="/submissions">Submission</a></li>
+                                        @endif
                                         <li>
                                             <a href="/logout">Log Out</a>
                                         </li>
@@ -68,9 +71,9 @@
                         <!--Keep This Empty / Menu will come through Javascript-->
                     </nav>
                 </div>
-                <div class="btn-box">
+                {{-- <div class="btn-box">
                     <a href="" class="theme-btn btn-one"><span>+</span>Add Listing</a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

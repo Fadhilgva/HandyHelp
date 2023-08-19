@@ -22,10 +22,11 @@ return new class extends Migration
             $table->text('detail');
             $table->foreignId('category_id');
             $table->foreignId('location_id');
-            $table->unsignedInteger('rate');
+            $table->unsignedBigInteger('rate');
             $table->string('phone');
             $table->string('option_one')->nullable();
             $table->string('option_two')->nullable();
+            $table->string('ava')->default('y');
             $table->timestamps();
         });
     }

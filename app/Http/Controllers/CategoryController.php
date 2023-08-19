@@ -2,29 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Category;
+use App\Models\City;
 use App\Models\Jobs;
+use App\Models\Category;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('guest.categories', [
-            'title' => 'Jobs Categories',
+            'title' => 'HandyHelp | Categories',
             'categories' => Category::all()
         ]);
     }
 
-    public function category(Category $category){
+    // public function category(Category $category)
+    // {
+    //     if (request('category')) {
+    //         $category = Category::firstWhere('slug', request('category'));
+    //     }
 
-        $jobs = Jobs::join('categories', 'jobs.category_id', '=', 'categories.id')
-        ->where('jobs.category_id', '=', $category->id)
-        ->select('jobs.*')->get();
-        // dd($jobs);
-
-        return view('guest.category', [
-            'title' => 'HandyHelp | Jobs in ' . $category->name,
-            'jobs' => $jobs
-        ]);
-    }
+    //     return view('guest.category', [
+    //         'title' => 'Jobs in ' . $category->name,
+    //         'jobs' => Jobs::with(['category', 'User', 'city'])->latest()->filter(request(['search', 'category']))->paginate(10)->withQueryString(),
+    //         'cities' => City::all(),
+    //         'categories' => Category::all(),
+    //         'category' => $category->name
+    //     ]);
+    // }
 }

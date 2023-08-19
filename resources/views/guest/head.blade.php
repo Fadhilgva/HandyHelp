@@ -12,6 +12,7 @@
 
 <!-- Stylesheets -->
 <link href="{{ asset('css/font-awesome-all.css') }}" rel="stylesheet">
+<link href="{{ asset('css/star.css') }}" rel="stylesheet">
 <link href="{{ asset('css/flaticon.css') }}" rel="stylesheet">
 <link href="{{ asset('css/owl.css') }}" rel="stylesheet">
 <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
@@ -23,3 +24,10 @@
 <link href="{{ asset('css/switcher-style.css') }}" rel="stylesheet">
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
+
+<style>
+    trix-toolbar [data-trix-button-group="file-tools"] {
+        display: none;
+    }
+</style>
