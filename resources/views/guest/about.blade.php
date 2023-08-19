@@ -38,7 +38,7 @@
 <!-- about-section end -->
 
 <!-- cta-section -->
-<section class="cta-section alternate-2 pb-240 centred" style="background-image: url({{ asset('images/background/new.jpg)') }}">
+<section class="cta-section alternate-2 pb-240 centred" style="background-image: url({{ asset('images/background/New.jpg)') }}">
     <div class="auto-container">
         <div class="inner-box clearfix">
             <div class="text">
