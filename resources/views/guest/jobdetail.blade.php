@@ -82,7 +82,7 @@
                                         <li>
                                             <h5>Category :</h5>
                                         </li>
-                                        <li><a href="/categories?category={{ $job->category->slug }}">{{ $job->category->name }}</a></li>
+                                        <li><a href="/jobs?category={{ $job->category->slug }}">{{ $job->category->name }}</a></li>
                                     </ul>
                                 </div>
                             </div>
